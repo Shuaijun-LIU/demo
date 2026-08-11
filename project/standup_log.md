@@ -35,4 +35,5 @@
   - What: Line2 六套独立 MJCF 工位全部完成；接入 8 类 RoboTwin2 真实 GLB、低饱和界面、协作/故障/恢复/oracle 信息和五阶段任务路径。Demo01/03/06 为三臂，Demo02/04/05 为四臂。
   - Verification: 60/60 单元测试、TypeScript、Vite build 通过；Playwright 在真实 Chromium 中逐套加载 MuJoCo，六场景、零 HTTP/控制台错误、Line1 保留回归全部通过。
   - Evidence: 六张 1600×1000 截图与一张总览图位于 `project/checkpoints/2026-08-12-line2-scenes/`。
-  - Next: 通过个人 SSH 推送 main，等待 GitHub Actions Pages 成功并检查公开链接。
+  - Deployment: 个人 SSH 已推送 main；Actions run 31539783981 build/deploy success；公开 Demo01 完成 MuJoCo/WebGL 实载，六个 MJCF 与八个 GLB 均 HTTP 200。
+  - Next: 用户检查公开 Line2 六场景与总览图；根据视觉反馈进入定点优化或 Phase 9 对象级连续动作。

@@ -6,6 +6,7 @@ This file is generated/updated by artifact registry tooling.
 
 | Time (UTC) | Kind | Path | Produced by | Source | Notes |
 |---|---|---|---|---|---|
+| 2026-08-11 21:54:39 UTC | pages_deployment | https://shuaijun-liu.github.io/demo/?line=line2&scene=demo01 | GitHub Actions | main@8d6db3e / run 31539783981 | build/deploy success；公开 MuJoCo canvas 实载；六 MJCF 与八 GLB 均 HTTP 200 |
 | 2026-08-11 21:42:10 UTC | line2_contact_sheet | project/checkpoints/2026-08-12-line2-scenes/line2-six-scene-contact-sheet.jpg | Playwright + project-flow-manager | 六套通过浏览器验收的 Line2 页面 | 3×2 总览；对应六张 1600×1000 原图 |
 | 2026-08-11 21:42:10 UTC | line2_browser_checkpoint | project/checkpoints/2026-08-12-line2-scenes/README.md | Playwright + project-flow-manager | 真实 MuJoCo/WASM 六场景验收 | 2 项 E2E 通过；零 HTTP/控制台错误；Line1 保留 |
 | 2026-08-11 21:42:10 UTC | asset_provenance | public/assets/line2/ASSET_PROVENANCE.md | RoboTwin2 asset audit | 本地 RoboTwin2 MIT 对象库 | 8 类 GLB、4,524,056 bytes、来源与 SHA-256 |

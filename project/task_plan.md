@@ -21,7 +21,7 @@
 
 ## Status
 - Initialized: 2026-08-11 16:43 UTC
-- Current phase: Line2 本轮交付收束 / GitHub Pages 上线验收
+- Current phase: Phase 8 本轮交付完成 / 等待用户视觉复核
 - Completed this phase: Task 1 工程基线、Task 2 场景契约、Task 3 多臂协调原语
 - Scene alpha: 已接通三台真实 Franka MJCF、中央工位、P1–P5、检测/测试/分流工装和关节运动预览
 - Line1: 六套场景均已搭建并推送；作为版本基线保留
@@ -32,4 +32,5 @@
 - Review checkpoint: `project/checkpoints/2026-08-12-milestone/`
 - Scene checkpoint: `project/checkpoints/2026-08-12-scene-alpha/`
 - Line2 checkpoint: `project/checkpoints/2026-08-12-line2-scenes/`
-- Blockers: 无；本地交付已完成，当前执行远端推送与 Pages 验收
+- Deployment: `https://shuaijun-liu.github.io/demo/?line=line2&scene=demo01`；Actions run 31539783981 success
+- Blockers: 无
