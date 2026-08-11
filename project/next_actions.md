@@ -1,9 +1,9 @@
 # Next Actions
 
 ## Top priorities
-1. 收集用户对阶段视觉稿的信息密度、布局、展示气质和三臂泳道的反馈。
-2. 从三个 RED 测试继续 Foundation Task 4：谓词求值、不可变 trace 与确定性 TaskRuntime。
-3. 完成 SimulationStateBridge、四 Panda 编译门，再贯通 Demo 01 的 P1–P5 浏览器纵切。
+1. 由用户检查 Demo 01 三臂基座、工位、物料、工装和默认镜头构型。
+2. 按构型反馈调整场景，然后把播放预览升级为 P1 抓取、双臂交接、检测和分流轨迹。
+3. 在可见纵切成立后恢复 TaskRuntime，并让 P1–P5 状态驱动物体与机械臂。
 
 ## Blocked
-- 无；当前为主动阶段检查点，并非技术阻塞。
+- 无。

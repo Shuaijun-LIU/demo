@@ -16,7 +16,10 @@
 
 ## Status
 - Initialized: 2026-08-11 16:43 UTC
-- Current phase: Phase 4 / Foundation Task 4 — TaskRuntime（应用户要求暂停，等待阶段视觉反馈）
+- Current phase: Phase 4 / 视觉优先 Demo 01 三臂场景 Alpha
 - Completed this phase: Task 1 工程基线、Task 2 场景契约、Task 3 多臂协调原语
+- Scene alpha: 已接通三台真实 Franka MJCF、中央工位、P1–P5、检测/测试/分流工装和关节运动预览
+- Deferred: Task 4 三个 RED 测试完整归档于本地 SDD WIP，待场景构型确认后恢复
 - Review checkpoint: `project/checkpoints/2026-08-12-milestone/`
+- Scene checkpoint: `project/checkpoints/2026-08-12-scene-alpha/`
 - Blockers: 无
