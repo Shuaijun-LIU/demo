@@ -19,6 +19,16 @@ it("converges a handoff to the receiving arm only after confirmation", () => {
   expect(completeHandoff(shared, true)).toEqual({ kind: "exclusive", armId: "arm2" });
 });
 
+it("requires the receiver confirmation value to be exactly true", () => {
+  const held = claimExclusive(freeCustody("P1"), "arm1");
+  const shared = beginHandoff(held, "arm1", "arm2");
+  const invalidConfirmations: readonly unknown[] = [1, "confirmed", null];
+
+  for (const confirmation of invalidConfirmations) {
+    expect(() => completeHandoff(shared, confirmation as never)).toThrow(/receiver confirmation/i);
+  }
+});
+
 it("rejects invalid runtime arm actors before changing free custody", () => {
   expect(() => claimExclusive(freeCustody("P1"), "arm9" as never)).toThrow(/invalid custody arm/i);
 });
@@ -52,5 +62,9 @@ it("releases only matching exclusive ownership and makes repeat safe release ide
   expect(() => releaseCustody(held, "arm2")).toThrow(/does not own/i);
   const released = releaseCustody(held, "arm3");
   expect(released).toEqual({ kind: "free" });
-  expect(releaseCustody(released, "arm3")).toBe(released);
+  const callerOwnedFree = { kind: "free" } as const;
+  const safelyReleased = releaseCustody(callerOwnedFree, "arm3");
+  expect(safelyReleased).toEqual({ kind: "free" });
+  expect(safelyReleased).not.toBe(callerOwnedFree);
+  expect(Object.isFrozen(safelyReleased)).toBe(true);
 });

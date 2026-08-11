@@ -58,7 +58,7 @@ export function completeHandoff(state: CustodyState, receiverConfirmed: boolean)
   if (state.kind !== "handoff") {
     throw new CustodyConflictError("No handoff is awaiting receiver confirmation");
   }
-  if (!receiverConfirmed) {
+  if (receiverConfirmed !== true) {
     throw new CustodyConflictError("Handoff receiver confirmation is required");
   }
   return freezeState({ kind: "exclusive", armId: state.receiver });
@@ -104,7 +104,7 @@ export function transferToFixture(state: CustodyState, fixtureId: string): Custo
 export function releaseCustody(state: CustodyState, armId: ArmId): CustodyState {
   requireArmId(armId);
   if (state.kind === "free") {
-    return state;
+    return freezeState({ kind: "free" });
   }
   if (state.kind !== "exclusive" || state.armId !== armId) {
     throw new CustodyConflictError("Arm does not own exclusive custody");

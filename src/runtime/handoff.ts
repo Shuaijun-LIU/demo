@@ -1,5 +1,5 @@
 import type { ArmId, CustodyState } from "./types";
-import { CustodyConflictError, beginHandoff, claimExclusive, completeHandoff } from "./objectCustody";
+import { CustodyConflictError, beginHandoff, completeHandoff } from "./objectCustody";
 
 export interface HandoffEvent {
   readonly type: "HANDOFF_STARTED" | "HANDOFF_COMPLETED";
@@ -10,6 +10,7 @@ export interface HandoffEvent {
 
 export interface HandoffTransition {
   readonly custody: CustodyState;
+  readonly event: HandoffEvent;
 }
 
 function requireObjectId(objectId: string): void {
@@ -25,20 +26,20 @@ function copyEvent(event: HandoffEvent): HandoffEvent {
   });
 }
 
-export class HandoffCoordinator {
-  private readonly history: HandoffEvent[] = [];
+function transition(custody: CustodyState, event: HandoffEvent): HandoffTransition {
+  return Object.freeze({ custody, event: copyEvent(event) });
+}
 
+export class HandoffCoordinator {
   public start(objectId: string, custody: CustodyState, sender: ArmId, receiver: ArmId): HandoffTransition {
     requireObjectId(objectId);
-    const senderCustody = custody.kind === "free" ? claimExclusive(custody, sender) : custody;
-    const nextCustody = beginHandoff(senderCustody, sender, receiver);
-    this.history.push(copyEvent({
+    const nextCustody = beginHandoff(custody, sender, receiver);
+    return transition(nextCustody, {
       type: "HANDOFF_STARTED",
       objectId,
       armId: sender,
       details: { receiver },
-    }));
-    return Object.freeze({ custody: nextCustody });
+    });
   }
 
   public complete(objectId: string, custody: CustodyState, receiver: ArmId, receiverConfirmed: boolean): HandoffTransition {
@@ -47,16 +48,11 @@ export class HandoffCoordinator {
       throw new CustodyConflictError("Handoff receiver does not match the custody state");
     }
     const nextCustody = completeHandoff(custody, receiverConfirmed);
-    this.history.push(copyEvent({
+    return transition(nextCustody, {
       type: "HANDOFF_COMPLETED",
       objectId,
       armId: receiver,
       details: { sender: custody.sender },
-    }));
-    return Object.freeze({ custody: nextCustody });
-  }
-
-  public events(): readonly HandoffEvent[] {
-    return Object.freeze(this.history.map(copyEvent));
+    });
   }
 }
