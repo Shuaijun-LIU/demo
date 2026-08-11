@@ -1,0 +1,70 @@
+<mujoco model="demo05 three panda smart pharmacy recovery">
+  <compiler angle="radian" autolimits="true"/>
+  <option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option>
+  <statistic center="0 0 0.75" extent="2.8"/>
+  <visual><headlight diffuse="0.76 0.82 0.86" ambient="0.26 0.31 0.35" specular="0.16 0.16 0.16"/></visual>
+  <asset>
+    <model name="panda" file="../../models/franka/panda.xml"/>
+    <material name="floor" rgba="0.018 0.045 0.062 1"/>
+    <material name="steel" rgba="0.14 0.2 0.23 1" metallic="0.45" roughness="0.5"/>
+    <material name="shelf" rgba="0.19 0.28 0.31 1" roughness="0.62"/>
+    <material name="cyan" rgba="0.1 0.78 0.96 1" emission="0.12"/>
+    <material name="violet" rgba="0.55 0.35 0.98 1" emission="0.1"/>
+    <material name="amber" rgba="1 0.57 0.12 1" emission="0.1"/>
+    <material name="green" rgba="0.1 0.75 0.4 1" emission="0.08"/>
+    <material name="red" rgba="0.92 0.14 0.18 1" emission="0.08"/>
+    <material name="medicine_a" rgba="0.87 0.93 0.95 1"/>
+    <material name="medicine_b" rgba="0.35 0.72 0.94 1"/>
+  </asset>
+  <worldbody>
+    <light pos="2 -2 5" dir="-0.3 0.25 -1" directional="true" diffuse="0.92 0.94 0.97"/>
+    <light pos="-3 2 3" dir="0.6 -0.2 -1" directional="true" diffuse="0.3 0.65 0.82"/>
+    <geom type="plane" size="5 5 0.04" material="floor"/>
+
+    <!-- Dual pharmacy shelf wall -->
+    <geom name="shelf_back" type="box" pos="0 0.62 0.85" size="1.05 0.06 0.85" material="shelf"/>
+    <geom type="box" pos="-1 0.45 0.85" size="0.04 0.2 0.85" material="steel"/>
+    <geom type="box" pos="-0.5 0.45 0.85" size="0.035 0.2 0.85" material="steel"/>
+    <geom type="box" pos="0 0.45 0.85" size="0.035 0.2 0.85" material="steel"/>
+    <geom type="box" pos="0.5 0.45 0.85" size="0.035 0.2 0.85" material="steel"/>
+    <geom type="box" pos="1 0.45 0.85" size="0.04 0.2 0.85" material="steel"/>
+    <geom type="box" pos="0 0.45 0.32" size="1.04 0.2 0.025" material="steel"/>
+    <geom type="box" pos="0 0.45 0.78" size="1.04 0.2 0.025" material="steel"/>
+    <geom type="box" pos="0 0.45 1.24" size="1.04 0.2 0.025" material="steel"/>
+    <geom type="box" pos="0 0.45 1.68" size="1.04 0.2 0.025" material="steel"/>
+
+    <!-- Medicine bins -->
+    <geom type="box" pos="-0.75 0.25 0.55" size="0.18 0.12 0.12" material="medicine_a"/>
+    <geom type="box" pos="-0.25 0.25 0.55" size="0.18 0.12 0.12" material="medicine_b"/>
+    <geom type="box" pos="0.25 0.25 0.55" size="0.18 0.12 0.12" material="medicine_a"/>
+    <geom type="box" pos="0.75 0.25 0.55" size="0.18 0.12 0.12" material="medicine_b"/>
+    <geom type="box" pos="-0.75 0.25 1.01" size="0.18 0.12 0.12" material="medicine_b"/>
+    <geom type="box" pos="-0.25 0.25 1.01" size="0.18 0.12 0.12" material="medicine_a"/>
+    <geom type="box" pos="0.25 0.25 1.01" size="0.18 0.12 0.12" material="red"/>
+    <geom type="box" pos="0.75 0.25 1.01" size="0.18 0.12 0.12" material="medicine_a"/>
+    <geom type="box" pos="-0.75 0.25 1.47" size="0.18 0.12 0.12" material="medicine_a"/>
+    <geom type="box" pos="-0.25 0.25 1.47" size="0.18 0.12 0.12" material="medicine_b"/>
+    <geom type="box" pos="0.25 0.25 1.47" size="0.18 0.12 0.12" material="medicine_a"/>
+    <geom type="box" pos="0.75 0.25 1.47" size="0.18 0.12 0.12" material="medicine_b"/>
+
+    <!-- Prescription verification desk -->
+    <geom name="rx_desk" type="box" pos="0 -0.18 0.62" size="0.75 0.35 0.055" material="steel"/>
+    <geom name="rx_belt" type="box" pos="0 -0.34 0.71" size="0.58 0.13 0.025" material="shelf"/>
+    <geom name="tote" type="box" pos="-0.2 -0.34 0.8" size="0.2 0.12 0.08" material="cyan"/>
+    <geom name="verification_gate" type="box" pos="0.35 -0.18 1.08" size="0.22 0.04 0.32" material="steel"/>
+    <geom name="scanner" type="box" pos="0.35 -0.24 1.11" size="0.09 0.055 0.06" material="violet"/>
+    <geom name="return_bin" type="box" pos="0.63 -0.35 0.79" size="0.13 0.12 0.08" material="amber"/>
+    <geom name="quarantine_bin" type="box" pos="0.86 -0.35 0.79" size="0.13 0.12 0.08" material="red"/>
+
+    <!-- Three arm pedestals facing shelf and desk -->
+    <geom type="cylinder" pos="-1.1 -0.72 0.06" size="0.18 0.06" material="steel"/>
+    <geom type="cylinder" pos="-1.1 -0.72 0.125" size="0.19 0.008" material="cyan"/>
+    <geom type="cylinder" pos="0 -0.95 0.06" size="0.18 0.06" material="steel"/>
+    <geom type="cylinder" pos="0 -0.95 0.125" size="0.19 0.008" material="violet"/>
+    <geom type="cylinder" pos="1.1 -0.72 0.06" size="0.18 0.06" material="steel"/>
+    <geom type="cylinder" pos="1.1 -0.72 0.125" size="0.19 0.008" material="amber"/>
+    <frame pos="-1.1 -0.72 0.13" euler="0 0 0.52"><attach model="panda" body="link0" prefix="arm1_"/></frame>
+    <frame pos="0 -0.95 0.13" euler="0 0 1.57"><attach model="panda" body="link0" prefix="arm2_"/></frame>
+    <frame pos="1.1 -0.72 0.13" euler="0 0 2.62"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+  </worldbody>
+</mujoco>

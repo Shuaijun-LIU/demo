@@ -1,0 +1,68 @@
+<mujoco model="demo02 four panda automotive harness routing">
+  <compiler angle="radian" autolimits="true"/>
+  <option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option>
+  <statistic center="0 0 0.65" extent="2.8"/>
+  <visual>
+    <headlight diffuse="0.72 0.78 0.82" ambient="0.24 0.3 0.36" specular="0.18 0.18 0.18"/>
+    <rgba haze="0.025 0.055 0.08 1"/>
+  </visual>
+  <asset>
+    <model name="panda" file="../../models/franka/panda.xml"/>
+    <material name="floor" rgba="0.018 0.045 0.062 1"/>
+    <material name="steel" rgba="0.12 0.18 0.22 1" metallic="0.5" roughness="0.5"/>
+    <material name="board" rgba="0.16 0.23 0.25 1" roughness="0.65"/>
+    <material name="cyan" rgba="0.1 0.78 0.96 1" emission="0.12"/>
+    <material name="violet" rgba="0.55 0.35 0.98 1" emission="0.1"/>
+    <material name="amber" rgba="1 0.55 0.1 1" emission="0.1"/>
+    <material name="green" rgba="0.1 0.74 0.42 1" emission="0.08"/>
+    <material name="red" rgba="0.92 0.14 0.18 1" emission="0.08"/>
+    <material name="cable" rgba="0.93 0.55 0.08 1" roughness="0.55"/>
+  </asset>
+  <worldbody>
+    <light pos="2 -2 5" dir="-0.3 0.25 -1" directional="true" diffuse="0.9 0.92 0.95"/>
+    <light pos="-3 2 3" dir="0.6 -0.2 -1" directional="true" diffuse="0.3 0.65 0.82"/>
+    <geom name="floor" type="plane" size="5 5 0.04" material="floor"/>
+
+    <!-- Full-size harness routing board and frame -->
+    <geom name="board_top" type="box" pos="0 0 0.62" size="1.06 0.58 0.055" material="board"/>
+    <geom name="frame_left" type="box" pos="-0.96 0 0.37" size="0.055 0.52 0.25" material="steel"/>
+    <geom name="frame_right" type="box" pos="0.96 0 0.37" size="0.055 0.52 0.25" material="steel"/>
+    <geom name="frame_front" type="box" pos="0 -0.5 0.37" size="0.92 0.055 0.25" material="steel"/>
+    <geom name="frame_back" type="box" pos="0 0.5 0.37" size="0.92 0.055 0.25" material="steel"/>
+
+    <!-- Harness path, branches, connectors, and locator clips -->
+    <geom name="harness_main_1" type="capsule" fromto="-0.78 -0.18 0.72 -0.2 -0.1 0.72" size="0.027" material="cable"/>
+    <geom name="harness_main_2" type="capsule" fromto="-0.2 -0.1 0.72 0.34 0.12 0.72" size="0.027" material="cable"/>
+    <geom name="harness_main_3" type="capsule" fromto="0.34 0.12 0.72 0.78 0.2 0.72" size="0.027" material="cable"/>
+    <geom name="branch_1" type="capsule" fromto="-0.34 -0.12 0.72 -0.28 0.3 0.72" size="0.02" material="cable"/>
+    <geom name="branch_2" type="capsule" fromto="0.2 0.06 0.72 0.12 -0.34 0.72" size="0.02" material="cable"/>
+    <geom name="connector_a" type="box" pos="-0.84 -0.2 0.73" size="0.09 0.07 0.045" material="cyan"/>
+    <geom name="connector_b" type="box" pos="0.84 0.21 0.73" size="0.09 0.07 0.045" material="violet"/>
+    <geom name="branch_connector_1" type="box" pos="-0.28 0.35 0.73" size="0.065 0.05 0.04" material="cyan"/>
+    <geom name="branch_connector_2" type="box" pos="0.11 -0.38 0.73" size="0.065 0.05 0.04" material="violet"/>
+    <geom name="clip_1" type="cylinder" pos="-0.58 -0.15 0.72" size="0.052 0.018" material="green"/>
+    <geom name="clip_2" type="cylinder" pos="-0.12 -0.07 0.72" size="0.052 0.018" material="green"/>
+    <geom name="clip_3" type="cylinder" pos="0.31 0.1 0.72" size="0.052 0.018" material="green"/>
+    <geom name="clip_missing" type="cylinder" pos="0.62 0.17 0.72" size="0.052 0.018" material="red"/>
+
+    <!-- Vision verification portal -->
+    <geom name="vision_post_l" type="box" pos="0.84 -0.4 0.98" size="0.035 0.035 0.3" material="steel"/>
+    <geom name="vision_post_r" type="box" pos="0.84 0.4 0.98" size="0.035 0.035 0.3" material="steel"/>
+    <geom name="vision_bridge" type="box" pos="0.84 0 1.27" size="0.035 0.43 0.035" material="steel"/>
+    <geom name="vision_camera" type="box" pos="0.84 0 1.21" size="0.06 0.08 0.045" material="violet"/>
+
+    <!-- Four arm pedestals -->
+    <geom type="cylinder" pos="-1.18 -0.8 0.06" size="0.18 0.06" material="steel"/>
+    <geom type="cylinder" pos="-1.18 -0.8 0.125" size="0.19 0.008" material="cyan"/>
+    <geom type="cylinder" pos="-1.18 0.8 0.06" size="0.18 0.06" material="steel"/>
+    <geom type="cylinder" pos="-1.18 0.8 0.125" size="0.19 0.008" material="violet"/>
+    <geom type="cylinder" pos="1.18 0.8 0.06" size="0.18 0.06" material="steel"/>
+    <geom type="cylinder" pos="1.18 0.8 0.125" size="0.19 0.008" material="amber"/>
+    <geom type="cylinder" pos="1.18 -0.8 0.06" size="0.18 0.06" material="steel"/>
+    <geom type="cylinder" pos="1.18 -0.8 0.125" size="0.19 0.008" material="cyan"/>
+    <frame pos="-1.18 -0.8 0.13" euler="0 0 0.6"><attach model="panda" body="link0" prefix="arm1_"/></frame>
+    <frame pos="-1.18 0.8 0.13" euler="0 0 -0.6"><attach model="panda" body="link0" prefix="arm2_"/></frame>
+    <frame pos="1.18 0.8 0.13" euler="0 0 -2.55"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+    <frame pos="1.18 -0.8 0.13" euler="0 0 2.55"><attach model="panda" body="link0" prefix="arm4_"/></frame>
+  </worldbody>
+</mujoco>

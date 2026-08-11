@@ -1,0 +1,61 @@
+# 多机械臂协作演示平台
+
+基于 React、Three.js、MuJoCo WASM 与真实 Franka Panda MJCF 资产构建的六场景 Web 演示。当前版本优先完成工位构型审查：所有场景均可在浏览器中切换、旋转、缩放和播放关节运动预览。
+
+在线地址（启用 GitHub Pages 后）：https://shuaijun-liu.github.io/demo/
+
+## 六个场景
+
+| Demo | 工位 | 构型 |
+| --- | --- | --- |
+| 01 | 精密元器件检测与上料 | 3 × Franka Panda |
+| 02 | 汽车低压线束四臂布线 | 4 × Franka Panda |
+| 03 | 食品多规格装盒 | 3 × Franka Panda |
+| 04 | 大型构件四臂协同装配 | 4 × Franka Panda |
+| 05 | 智能药房错拣纠正 | 3 × Franka Panda |
+| 06 | 岭南果品分选去核复作业 | 3 × Franka Panda |
+
+## 场景预览
+
+| 01 精密元器件 | 02 汽车线束 |
+| --- | --- |
+| ![Demo 01](project/checkpoints/2026-08-12-scene-alpha/demo01-workcell.png) | ![Demo 02](project/checkpoints/2026-08-12-scene-alpha/demo02-workcell.png) |
+| 03 食品装盒 | 04 大型构件 |
+| ![Demo 03](project/checkpoints/2026-08-12-scene-alpha/demo03-workcell.png) | ![Demo 04](project/checkpoints/2026-08-12-scene-alpha/demo04-workcell.png) |
+| 05 智能药房 | 06 岭南果品 |
+| ![Demo 05](project/checkpoints/2026-08-12-scene-alpha/demo05-workcell.png) | ![Demo 06](project/checkpoints/2026-08-12-scene-alpha/demo06-workcell.png) |
+
+## 本地运行
+
+需要 Node.js 18.18–18.x。
+
+```bash
+npm ci
+npm run dev
+```
+
+打开终端输出的本地地址。生产构建与预览：
+
+```bash
+npm run build
+npm run preview
+```
+
+## GitHub Pages
+
+仓库已包含 `.github/workflows/deploy-pages.yml`，推送到 `main` 会构建并上传 `dist/`。
+
+首次部署只需在仓库中打开：
+
+1. `Settings → Pages`
+2. `Build and deployment → Source`
+3. 选择 `GitHub Actions`
+
+随后可访问 https://shuaijun-liu.github.io/demo/ 。Vite 的资源基路径已固定为 `/demo/`，MuJoCo、场景 XML 与 Panda 网格均会从该子路径加载。
+
+## 当前范围
+
+- 已完成：六套差异化 MJCF 工位、3/4 臂构型、Z-up 朝向修正、场景切换、真实模型加载、关节运动预览。
+- 下一阶段：物料抓取、跨臂交接、故障恢复和完整任务状态机。
+
+Franka Panda 资产来自 MuJoCo Menagerie，许可证见 `LICENSES/franka-emika-panda-Apache-2.0.txt`。

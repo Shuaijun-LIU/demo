@@ -1,0 +1,69 @@
+<mujoco model="demo06 three panda Lingnan fruit sorting and pitting">
+  <compiler angle="radian" autolimits="true"/>
+  <option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option>
+  <statistic center="0 0 0.68" extent="2.8"/>
+  <visual><headlight diffuse="0.76 0.82 0.86" ambient="0.26 0.31 0.35" specular="0.16 0.16 0.16"/></visual>
+  <asset>
+    <model name="panda" file="../../models/franka/panda.xml"/>
+    <material name="floor" rgba="0.018 0.045 0.062 1"/>
+    <material name="steel" rgba="0.14 0.2 0.23 1" metallic="0.45" roughness="0.5"/>
+    <material name="belt" rgba="0.04 0.085 0.095 1"/>
+    <material name="cyan" rgba="0.1 0.78 0.96 1" emission="0.12"/>
+    <material name="violet" rgba="0.55 0.35 0.98 1" emission="0.1"/>
+    <material name="amber" rgba="1 0.57 0.12 1" emission="0.1"/>
+    <material name="green" rgba="0.1 0.75 0.4 1" emission="0.08"/>
+    <material name="red" rgba="0.92 0.14 0.18 1" emission="0.08"/>
+    <material name="fruit_orange" rgba="1 0.42 0.06 1" roughness="0.68"/>
+    <material name="fruit_gold" rgba="0.96 0.7 0.08 1" roughness="0.68"/>
+    <material name="pit" rgba="0.32 0.13 0.05 1"/>
+  </asset>
+  <worldbody>
+    <light pos="2 -2 5" dir="-0.3 0.25 -1" directional="true" diffuse="0.92 0.94 0.97"/>
+    <light pos="-3 2 3" dir="0.6 -0.2 -1" directional="true" diffuse="0.3 0.65 0.82"/>
+    <geom type="plane" size="5 5 0.04" material="floor"/>
+
+    <!-- Hygienic processing bench -->
+    <geom name="bench" type="box" pos="0 0 0.61" size="0.98 0.56 0.055" material="steel"/>
+    <geom type="box" pos="-0.78 -0.43 0.3" size="0.055 0.055 0.3" material="steel"/>
+    <geom type="box" pos="0.78 -0.43 0.3" size="0.055 0.055 0.3" material="steel"/>
+    <geom type="box" pos="-0.78 0.43 0.3" size="0.055 0.055 0.3" material="steel"/>
+    <geom type="box" pos="0.78 0.43 0.3" size="0.055 0.055 0.3" material="steel"/>
+
+    <!-- Fruit singulation and vision grading -->
+    <geom name="infeed" type="box" pos="-0.47 -0.29 0.7" size="0.43 0.14 0.025" material="belt"/>
+    <geom type="sphere" pos="-0.75 -0.29 0.79" size="0.075" material="fruit_orange"/>
+    <geom type="sphere" pos="-0.53 -0.29 0.8" size="0.085" material="fruit_gold"/>
+    <geom type="sphere" pos="-0.29 -0.29 0.785" size="0.07" material="fruit_orange"/>
+    <geom type="sphere" pos="-0.08 -0.29 0.8" size="0.085" material="red"/>
+    <geom name="vision_pad" type="cylinder" pos="-0.42 0.12 0.7" size="0.2 0.035" material="cyan"/>
+    <geom name="vision_post" type="box" pos="-0.42 0.31 0.99" size="0.035 0.035 0.27" material="steel"/>
+    <geom name="vision_camera" type="box" pos="-0.42 0.23 1.21" size="0.075 0.075 0.05" material="violet"/>
+
+    <!-- Twin pitting fixtures -->
+    <geom name="pitter_base" type="box" pos="0.28 -0.02 0.72" size="0.26 0.22 0.045" material="steel"/>
+    <geom name="pitter_cup_1" type="cylinder" pos="0.19 -0.02 0.79" size="0.095 0.035" material="violet"/>
+    <geom name="pitter_cup_2" type="cylinder" pos="0.39 -0.02 0.79" size="0.095 0.035" material="amber"/>
+    <geom name="pitter_head_1" type="cylinder" pos="0.19 -0.02 1.12" size="0.045 0.14" material="steel"/>
+    <geom name="pitter_head_2" type="cylinder" pos="0.39 -0.02 1.12" size="0.045 0.14" material="steel"/>
+    <geom name="pitter_bridge" type="box" pos="0.29 -0.02 1.28" size="0.22 0.05 0.045" material="steel"/>
+
+    <!-- Grade and by-product bins -->
+    <geom name="grade_a" type="box" pos="0.67 0.34 0.75" size="0.16 0.13 0.08" material="green"/>
+    <geom name="grade_b" type="box" pos="0.34 0.37 0.75" size="0.14 0.12 0.08" material="amber"/>
+    <geom name="rework" type="box" pos="0.77 0.04 0.75" size="0.14 0.12 0.08" material="red"/>
+    <geom name="pit_bin" type="box" pos="0.67 -0.34 0.75" size="0.16 0.12 0.08" material="steel"/>
+    <geom type="sphere" pos="0.62 -0.34 0.87" size="0.035" material="pit"/>
+    <geom type="sphere" pos="0.71 -0.34 0.87" size="0.035" material="pit"/>
+
+    <!-- Three arm pedestals -->
+    <geom type="cylinder" pos="-1.08 -0.74 0.06" size="0.18 0.06" material="steel"/>
+    <geom type="cylinder" pos="-1.08 -0.74 0.125" size="0.19 0.008" material="cyan"/>
+    <geom type="cylinder" pos="0 0.98 0.06" size="0.18 0.06" material="steel"/>
+    <geom type="cylinder" pos="0 0.98 0.125" size="0.19 0.008" material="violet"/>
+    <geom type="cylinder" pos="1.08 -0.74 0.06" size="0.18 0.06" material="steel"/>
+    <geom type="cylinder" pos="1.08 -0.74 0.125" size="0.19 0.008" material="amber"/>
+    <frame pos="-1.08 -0.74 0.13" euler="0 0 0.62"><attach model="panda" body="link0" prefix="arm1_"/></frame>
+    <frame pos="0 0.98 0.13" euler="0 0 -1.57"><attach model="panda" body="link0" prefix="arm2_"/></frame>
+    <frame pos="1.08 -0.74 0.13" euler="0 0 2.52"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+  </worldbody>
+</mujoco>
