@@ -14,7 +14,7 @@
     "test:all": "npm run typecheck && npm run test:unit && npm run test:contract"
   },
   "dependencies": {
-    "@react-three/drei": "10.7.7",
+    "@react-three/drei": "10.0.0",
     "@react-three/fiber": "9.5.0",
     "mujoco-react": "8.2.1",
     "react": "19.2.0",

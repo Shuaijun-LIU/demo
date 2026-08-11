@@ -15,3 +15,4 @@
 - 2026-08-12 — 本机 `mujoco-js 0.0.7` 四 Panda 探针成功（`nq=36`、`nv=36`、`nu=32`、`nbody=45`、`ngeom=325`）；首版采用 MuJoCo 原生 `<attach prefix="armN_">` 多实例方案。
 - 2026-08-12 — 实现拆为四份连续计划：共享运行时+Demo 01、刚体流水 Demo 03/05/06、强协作 Demo 04/02、投资人精修/静态部署/全量验证。
 - 2026-08-12 — 用户已要求减少中断询问，因此计划完成后默认采用 `superpowers:subagent-driven-development` 执行，并在每个可独立测试任务后进行双阶段审查。
+- 2026-08-12 — Node 18.19.1 为本机硬约束；实测 `@react-three/drei 10.7.7` 的传递依赖 `camera-controls 3.1.2` 要求 Node 22 并触发 `EBADENGINE`。因此精确固定 Drei `10.0.0`，保留 React 19 / R3F 9 / Three 0.181 兼容性，同时使用无 Node 20/22 engine 限制的 `camera-controls 2.x`。
