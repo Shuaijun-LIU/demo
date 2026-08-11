@@ -1,8 +1,9 @@
 import { OrbitControls } from "@react-three/drei";
 import { MujocoCanvas, MujocoProvider, useBeforePhysicsStep } from "mujoco-react";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import type { VisualScenarioId } from "../scenarios/visualCatalog";
 import { getSceneFile } from "../scenarios/sceneFiles";
+import { getRealisticAssetSummary, RealisticAssetLayer } from "./RealisticAssetLayer";
 import type { LineId } from "./urlState";
 
 export type PreviewMode = "idle" | "playing" | "paused";
@@ -56,6 +57,7 @@ export function SceneViewport({
   resetToken,
   onStatusChange,
 }: SceneViewportProps) {
+  const assetSummary = lineId === "line2" ? getRealisticAssetSummary(sceneId) : "";
   const config = useMemo(
     () => ({
       src: new URL(".", document.baseURI).toString(),
@@ -73,6 +75,7 @@ export function SceneViewport({
         data-testid="scene-viewport"
         data-scene-id={sceneId}
         data-line-id={lineId}
+        data-scene-assets={assetSummary}
         data-up-axis="z"
       >
         <div className="fallback-cell">
@@ -90,6 +93,7 @@ export function SceneViewport({
       data-testid="scene-viewport"
       data-scene-id={sceneId}
       data-line-id={lineId}
+      data-scene-assets={assetSummary}
       data-up-axis="z"
     >
       <MujocoProvider onError={(error) => onStatusChange("WASM 初始化失败：" + error.message)}>
@@ -121,6 +125,9 @@ export function SceneViewport({
             position={[0, 0, 0.006]}
             rotation={[Math.PI / 2, 0, 0]}
           />
+          <Suspense fallback={null}>
+            {lineId === "line2" ? <RealisticAssetLayer sceneId={sceneId} /> : null}
+          </Suspense>
           <MotionPreview active={mode === "playing"} armCount={armCount} />
           <OrbitControls
             makeDefault
