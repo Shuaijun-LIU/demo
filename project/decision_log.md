@@ -22,3 +22,6 @@
 - 2026-08-12 — Demo05 按原剧本恢复为四臂：A 区拣选、B/C 区拣选、汇合扫码纠错、PASS 后包装四个独立角色。
 - 2026-08-12 — Line3 在当前设备使用原生 MuJoCo 构建更真实、可复位、可度量、可生成数据的六任务；本轮只做详细规划，不在 Web 包中伪装为已实现。
 - 2026-08-12 — 公开资产优先采用许可明确的本地 RoboTwin/Menagerie 与项目自建模型；任何外部 CAD 在许可核验前不得进入 GitHub Pages 包。
+- 2026-08-12 — Line2 首批视觉资产固定为 RoboTwin2 的 battery、box、tray、scanner、electronic-scale、screwdriver、pill-bottle、apple；公开包总量 4.32 MiB，逐文件来源、SHA-256 与 MIT 文本随仓库交付。
+- 2026-08-12 — Line2 本轮验收边界是“六套任务就绪工位 + 真实资产 + 五阶段任务路径预览 + 可检查故障闭环”；对象级抓取、交接、接触工具与分流轨迹属于紧随其后的 Phase 9，不反向推翻已验收构型。
+- 2026-08-12 — 浏览器验收必须逐套等待 MuJoCo ready、检查 WebGL canvas/Z-up/臂数/资产清单并拒绝 HTTP 4xx 与 console error；截图只在这些断言通过后生成。

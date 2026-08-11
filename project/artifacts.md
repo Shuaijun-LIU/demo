@@ -6,6 +6,11 @@ This file is generated/updated by artifact registry tooling.
 
 | Time (UTC) | Kind | Path | Produced by | Source | Notes |
 |---|---|---|---|---|---|
+| 2026-08-11 21:42:10 UTC | line2_contact_sheet | project/checkpoints/2026-08-12-line2-scenes/line2-six-scene-contact-sheet.jpg | Playwright + project-flow-manager | 六套通过浏览器验收的 Line2 页面 | 3×2 总览；对应六张 1600×1000 原图 |
+| 2026-08-11 21:42:10 UTC | line2_browser_checkpoint | project/checkpoints/2026-08-12-line2-scenes/README.md | Playwright + project-flow-manager | 真实 MuJoCo/WASM 六场景验收 | 2 项 E2E 通过；零 HTTP/控制台错误；Line1 保留 |
+| 2026-08-11 21:42:10 UTC | asset_provenance | public/assets/line2/ASSET_PROVENANCE.md | RoboTwin2 asset audit | 本地 RoboTwin2 MIT 对象库 | 8 类 GLB、4,524,056 bytes、来源与 SHA-256 |
+| 2026-08-11 21:42:10 UTC | implementation_plan_md | docs/superpowers/plans/2026-08-12-line3-native-mujoco-tasks.md | superpowers:writing-plans | 用户确认的 Line3 规划要求 | 原生 MuJoCo 共享接口、资产工程、六任务、测试与验收 |
+| 2026-08-11 21:42:10 UTC | implementation_plan_md | docs/superpowers/plans/2026-08-12-line2-six-scene-evolution.md | superpowers:writing-plans | 用户确认的 Line2 六场景规格 | 七任务逐文件 TDD 计划与 Pages 验收 |
 | 2026-08-11 20:59:10 UTC | design_spec_md | docs/superpowers/specs/2026-08-12-line2-line3-evolution-design.md | superpowers:brainstorming | 用户确认的 Line2 六场景优化与 Line3 原生 MuJoCo 路线 | 保留 Line1；低饱和 Line2；六套连续任务闭环；Line3 规划边界 |
 | 2026-08-11 19:31:19 UTC | milestone_review_readme | project/checkpoints/2026-08-12-scene-alpha/README.md | project-flow-manager | 视觉优先 Demo 01 场景 Alpha | 运行方式、已接通内容与当前边界 |
 | 2026-08-11 19:31:16 UTC | scene_alpha_motion_png | project/checkpoints/2026-08-12-scene-alpha/demo01-three-franka-motion.png | visual-first-demo01 | 浏览器关节运动预览 | 播放约三秒后的三臂姿态 |

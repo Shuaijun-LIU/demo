@@ -30,3 +30,9 @@
   - What: 用户确认保留 Line1 并新增 Line2/Line3 路线；完成 Line2 低饱和视觉系统、六套任务闭环、真实资产注册/许可/大小预算，以及 Line3 原生 MuJoCo 统一接口和六任务物理梯度规格。Demo05 按原剧本恢复为四臂。
   - Decision: 优先一次搭建六套 Line2 场景并输出截图，再接完整任务运行时；真实 GLB 与 MuJoCo 代理共享 canonical object ID。
   - Next: 用户短复核书面规格；随后生成逐文件计划并直接开始六场景搭建。
+
+- 2026-08-11 21:42 UTC
+  - What: Line2 六套独立 MJCF 工位全部完成；接入 8 类 RoboTwin2 真实 GLB、低饱和界面、协作/故障/恢复/oracle 信息和五阶段任务路径。Demo01/03/06 为三臂，Demo02/04/05 为四臂。
+  - Verification: 60/60 单元测试、TypeScript、Vite build 通过；Playwright 在真实 Chromium 中逐套加载 MuJoCo，六场景、零 HTTP/控制台错误、Line1 保留回归全部通过。
+  - Evidence: 六张 1600×1000 截图与一张总览图位于 `project/checkpoints/2026-08-12-line2-scenes/`。
+  - Next: 通过个人 SSH 推送 main，等待 GitHub Actions Pages 成功并检查公开链接。

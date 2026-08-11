@@ -27,3 +27,10 @@
 - Demo02 的线束和卡扣需以程序化模型为主；NIST 制造任务板 CAD 只作为许可核验后的 Line3/后续候选。
 - Google Scanned Objects 可作为 CC BY 4.0 的外部实物候选，但 Line2 优先复用本地资产，控制下载和页面体积。
 - Line2 每个视觉资产绑定 canonical object ID；Line3 为视觉网格另建凸分解或 primitive 碰撞、质量、惯量和摩擦参数。
+
+## Line2 implementation findings
+- RoboTwin2 8 类公开 GLB 共 4,524,056 bytes，低于 45 MB 总预算和 15 MB 单文件上限；来源与哈希见 `public/assets/line2/ASSET_PROVENANCE.md`。
+- 六套 Line2 MJCF 全部使用独立路径 `public/scenarios/line2/demo01..06/scene.xml`，Line1 的六套 XML 未被覆盖。
+- 浏览器逐场景初始化约 18–21 秒，主要成本来自 12 MB MuJoCo/WASM bundle 的真实加载；同页切换场景稳定，未出现 404 或 console error。
+- 低饱和 token 仅作用于 `[data-line="line2"]`，Line1 的高对比原始视觉保持不变。
+- 任务阶段预览按各阶段声明时长循环，当前驱动协调关节预览；下一阶段会让同一阶段索引驱动 canonical object ID 的抓取、交接和终态轨迹。

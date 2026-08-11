@@ -2,6 +2,8 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
+**Planning status (2026-08-12):** Detailed six-task native MuJoCo plan is complete and recorded; implementation intentionally starts only after Line2 review.
+
 **Goal:** Build six reusable native MuJoCo multi-Franka tasks with deterministic reset, physical interaction, sensors, faults, success oracles, expert demonstrations, and benchmark-compatible data interfaces.
 
 **Architecture:** A Python package under `simulation/line3` owns a shared multi-arm environment, MJCF assembly, controller adapters, typed snapshots, task graph primitives, recording, and validation. Each Demo is a plugin containing task assets, reset sampler, phase graph, fault injector, oracle, and tests; web assets may be reused visually but native collision/inertia assets are generated and audited separately.

@@ -2,6 +2,8 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
+**Execution status (2026-08-12):** Tasks 1–6 and Task 7 local verification/evidence are complete; the final SSH push and GitHub Pages online check are in progress.
+
 **Goal:** Preserve Line1 and add a default, shareable Line2 containing six low-saturation Franka workcells whose assets and layouts directly support each scene's continuous collaboration task.
 
 **Architecture:** Keep the existing Line1 catalog and MJCF paths immutable. Add a version-aware app state, a separate Line2 catalog, a canonical asset registry, six independent Line2 MJCF files, and a scene-aware GLB layer rendered inside the existing MuJoCo canvas. Tests treat catalogs and MJCF as contracts; browser verification checks all twelve line/scene combinations and production Pages paths.
