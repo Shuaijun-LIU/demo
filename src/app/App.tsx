@@ -17,11 +17,14 @@ export function App() {
   const [previewMode, setPreviewMode] = useState<PreviewMode>("idle");
   const [resetToken, setResetToken] = useState(0);
   const [sceneStatus, setSceneStatus] = useState("正在初始化 Line2 场景");
-  const scenario = getScenario(lineId, activeScenarioId);
+  const [activeStageIndex, setActiveStageIndex] = useState(0);
+  const line2Scenario = lineId === "line2" ? getScenario("line2", activeScenarioId) : null;
+  const scenario = line2Scenario ?? getScenario("line1", activeScenarioId);
   const scenarios = getScenarios(lineId);
 
   const resetScene = () => {
     setPreviewMode("idle");
+    setActiveStageIndex(0);
     setResetToken((value) => value + 1);
     setSceneStatus(`正在复位${scenario.armLabel}场景`);
   };
@@ -38,6 +41,7 @@ export function App() {
     const nextScenario = getScenario(lineId, id);
     setActiveScenarioId(id);
     setPreviewMode("idle");
+    setActiveStageIndex(0);
     setResetToken((value) => value + 1);
     setSceneStatus(`正在初始化${nextScenario.armLabel}场景`);
     updateLocation(lineId, id);
@@ -47,6 +51,7 @@ export function App() {
     const nextScenario = getScenario(nextLineId, activeScenarioId);
     setLineId(nextLineId);
     setPreviewMode("idle");
+    setActiveStageIndex(0);
     setResetToken((value) => value + 1);
     setSceneStatus(`正在初始化 ${nextLineId === "line2" ? "Line2" : "Line1"} ${nextScenario.armLabel}场景`);
     updateLocation(nextLineId, activeScenarioId);
@@ -58,6 +63,7 @@ export function App() {
       setLineId(next.lineId);
       setActiveScenarioId(next.sceneId);
       setPreviewMode("idle");
+      setActiveStageIndex(0);
       setResetToken((value) => value + 1);
     };
     window.addEventListener("popstate", restoreLocation);
@@ -65,7 +71,24 @@ export function App() {
   }, []);
 
   const previewLabel =
-    previewMode === "playing" ? "运动预览中" : previewMode === "paused" ? "已暂停" : "待机";
+    previewMode === "playing"
+      ? line2Scenario ? "任务路径预览中" : "运动预览中"
+      : previewMode === "paused" ? "已暂停"
+      : "待机";
+
+  useEffect(() => {
+    if (previewMode !== "playing" || !line2Scenario) return;
+    const currentStage = line2Scenario.taskStages[activeStageIndex];
+    const timer = window.setTimeout(
+      () => setActiveStageIndex((index) => (index + 1) % line2Scenario.taskStages.length),
+      currentStage.durationSec * 1000,
+    );
+    return () => window.clearTimeout(timer);
+  }, [activeScenarioId, activeStageIndex, line2Scenario, previewMode]);
+
+  const playPreview = () => {
+    setPreviewMode("playing");
+  };
 
   return (
     <main className="app-shell" data-line={lineId}>
@@ -141,6 +164,21 @@ export function App() {
                 </div>
               ))}
             </div>
+            {line2Scenario ? (
+              <div className="task-path-rail" aria-label="连续任务路径">
+                {line2Scenario.taskStages.map((stage, index) => (
+                  <div
+                    className={index === activeStageIndex ? "task-stage is-active" : "task-stage"}
+                    data-testid={index === activeStageIndex ? "active-stage" : undefined}
+                    key={stage.id}
+                  >
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{stage.label}</strong>
+                    <small>{stage.focusArmIds.join(" + ")} · {stage.durationSec}s</small>
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
         </section>
 
@@ -162,6 +200,33 @@ export function App() {
               <span>任务闭环</span>
             </div>
           </div>
+
+          {line2Scenario ? (
+            <div className="panel-section task-evidence">
+              <span className="panel-kicker">TASK READINESS / 任务闭环</span>
+              <dl>
+                <div>
+                  <dt>协作</dt>
+                  <dd>{line2Scenario.collaboration}</dd>
+                </div>
+                <div>
+                  <dt>故障</dt>
+                  <dd>{line2Scenario.fault}</dd>
+                </div>
+                <div>
+                  <dt>恢复</dt>
+                  <dd>{line2Scenario.recovery}</dd>
+                </div>
+                <div>
+                  <dt>判据</dt>
+                  <dd>{line2Scenario.oracle}</dd>
+                </div>
+              </dl>
+              <div className="tool-tags" aria-label="任务工具">
+                {line2Scenario.tools.map((tool) => <span key={tool}>{tool}</span>)}
+              </div>
+            </div>
+          ) : null}
 
           <div className="panel-section">
             <span className="panel-kicker">OBJECT FLOW / 物料流</span>
@@ -199,10 +264,19 @@ export function App() {
           <div className="playback">
             <div className="playback-status">
               <span className={"state-dot " + (previewMode === "playing" ? "is-playing" : "")} />
-              <div><small>MOTION PREVIEW</small><strong data-testid="preview-status">{previewLabel}</strong></div>
+              <div>
+                <small>{line2Scenario ? "TASK PATH PREVIEW" : "MOTION PREVIEW"}</small>
+                <strong data-testid="preview-status">{previewLabel}</strong>
+              </div>
             </div>
             <div className="playback-actions">
-              <button aria-label="播放运动" onClick={() => setPreviewMode("playing")} disabled={previewMode === "playing"}>▶ 播放运动</button>
+              <button
+                aria-label={line2Scenario ? "播放任务路径" : "播放运动"}
+                onClick={playPreview}
+                disabled={previewMode === "playing"}
+              >
+                ▶ {line2Scenario ? "播放任务路径" : "播放运动"}
+              </button>
               <button aria-label="暂停运动" onClick={() => setPreviewMode("paused")} disabled={previewMode !== "playing"}>Ⅱ 暂停运动</button>
               <button aria-label="复位场景" onClick={resetScene}>↻ 复位场景</button>
             </div>
@@ -213,7 +287,11 @@ export function App() {
       <section className="arm-strip" aria-label={`${scenario.armCount} 条机械臂任务泳道`}>
         <div className="strip-title">
           <strong>机械臂任务泳道</strong>
-          <span>六套工位均已接通，当前优先检查空间构型</span>
+          <span>
+            {line2Scenario
+              ? "六套工位均已接通：资产、协作约束、故障恢复与终态判据同步检查"
+              : "六套原始工位均已保留，可随时回看空间构型"}
+          </span>
         </div>
         {scenario.arms.map((arm, index) => (
           <div className="lane" key={arm.id}>
