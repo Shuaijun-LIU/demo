@@ -1,9 +1,9 @@
 # Next Actions
 
 ## Top priorities
-1. 完成书面设计规格自检并请用户最终审阅。
-2. 规格获批后，用 `superpowers:writing-plans` 生成逐文件、逐测试的实现计划。
-3. 按计划建立工程基线和共享运行时，首先交付 Demo 01 标杆闭环。
+1. 执行 Foundation 计划 Task 1：Node 18/Vite/React 工程基线和首个失败测试。
+2. 完成共享 manifest、协调原语、TaskRuntime、SimulationStateBridge 与四 Panda 编译门。
+3. 贯通 Demo 01 的 P1–P5、P3 异常、oracle、契约和浏览器纵切。
 
 ## Blocked
-- 无技术阻塞；编码等待书面规格审阅门槛。
+- 无。
