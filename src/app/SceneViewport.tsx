@@ -2,6 +2,7 @@ import { OrbitControls } from "@react-three/drei";
 import { MujocoCanvas, MujocoProvider, useBeforePhysicsStep } from "mujoco-react";
 import { useMemo } from "react";
 import type { VisualScenarioId } from "../scenarios/visualCatalog";
+import { getSceneFile } from "../scenarios/sceneFiles";
 import type { LineId } from "./urlState";
 
 export type PreviewMode = "idle" | "playing" | "paused";
@@ -58,7 +59,7 @@ export function SceneViewport({
   const config = useMemo(
     () => ({
       src: new URL(".", document.baseURI).toString(),
-      sceneFile: lineId === "line2" ? `scenarios/line2/${sceneId}/scene.xml` : `scenarios/${sceneId}/scene.xml`,
+      sceneFile: getSceneFile(lineId, sceneId),
       numArmJoints: 7,
       homeJoints: createHomeJoints(armCount),
     }),

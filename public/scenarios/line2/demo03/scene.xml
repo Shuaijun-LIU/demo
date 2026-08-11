@@ -1,0 +1,37 @@
+<mujoco model="line2 demo03 food cartoning">
+  <compiler angle="radian" autolimits="true"/><option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option><statistic center="0 0 0.7" extent="2.8"/>
+  <visual><headlight diffuse="0.78 0.77 0.72" ambient="0.31 0.3 0.28" specular="0.1 0.1 0.1"/></visual>
+  <asset>
+    <model name="panda" file="../../../models/franka/panda.xml"/>
+    <material name="floor" rgba="0.08 0.09 0.095 1" roughness="0.94"/><material name="frame" rgba="0.27 0.3 0.3 1" metallic="0.38" roughness="0.62"/><material name="surface" rgba="0.4 0.4 0.37 1" roughness="0.72"/>
+    <material name="dark" rgba="0.13 0.14 0.13 1"/><material name="role1" rgba="0.43 0.53 0.57 1"/><material name="role2" rgba="0.48 0.43 0.5 1"/><material name="role3" rgba="0.58 0.49 0.33 1"/>
+    <material name="carton_blue" rgba="0.36 0.45 0.48 1"/><material name="carton_yellow" rgba="0.58 0.51 0.37 1"/><material name="food" rgba="0.58 0.38 0.24 1"/><material name="pass" rgba="0.38 0.49 0.41 1"/><material name="fault" rgba="0.57 0.34 0.31 1"/>
+  </asset>
+  <worldbody>
+    <light pos="3 -2 5" dir="-0.4 0.25 -1" directional="true" diffuse="0.86 0.82 0.72"/><light pos="-3 2 3" dir="0.6 -0.3 -1" directional="true" diffuse="0.36 0.38 0.39"/>
+    <geom name="floor" type="plane" size="5 5 0.04" material="floor"/>
+    <geom name="feed_conveyor" type="box" pos="-0.58 -0.22 0.65" size="0.48 0.18 0.08" material="frame"/>
+    <geom name="feed_belt" type="box" pos="-0.58 -0.22 0.75" size="0.45 0.15 0.025" material="dark"/>
+    <geom name="food_a1" type="capsule" pos="-0.75 -0.22 0.8" size="0.05 0.09" euler="0 1.57 0" material="food"/><geom name="food_b1" type="box" pos="-0.53 -0.22 0.8" size="0.065 0.045 0.035" material="food"/>
+    <geom name="order_buffer" type="box" pos="-0.12 -0.22 0.75" size="0.16 0.14 0.035" material="role1"/>
+
+    <geom name="carton_rack" type="box" pos="-0.55 0.45 0.85" size="0.38 0.13 0.36" material="frame"/>
+    <geom name="blue_cartons" type="box" pos="-0.72 0.28 0.88" size="0.13 0.05 0.22" material="carton_blue"/>
+    <geom name="yellow_cartons" type="box" pos="-0.38 0.28 0.88" size="0.13 0.05 0.22" material="carton_yellow"/>
+    <geom name="carton_fixture" type="box" pos="0.02 0.19 0.73" size="0.22 0.2 0.045" material="dark"/>
+    <geom name="open_carton" type="box" pos="0.02 0.19 0.83" size="0.14 0.12 0.08" material="carton_blue"/>
+
+    <geom name="seal_station" type="box" pos="0.46 0.24 0.75" size="0.19 0.16 0.04" material="frame"/>
+    <geom name="seal_head" type="box" pos="0.46 0.24 1.06" size="0.09 0.08 0.08" material="role3"/>
+    <geom name="seal_post" type="box" pos="0.62 0.24 0.93" size="0.03 0.03 0.22" material="frame"/>
+    <geom name="scale" type="box" pos="0.61 -0.18 0.75" size="0.23 0.18 0.05" material="dark"/>
+    <geom name="scale_display" type="box" pos="0.76 -0.17 0.88" size="0.06 0.04 0.06" material="pass"/>
+    <geom name="output_chute" type="box" pos="0.75 -0.48 0.65" size="0.24 0.12 0.06" material="pass"/>
+    <geom name="ng_chute" type="box" pos="0.28 -0.48 0.65" size="0.18 0.12 0.06" material="fault"/>
+
+    <geom type="cylinder" pos="-1.14 -0.78 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="-1.14 -0.78 0.145" size="0.19 0.008" material="role1"/>
+    <geom type="cylinder" pos="-0.46 1.0 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="-0.46 1.0 0.145" size="0.19 0.008" material="role2"/>
+    <geom type="cylinder" pos="1.12 -0.78 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="1.12 -0.78 0.145" size="0.19 0.008" material="role3"/>
+    <frame pos="-1.14 -0.78 0.15" euler="0 0 0.62"><attach model="panda" body="link0" prefix="arm1_"/></frame><frame pos="-0.46 1.0 0.15" euler="0 0 -1.18"><attach model="panda" body="link0" prefix="arm2_"/></frame><frame pos="1.12 -0.78 0.15" euler="0 0 2.5"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+  </worldbody>
+</mujoco>
