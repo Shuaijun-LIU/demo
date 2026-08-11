@@ -6,6 +6,7 @@ This file is generated/updated by artifact registry tooling.
 
 | Time (UTC) | Kind | Path | Produced by | Source | Notes |
 |---|---|---|---|---|---|
+| 2026-08-11 20:59:10 UTC | design_spec_md | docs/superpowers/specs/2026-08-12-line2-line3-evolution-design.md | superpowers:brainstorming | 用户确认的 Line2 六场景优化与 Line3 原生 MuJoCo 路线 | 保留 Line1；低饱和 Line2；六套连续任务闭环；Line3 规划边界 |
 | 2026-08-11 19:31:19 UTC | milestone_review_readme | project/checkpoints/2026-08-12-scene-alpha/README.md | project-flow-manager | 视觉优先 Demo 01 场景 Alpha | 运行方式、已接通内容与当前边界 |
 | 2026-08-11 19:31:16 UTC | scene_alpha_motion_png | project/checkpoints/2026-08-12-scene-alpha/demo01-three-franka-motion.png | visual-first-demo01 | 浏览器关节运动预览 | 播放约三秒后的三臂姿态 |
 | 2026-08-11 19:31:11 UTC | scene_alpha_png | project/checkpoints/2026-08-12-scene-alpha/demo01-three-franka.png | visual-first-demo01 | 浏览器中真实 MuJoCo 场景 | 三 Panda、P1–P5 与工装静止构型 |

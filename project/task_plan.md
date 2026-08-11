@@ -13,13 +13,21 @@
 - [x] Phase 3.5: 生成四份逐文件、逐测试的实施计划并完成自检
 - [ ] Phase 4: 建立共享运行时并实现 Demo 01–06（Foundation Task 1–3 已完成，Task 4 暂停在 RED 检查点）
 - [ ] Phase 5: 视觉精修、性能与兼容性测试、静态部署和演示资料
+- [x] Phase 6: 保留 Line1，确认低饱和 Line2 六场景与 Line3 原生 MuJoCo 演进设计
+- [ ] Phase 7: 用户复核 Line2/Line3 书面规格，生成逐文件实施计划
+- [ ] Phase 8: 优先搭建六套 Line2 场景与真实资产，输出可视化检查点
+- [ ] Phase 9: 接通 Line2 连续动作、故障恢复与任务 oracle
+- [ ] Phase 10: 编写并执行 Line3 原生 MuJoCo 六任务实施计划
 
 ## Status
 - Initialized: 2026-08-11 16:43 UTC
-- Current phase: Phase 4 / 视觉优先 Demo 01 三臂场景 Alpha
+- Current phase: Phase 7 / Line2 与 Line3 书面规格复核
 - Completed this phase: Task 1 工程基线、Task 2 场景契约、Task 3 多臂协调原语
 - Scene alpha: 已接通三台真实 Franka MJCF、中央工位、P1–P5、检测/测试/分流工装和关节运动预览
+- Line1: 六套场景均已搭建并推送；作为版本基线保留
+- Line2 design: 六套任务闭环、低饱和视觉、资产来源与 Web 预算已落盘；Demo05 恢复四臂
+- Line3 design: 原生 MuJoCo 统一接口、物理梯度、资产工程、数据与验收边界已落盘，当前仅规划
 - Deferred: Task 4 三个 RED 测试完整归档于本地 SDD WIP，待场景构型确认后恢复
 - Review checkpoint: `project/checkpoints/2026-08-12-milestone/`
 - Scene checkpoint: `project/checkpoints/2026-08-12-scene-alpha/`
-- Blockers: 无
+- Blockers: 等待用户对书面规格做一次短复核；通过后直接写实施计划并搭建六场景

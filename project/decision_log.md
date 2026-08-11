@@ -16,3 +16,9 @@
 - 2026-08-12 — 实现拆为四份连续计划：共享运行时+Demo 01、刚体流水 Demo 03/05/06、强协作 Demo 04/02、投资人精修/静态部署/全量验证。
 - 2026-08-12 — 用户已要求减少中断询问，因此计划完成后默认采用 `superpowers:subagent-driven-development` 执行，并在每个可独立测试任务后进行双阶段审查。
 - 2026-08-12 — Node 18.19.1 为本机硬约束；实测 `@react-three/drei 10.7.7` 的传递依赖 `camera-controls 3.1.2` 要求 Node 22 并触发 `EBADENGINE`。因此精确固定 Drei `10.0.0`，保留 React 19 / R3F 9 / Three 0.181 兼容性，同时使用无 Node 20/22 engine 限制的 `camera-controls 2.x`。
+- 2026-08-12 — 保留已推送的 Line1，不覆盖原场景；在同一应用增加默认 Line2，并以 `?line=line2&scene=demo05` 形式提供可分享版本/场景链接。
+- 2026-08-12 — Line2 采用低饱和工业配色，移除大面积霓虹青、蓝色雾效和发光表面；Franka 保持原厂外观，仅用克制铭牌与 UI 区分角色。
+- 2026-08-12 — Line2 资产采用“真实 GLB 视觉层 + 简化 MuJoCo 碰撞代理”，两层绑定同一 canonical object ID 与 ScenarioSnapshot，不允许与任务脱节的道具替换。
+- 2026-08-12 — Demo05 按原剧本恢复为四臂：A 区拣选、B/C 区拣选、汇合扫码纠错、PASS 后包装四个独立角色。
+- 2026-08-12 — Line3 在当前设备使用原生 MuJoCo 构建更真实、可复位、可度量、可生成数据的六任务；本轮只做详细规划，不在 Web 包中伪装为已实现。
+- 2026-08-12 — 公开资产优先采用许可明确的本地 RoboTwin/Menagerie 与项目自建模型；任何外部 CAD 在许可核验前不得进入 GitHub Pages 包。
