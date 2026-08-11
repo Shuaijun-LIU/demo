@@ -19,3 +19,6 @@
   - Fixed: 统一 `ScenarioManifest.oracle`、`ScenarioDefinition.taskGraph`、`TaskRuntime.getEvents` 和六场稳定节点命名。
   - Decision: 依用户授权不再停下选择执行模式，直接使用 subagent-driven development。
   - Next: 提交计划里程碑；建立工程基线并按 TDD 交付 Demo 01。
+- 2026-08-11 19:06 UTC
+  - What: Foundation Task 1–3 已完成并经独立复审；Task 4 主动暂停在仅含三个 RED 测试、尚无生产实现的安全点；生成真实页面截图与静态投资人控制台视觉检查稿。
+  - Next: 等待用户阶段反馈后，从 Task 4 RED 测试继续，再完成仿真桥、四 Panda 编译门和 Demo 01 纵切。
