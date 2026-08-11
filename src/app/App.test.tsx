@@ -8,6 +8,7 @@ it("renders the six-demo product identity", () => {
 
 it("renders a checkable three-arm electronics workcell", () => {
   render(<App />);
+  fireEvent.click(screen.getByRole("button", { name: /Line 1/ }));
 
   expect(screen.getByRole("heading", { name: "精密元器件检测与上料" })).toBeVisible();
   expect(screen.getByTestId("scene-viewport")).toBeVisible();
@@ -22,6 +23,7 @@ it("renders a checkable three-arm electronics workcell", () => {
 
 it("opens all six visual workcells from the scenario selector", () => {
   render(<App />);
+  fireEvent.click(screen.getByRole("button", { name: /Line 1/ }));
 
   const expectedScenes = [
     ["01", "精密元器件检测与上料", "3 × Franka Panda"],

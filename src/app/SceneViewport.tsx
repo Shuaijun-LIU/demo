@@ -2,10 +2,12 @@ import { OrbitControls } from "@react-three/drei";
 import { MujocoCanvas, MujocoProvider, useBeforePhysicsStep } from "mujoco-react";
 import { useMemo } from "react";
 import type { VisualScenarioId } from "../scenarios/visualCatalog";
+import type { LineId } from "./urlState";
 
 export type PreviewMode = "idle" | "playing" | "paused";
 
 interface SceneViewportProps {
+  lineId: LineId;
   sceneId: VisualScenarioId;
   armCount: 3 | 4;
   mode: PreviewMode;
@@ -46,6 +48,7 @@ function webGlAvailable() {
 }
 
 export function SceneViewport({
+  lineId,
   sceneId,
   armCount,
   mode,
@@ -55,11 +58,11 @@ export function SceneViewport({
   const config = useMemo(
     () => ({
       src: new URL(".", document.baseURI).toString(),
-      sceneFile: `scenarios/${sceneId}/scene.xml`,
+      sceneFile: lineId === "line2" ? `scenarios/line2/${sceneId}/scene.xml` : `scenarios/${sceneId}/scene.xml`,
       numArmJoints: 7,
       homeJoints: createHomeJoints(armCount),
     }),
-    [armCount, sceneId],
+    [armCount, lineId, sceneId],
   );
 
   if (!webGlAvailable()) {
@@ -68,6 +71,7 @@ export function SceneViewport({
         className="scene-viewport scene-fallback"
         data-testid="scene-viewport"
         data-scene-id={sceneId}
+        data-line-id={lineId}
         data-up-axis="z"
       >
         <div className="fallback-cell">
@@ -84,6 +88,7 @@ export function SceneViewport({
       className="scene-viewport"
       data-testid="scene-viewport"
       data-scene-id={sceneId}
+      data-line-id={lineId}
       data-up-axis="z"
     >
       <MujocoProvider onError={(error) => onStatusChange("WASM 初始化失败：" + error.message)}>
@@ -101,17 +106,17 @@ export function SceneViewport({
             camera.lookAt(0, 0, 0.68);
             camera.updateProjectionMatrix();
           }}
-          onReady={() => onStatusChange(`${armCount} × Panda 与工位已加载`)}
+          onReady={() => onStatusChange(`${armCount} × Panda 与 ${lineId === "line2" ? "Line2" : "Line1"} 工位已加载`)}
           onError={(error) => onStatusChange("场景加载失败：" + error.message)}
           style={{ width: "100%", height: "100%" }}
         >
-          <color attach="background" args={["#07111d"]} />
-          <fog attach="fog" args={["#07111d", 4.5, 11]} />
-          <ambientLight intensity={1.15} />
-          <directionalLight position={[3, -2, 6]} intensity={2.4} castShadow />
-          <directionalLight position={[-4, 2, 3]} intensity={1.2} color="#68d8ff" />
+          <color attach="background" args={[lineId === "line2" ? "#161b1e" : "#07111d"]} />
+          <fog attach="fog" args={[lineId === "line2" ? "#161b1e" : "#07111d", 5.5, 13]} />
+          <ambientLight intensity={lineId === "line2" ? 0.9 : 1.15} />
+          <directionalLight position={[3, -2, 6]} intensity={lineId === "line2" ? 1.8 : 2.4} castShadow />
+          <directionalLight position={[-4, 2, 3]} intensity={lineId === "line2" ? 0.55 : 1.2} color={lineId === "line2" ? "#d2c4ad" : "#68d8ff"} />
           <gridHelper
-            args={[7, 35, "#1f5368", "#102c3b"]}
+            args={[7, 35, lineId === "line2" ? "#465156" : "#1f5368", lineId === "line2" ? "#2a3236" : "#102c3b"]}
             position={[0, 0, 0.006]}
             rotation={[Math.PI / 2, 0, 0]}
           />

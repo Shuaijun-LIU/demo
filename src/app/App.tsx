@@ -1,18 +1,24 @@
-import { useState } from "react";
-import {
-  getVisualScenario,
-  VISUAL_SCENARIOS,
-  type VisualScenarioId,
-} from "../scenarios/visualCatalog";
+import { useEffect, useState } from "react";
+import { getScenario, getScenarios } from "../scenarios/line2Catalog";
 import { SceneViewport, type PreviewMode } from "./SceneViewport";
+import { LineSelector } from "./LineSelector";
+import {
+  readDemoLocation,
+  writeDemoLocation,
+  type LineId,
+  type ScenarioId,
+} from "./urlState";
 import "../ui/theme/base.css";
 
 export function App() {
-  const [activeScenarioId, setActiveScenarioId] = useState<VisualScenarioId>("demo01");
+  const initialLocation = readDemoLocation(window.location.search);
+  const [lineId, setLineId] = useState<LineId>(initialLocation.lineId);
+  const [activeScenarioId, setActiveScenarioId] = useState<ScenarioId>(initialLocation.sceneId);
   const [previewMode, setPreviewMode] = useState<PreviewMode>("idle");
   const [resetToken, setResetToken] = useState(0);
-  const [sceneStatus, setSceneStatus] = useState("正在初始化三臂场景");
-  const scenario = getVisualScenario(activeScenarioId);
+  const [sceneStatus, setSceneStatus] = useState("正在初始化 Line2 场景");
+  const scenario = getScenario(lineId, activeScenarioId);
+  const scenarios = getScenarios(lineId);
 
   const resetScene = () => {
     setPreviewMode("idle");
@@ -20,38 +26,69 @@ export function App() {
     setSceneStatus(`正在复位${scenario.armLabel}场景`);
   };
 
-  const selectScenario = (id: VisualScenarioId) => {
-    const nextScenario = getVisualScenario(id);
+  const updateLocation = (nextLineId: LineId, nextScenarioId: ScenarioId) => {
+    window.history.replaceState(
+      null,
+      "",
+      writeDemoLocation({ lineId: nextLineId, sceneId: nextScenarioId }),
+    );
+  };
+
+  const selectScenario = (id: ScenarioId) => {
+    const nextScenario = getScenario(lineId, id);
     setActiveScenarioId(id);
     setPreviewMode("idle");
     setResetToken((value) => value + 1);
     setSceneStatus(`正在初始化${nextScenario.armLabel}场景`);
+    updateLocation(lineId, id);
   };
+
+  const selectLine = (nextLineId: LineId) => {
+    const nextScenario = getScenario(nextLineId, activeScenarioId);
+    setLineId(nextLineId);
+    setPreviewMode("idle");
+    setResetToken((value) => value + 1);
+    setSceneStatus(`正在初始化 ${nextLineId === "line2" ? "Line2" : "Line1"} ${nextScenario.armLabel}场景`);
+    updateLocation(nextLineId, activeScenarioId);
+  };
+
+  useEffect(() => {
+    const restoreLocation = () => {
+      const next = readDemoLocation(window.location.search);
+      setLineId(next.lineId);
+      setActiveScenarioId(next.sceneId);
+      setPreviewMode("idle");
+      setResetToken((value) => value + 1);
+    };
+    window.addEventListener("popstate", restoreLocation);
+    return () => window.removeEventListener("popstate", restoreLocation);
+  }, []);
 
   const previewLabel =
     previewMode === "playing" ? "运动预览中" : previewMode === "paused" ? "已暂停" : "待机";
 
   return (
-    <main className="app-shell">
+    <main className="app-shell" data-line={lineId}>
       <header className="topbar">
         <div className="brand-mark" aria-hidden="true">M×</div>
         <div className="brand-copy">
           <h1>多机械臂协作演示平台</h1>
           <p>FRANKA PANDA · MULTI-ARM WORKCELL</p>
         </div>
+        <LineSelector activeLine={lineId} onSelect={selectLine} />
         <div className="topbar-context">
-          <span>场景构型检查</span>
+          <span>{lineId === "line2" ? "场景与任务路径预览" : "原始场景构型"}</span>
           <strong>Demo {scenario.number}</strong>
         </div>
         <div className="system-chips">
           <span className="chip chip-live">● 本地 WebGL</span>
           <span className="chip chip-arm">{scenario.armCount} × Franka Panda</span>
-          <span className="chip chip-alpha">SCENE ALPHA</span>
+          <span className="chip chip-alpha">{lineId === "line2" ? "LINE 2" : "LINE 1"}</span>
         </div>
       </header>
 
       <nav className="scenario-tabs" aria-label="六个演示场景">
-        {VISUAL_SCENARIOS.map((candidate) => (
+        {scenarios.map((candidate) => (
           <button
             className={candidate.id === activeScenarioId ? "scenario-tab is-active" : "scenario-tab"}
             key={candidate.id}
@@ -85,6 +122,7 @@ export function App() {
 
           <div className="viewport-wrap">
             <SceneViewport
+              lineId={lineId}
               sceneId={scenario.id}
               armCount={scenario.armCount}
               mode={previewMode}
