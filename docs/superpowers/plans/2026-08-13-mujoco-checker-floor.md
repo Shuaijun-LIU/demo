@@ -66,4 +66,4 @@
 - [x] **Step 1: Change E2E assertions** to require absence of the three header strings and presence of the checker-floor contract.
 - [x] **Step 2: Run `npm run test:all`, `npm run test:scenes`, `npm run test:static-scenes`, and `npm run build`.**
 - [x] **Step 3: Run all six Playwright cases** and inspect the generated screenshots at original resolution.
-- [ ] **Step 4: Update project records, commit intentionally, push the confirmed personal SSH remote, and verify the Pages Actions run.**
+- [x] **Step 4: Update project records, commit intentionally, push the confirmed personal SSH remote, and verify the Pages Actions run.**

@@ -20,14 +20,14 @@
 - [x] Phase 10: Line3 原生 MuJoCo 六任务失败原型已停止（人工视频验收拒绝，不再修复）
 - [x] Phase 11: 合并为单版本明亮静态展厅，删除播放运行时并完成六场景几何复核
 - [x] Phase 12: 完成全量回归、推送 main 并确认 GitHub Pages 部署
-- [ ] Phase 13: 删除全局页首并将六场景统一改为双蓝棋盘格 + 白线地面
+- [x] Phase 13: 删除全局页首并将六场景统一改为双蓝棋盘格 + 白线地面
 
 ## Status
 - Initialized: 2026-08-11 16:43 UTC
-- Current phase: Phase 13 — 页首精简与 MuJoCo 风格地面
-- Current product: 单版本静态展厅；六个场景可切换、拖动旋转和滚轮缩放，无播放、暂停、复位、任务路径或版本选择器。
+- Current phase: 已完成 — 等待用户检查无页首与 MuJoCo 棋盘地面版本
+- Current product: 单版本静态展厅；无全局页首，六个场景共享低饱和双蓝棋盘格与白线，可切换、拖动旋转和滚轮缩放，无播放、暂停、复位、任务路径或版本选择器。
 - Scene verification: 六个 MJCF 编译通过；网页实际 Panda 初始控制排列已修正为每臂 7 关节 + 1 夹爪；`mj_forward` 未发现超过 0.1 mm 的初始穿透。
-- Visual verification: 六张 1600×1000 页面截图和一张 3×2 总览图已完成目视检查；强制镜面地板已隐藏，避免倒影被误认为地下穿模。
+- Visual verification: 新版六张 1600×1000 页面截图和一张 3×2 总览图已完成原分辨率目视检查；双蓝交替、白线和主体可读性正常，强制镜面地板保持隐藏。
 - Pages asset verification: Panda 外观碎片已按刚体无损合并为约 2.4 MB MSH，模型依赖由 67 个降为 22 个，消除公网探针捕获的 HTTP/2 并发加载失败。
 - Product cleanup: 旧 Line2 前端运行代码、专属场景与 GLB 资产已删除；历史文档和旧检查点仅作为过程记录保留，不进入产品构建。
 - Line3 user acceptance: **FAILED / ABANDONED**。视频中机械臂基本无任务动作，物体自行移动且存在穿模；当前结果不可用。
@@ -38,5 +38,5 @@
 - Scene checkpoint: `project/checkpoints/2026-08-12-scene-alpha/`
 - Final static checkpoint: `project/checkpoints/2026-08-12-static-showroom/`
 - Deployment target: `https://shuaijun-liu.github.io/demo/?scene=demo01`
-- Deployment verification: Actions run `31617375673` build/deploy success；公开 Chromium 22/22 模型依赖完成、MuJoCo ready、0 error。
+- Deployment verification: Actions run `31620939411` build/deploy success；公开 Chromium 无全局页首、6 个场景按钮、棋盘地面契约存在、MuJoCo ready、0 error / 0 request failure。
 - Blockers: 无。
