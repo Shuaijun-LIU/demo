@@ -1,0 +1,101 @@
+{
+  "arm_count": 3,
+  "fault": "g5_pit_retained",
+  "objects": [
+    "fruit_g1",
+    "fruit_g2",
+    "fruit_g3",
+    "fruit_g4",
+    "fruit_g5",
+    "inspection_turntable",
+    "pitting_head",
+    "product_tray"
+  ],
+  "stages": [
+    {
+      "arms": [
+        "arm1"
+      ],
+      "name": "pick_rotate_inspect"
+    },
+    {
+      "arms": [
+        "arm1"
+      ],
+      "name": "classify_g2"
+    },
+    {
+      "arms": [
+        "arm1"
+      ],
+      "name": "classify_g4"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2"
+      ],
+      "name": "handoff"
+    },
+    {
+      "arms": [
+        "arm2"
+      ],
+      "name": "orient"
+    },
+    {
+      "arms": [
+        "arm2",
+        "arm3"
+      ],
+      "name": "pit_g1_g3"
+    },
+    {
+      "arms": [
+        "arm2",
+        "arm3"
+      ],
+      "name": "pit_g5"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "rework_g5"
+    },
+    {
+      "arms": [
+        "arm2",
+        "arm3"
+      ],
+      "name": "repit_g5"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm3"
+      ],
+      "name": "reverify"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "pack"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "return_safe"
+    }
+  ],
+  "task_id": "demo06",
+  "title": "Fruit inspection, pitting and rework"
+}

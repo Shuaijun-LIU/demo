@@ -1,0 +1,107 @@
+{
+  "arm_count": 4,
+  "fault": "f2_switch_miss",
+  "objects": [
+    "beam",
+    "plate",
+    "assembly_fixture",
+    "fastener_f1",
+    "fastener_f2",
+    "electric_driver",
+    "support_pad",
+    "seam_scanner"
+  ],
+  "stages": [
+    {
+      "arms": [
+        "arm1"
+      ],
+      "name": "place_beam"
+    },
+    {
+      "arms": [
+        "arm2"
+      ],
+      "name": "align_plate"
+    },
+    {
+      "arms": [
+        "arm4"
+      ],
+      "name": "support"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm4"
+      ],
+      "name": "barrier"
+    },
+    {
+      "arms": [
+        "arm3"
+      ],
+      "name": "tool_pick"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3",
+        "arm4"
+      ],
+      "name": "fasten_f1"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3",
+        "arm4"
+      ],
+      "name": "fasten_f2"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3",
+        "arm4"
+      ],
+      "name": "recover_f2"
+    },
+    {
+      "arms": [
+        "arm3",
+        "arm4"
+      ],
+      "name": "scan"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm4"
+      ],
+      "name": "fixture_takeover"
+    },
+    {
+      "arms": [
+        "arm3"
+      ],
+      "name": "tool_return"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3",
+        "arm4"
+      ],
+      "name": "return_safe"
+    }
+  ],
+  "task_id": "demo04",
+  "title": "Supported structure assembly and torque verification"
+}

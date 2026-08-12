@@ -1,0 +1,70 @@
+{
+  "arm_count": 3,
+  "fault": "missing_rear_marker",
+  "objects": [
+    "esd_tray",
+    "part_p1",
+    "part_p2",
+    "part_p3",
+    "flip_fixture",
+    "scanner",
+    "probe_socket",
+    "ng_tray"
+  ],
+  "stages": [
+    {
+      "arms": [
+        "arm1"
+      ],
+      "name": "singulate"
+    },
+    {
+      "arms": [
+        "arm1"
+      ],
+      "name": "scan"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2"
+      ],
+      "name": "handoff"
+    },
+    {
+      "arms": [
+        "arm2"
+      ],
+      "name": "flip_front"
+    },
+    {
+      "arms": [
+        "arm2"
+      ],
+      "name": "flip_back"
+    },
+    {
+      "arms": [
+        "arm3"
+      ],
+      "name": "probe_test"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm3"
+      ],
+      "name": "route"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "return_safe"
+    }
+  ],
+  "task_id": "demo01",
+  "title": "Electronics inspection and functional test"
+}

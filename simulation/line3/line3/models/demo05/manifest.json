@@ -1,0 +1,95 @@
+{
+  "arm_count": 4,
+  "fault": "wrong_drug_b3",
+  "objects": [
+    "medicine_a1",
+    "medicine_a2",
+    "medicine_b1",
+    "medicine_b3",
+    "rx01_tray",
+    "rx02_tray",
+    "barcode_scanner",
+    "sealed_carton"
+  ],
+  "stages": [
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "pick_a_and_bc"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "lock_rx_merge"
+    },
+    {
+      "arms": [
+        "arm3"
+      ],
+      "name": "scan_count"
+    },
+    {
+      "arms": [
+        "arm3"
+      ],
+      "name": "detect_b3"
+    },
+    {
+      "arms": [
+        "arm3"
+      ],
+      "name": "return_b3"
+    },
+    {
+      "arms": [
+        "arm2",
+        "arm3"
+      ],
+      "name": "repick_b1"
+    },
+    {
+      "arms": [
+        "arm3"
+      ],
+      "name": "rescan"
+    },
+    {
+      "arms": [
+        "arm3",
+        "arm4"
+      ],
+      "name": "pass_gate"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm4"
+      ],
+      "name": "package"
+    },
+    {
+      "arms": [
+        "arm4"
+      ],
+      "name": "deliver"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3",
+        "arm4"
+      ],
+      "name": "return_safe"
+    }
+  ],
+  "task_id": "demo05",
+  "title": "Pharmacy verification and gated packaging"
+}

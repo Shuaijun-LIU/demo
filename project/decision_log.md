@@ -25,3 +25,9 @@
 - 2026-08-12 — Line2 首批视觉资产固定为 RoboTwin2 的 battery、box、tray、scanner、electronic-scale、screwdriver、pill-bottle、apple；公开包总量 4.32 MiB，逐文件来源、SHA-256 与 MIT 文本随仓库交付。
 - 2026-08-12 — Line2 本轮验收边界是“六套任务就绪工位 + 真实资产 + 五阶段任务路径预览 + 可检查故障闭环”；对象级抓取、交接、接触工具与分流轨迹属于紧随其后的 Phase 9，不反向推翻已验收构型。
 - 2026-08-12 — 浏览器验收必须逐套等待 MuJoCo ready、检查 WebGL canvas/Z-up/臂数/资产清单并拒绝 HTTP 4xx 与 console error；截图只在这些断言通过后生成。
+- 2026-08-12 — Line3 固定为独立 Python 包 `simulation/line3`，使用 MuJoCo 3.6 + Gymnasium；六个任务共享确定性状态、连续每臂 8 维动作、任务传感器和 typed oracle。
+- 2026-08-12 — Line3 首个可执行基线优先保证物理可运行与任务可复用：Panda 采用紧凑关节/碰撞树，任务工装与物体采用稳定刚体/约束近似；Menagerie 外观网格升级不得改变任务 ID、控制接口和数据 schema。
+- 2026-08-12 — 六任务均要求“每台声明机械臂不可替代”；禁用任一机械臂时专家必须超时且 oracle 失败，避免把多臂仅作为视觉摆设。
+- 2026-08-12 — Line3 发布证据固定为 600 回合逐种子 JSON、六份连续动作 NPZ、六段原生 MuJoCo MP4、六张首帧与一张总览；业务故障必须每回合恰好一次并完成恢复。
+- 2026-08-12 — Line3 最终基线不再使用紧凑兼容树：运行时和六份导出 MJCF 全部切换到本地 Apache-2.0 MuJoCo Menagerie Franka Panda，三臂 `nq=27/nu=24`、四臂 `nq=36/nu=32`；公开 8 维动作语义保持不变。
+- 2026-08-12 — 原生 MuJoCo 不直接解码 GLB；因此 RoboTwin2 GLB 保留为已审计视觉源，当前任务使用独立可碰撞 primitive/convex 代理并输出真实接触力。后续视觉网格转换不改变 task ID、state schema 或 oracle。

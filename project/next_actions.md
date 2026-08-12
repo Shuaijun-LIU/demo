@@ -1,11 +1,11 @@
 # Next Actions
 
 ## Top priorities
-1. 用户从公开 Pages 与 `project/checkpoints/2026-08-12-line2-scenes/line2-six-scene-contact-sheet.jpg` 检查六套空间构型和物料摆放。
-2. 根据场景反馈只调整工位、资产尺度/位姿与相机，不破坏 canonical object ID 和任务闭环。
-3. 执行 Phase 9：为六场接入对象级关键帧、交接/工具接触、一次故障恢复执行和运行时 oracle。
-4. 恢复共享 TaskRuntime 的 RED 检查点，把五阶段 UI 与确定性事件 trace 接通。
-5. 用户确认后启动 `docs/superpowers/plans/2026-08-12-line3-native-mujoco-tasks.md` 的原生 MuJoCo 实现。
+1. 用户检查 `project/checkpoints/2026-08-12-line3-native/line3-six-scene-contact-sheet.jpg` 与 `simulation/line3/artifacts/videos/` 六段真实 Menagerie Franka 原生视频。
+2. 按视觉反馈将已登记 RoboTwin2 GLB 转换为 MuJoCo 可读 OBJ/STL 视觉网格，同时保留当前经 drop/settle 验证的碰撞代理。
+3. 在稳定任务接口上逐场强化真实抓取/接触/约束指标，优先 Demo02 分段线束和 Demo06 软接触/果核约束的高保真对照。
+4. 执行 Line2 Phase 9：把 Web 场景与当前 Line3 trace/oracle 数据模式对齐。
+5. 根据交付策略把 `feature/line3-native-mujoco` 合并或创建 PR，并保留已生成的可复查证据。
 
 ## Blocked
 - 无。

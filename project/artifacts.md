@@ -6,6 +6,14 @@ This file is generated/updated by artifact registry tooling.
 
 | Time (UTC) | Kind | Path | Produced by | Source | Notes |
 |---|---|---|---|---|---|
+| 2026-08-12 03:17:16 UTC | model_manifest | simulation/line3/line3/models | line3-native-mujoco | expanded portable MJCF from Menagerie builder | Six standalone scenes compile; 3-arm nq27/nu24 and 4-arm nq36/nu32 |
+| 2026-08-12 03:17:11 UTC | experiment_matrix | simulation/line3/artifacts/matrix-report.json | line3-native-mujoco | 600 fixed-seed real Menagerie-Panda expert episodes | Demo01–06 each 100/100; native contact force and real-time factor retained |
+| 2026-08-12 03:17:06 UTC | line3_contact_sheet | project/checkpoints/2026-08-12-line3-native/line3-six-scene-contact-sheet.jpg | line3-native-mujoco | final Menagerie-Panda frames from six accepted EGL videos | 1920x960 final 3x2 native scene overview; real Menagerie Franka meshes |
+| 2026-08-12 02:24:43 UTC | model_manifest | simulation/line3/line3/models | line3-native-mujoco | export_scenes.py | Six native MJCF scenes and task manifests |
+| 2026-08-12 02:24:42 UTC | line3_contact_sheet | project/checkpoints/2026-08-12-line3-native/line3-six-scene-contact-sheet.jpg | line3-native-mujoco | first frames from accepted EGL videos | 3x2 native scene overview; compact Panda baseline |
+| 2026-08-12 02:24:42 UTC | figures_dir | simulation/line3/artifacts/videos | line3-native-mujoco | MuJoCo 3.6 EGL renderer on GPU 6 | Six accepted expert MP4 episodes |
+| 2026-08-12 02:24:42 UTC | runs_dir | simulation/line3/artifacts/experts | line3-native-mujoco | seed 20260812 expert recorder | Six NPZ datasets with observations/actions/events/oracles and asset manifest hash |
+| 2026-08-12 02:24:42 UTC | experiment_matrix | simulation/line3/artifacts/matrix-report.json | line3-native-mujoco | 600 fixed-seed native MuJoCo expert episodes | Demo01–06 each 100/100; per-episode metrics retained |
 | 2026-08-11 21:54:39 UTC | pages_deployment | https://shuaijun-liu.github.io/demo/?line=line2&scene=demo01 | GitHub Actions | main@8d6db3e / run 31539783981 | build/deploy success；公开 MuJoCo canvas 实载；六 MJCF 与八 GLB 均 HTTP 200 |
 | 2026-08-11 21:42:10 UTC | line2_contact_sheet | project/checkpoints/2026-08-12-line2-scenes/line2-six-scene-contact-sheet.jpg | Playwright + project-flow-manager | 六套通过浏览器验收的 Line2 页面 | 3×2 总览；对应六张 1600×1000 原图 |
 | 2026-08-11 21:42:10 UTC | line2_browser_checkpoint | project/checkpoints/2026-08-12-line2-scenes/README.md | Playwright + project-flow-manager | 真实 MuJoCo/WASM 六场景验收 | 2 项 E2E 通过；零 HTTP/控制台错误；Line1 保留 |

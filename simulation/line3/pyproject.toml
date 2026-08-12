@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "multi-panda-line3"
+version = "0.1.0"
+description = "Deterministic native MuJoCo multi-Franka task suite"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "gymnasium==1.2.3",
+  "imageio==2.37.3",
+  "imageio-ffmpeg==0.6.0",
+  "mujoco==3.6.0",
+  "numpy==1.26.4",
+]
+
+[project.optional-dependencies]
+test = ["pytest==8.3.5"]
+
+[project.scripts]
+line3 = "line3.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["line3"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

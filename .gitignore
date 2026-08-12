@@ -6,3 +6,8 @@ coverage/
 playwright-report/
 test-results/
 *.tsbuildinfo
+
+simulation/line3/.venv/
+simulation/line3/.pytest_cache/
+**/__pycache__/
+*.py[cod]

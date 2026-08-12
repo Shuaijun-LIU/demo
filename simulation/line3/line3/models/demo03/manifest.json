@@ -1,0 +1,92 @@
+{
+  "arm_count": 3,
+  "fault": "missing_date_label",
+  "objects": [
+    "food_a",
+    "food_b",
+    "blue_carton",
+    "yellow_carton",
+    "carton_fixture",
+    "date_label",
+    "scale",
+    "ng_conveyor"
+  ],
+  "stages": [
+    {
+      "arms": [
+        "arm1"
+      ],
+      "name": "supply"
+    },
+    {
+      "arms": [
+        "arm2"
+      ],
+      "name": "select_carton"
+    },
+    {
+      "arms": [
+        "arm2"
+      ],
+      "name": "erect"
+    },
+    {
+      "arms": [
+        "arm2"
+      ],
+      "name": "hold"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm3"
+      ],
+      "name": "load"
+    },
+    {
+      "arms": [
+        "arm2",
+        "arm3"
+      ],
+      "name": "close"
+    },
+    {
+      "arms": [
+        "arm3"
+      ],
+      "name": "label"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm3"
+      ],
+      "name": "weigh"
+    },
+    {
+      "arms": [
+        "arm2",
+        "arm3"
+      ],
+      "name": "inspect"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "route"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "return_safe"
+    }
+  ],
+  "task_id": "demo03",
+  "title": "Flexible food cartoning and label inspection"
+}

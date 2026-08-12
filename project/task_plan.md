@@ -17,17 +17,19 @@
 - [x] Phase 7: 用户确认 Line2/Line3 书面规格，生成逐文件实施计划
 - [x] Phase 8: 搭建六套 Line2 场景与真实资产，输出可视化检查点
 - [ ] Phase 9: 接通 Line2 对象级连续动作、故障恢复执行与运行时 oracle
-- [ ] Phase 10: 编写并执行 Line3 原生 MuJoCo 六任务实施计划
+- [x] Phase 10: 编写并执行 Line3 原生 MuJoCo 六任务实施计划
 
 ## Status
 - Initialized: 2026-08-11 16:43 UTC
-- Current phase: Phase 8 本轮交付完成 / 等待用户视觉复核
+- Current phase: Phase 10 真实 Menagerie Franka 原生 MuJoCo 六任务完成
 - Completed this phase: Task 1 工程基线、Task 2 场景契约、Task 3 多臂协调原语
 - Scene alpha: 已接通三台真实 Franka MJCF、中央工位、P1–P5、检测/测试/分流工装和关节运动预览
 - Line1: 六套场景均已搭建并推送；作为版本基线保留
 - Line2: 六套独立 MJCF、低饱和 UI、8 类真实 GLB、任务闭环证据和五阶段路径均已接通；Demo05 为四臂
 - Line2 verification: 60 项单元测试、TypeScript、生产构建和 2 项真实 Chromium 验收通过；六张截图与总览图已落盘
-- Line3: 原生 MuJoCo 统一接口、六任务物理梯度、资产工程、数据与验收计划已落盘；遵守本轮仅规划边界
+- Line3: 六个原生 MuJoCo/Gymnasium 任务均使用 3/4 台真实 Menagerie Franka；连续专家、碰撞物体、接触力观测、一次业务故障恢复、typed oracle、禁臂反事实与精确状态恢复均已实现
+- Line3 verification: 41/41 Python 测试通过；六份可移植 MJCF 均编译；8 类资产审计通过；六任务各 100/100（600/600）；六份 NPZ 和六段 EGL MP4 已归档
+- Line3 checkpoint: `project/checkpoints/2026-08-12-line3-native/`
 - Deferred: Task 4 三个 RED 测试完整归档于本地 SDD WIP，待场景构型确认后恢复
 - Review checkpoint: `project/checkpoints/2026-08-12-milestone/`
 - Scene checkpoint: `project/checkpoints/2026-08-12-scene-alpha/`

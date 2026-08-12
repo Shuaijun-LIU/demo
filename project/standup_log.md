@@ -37,3 +37,18 @@
   - Evidence: 六张 1600×1000 截图与一张总览图位于 `project/checkpoints/2026-08-12-line2-scenes/`。
   - Deployment: 个人 SSH 已推送 main；Actions run 31539783981 build/deploy success；公开 Demo01 完成 MuJoCo/WebGL 实载，六个 MJCF 与八个 GLB 均 HTTP 200。
   - Next: 用户检查公开 Line2 六场景与总览图；根据视觉反馈进入定点优化或 Phase 9 对象级连续动作。
+
+- 2026-08-12
+  - What: Line3 独立原生 MuJoCo 包完成；六个 3/4 Franka 任务全部具备连续专家动作、多臂阶段图、一次业务故障与恢复、typed oracle、Gymnasium 注册和精确状态恢复。
+  - Physics: 使用 MuJoCo 3.6 真实 `mj_step`、关节位置执行器、碰撞分组、场景工装、任务对象 pose 与 16 维任务传感器；8 类 RoboTwin2 资产有来源、SHA、SI 物性和 drop/settle 验证。
+  - Verification: 当前全量 Python 测试通过；每个任务 100/100 固定种子成功，总计 600/600；每个 accepted episode 恰好一次业务故障；所有机械臂禁用反事实失败。
+  - Evidence: 六份专家 NPZ、六段 GPU/EGL 原生 MuJoCo MP4、逐回合矩阵 JSON、六张预览与总览图已归档。
+  - Decision: 当前基线先锁定任务与数据接口；下一轮视觉重点是 Menagerie Franka mesh 与高保真任务接触，而不是推翻任务图。
+  - Next: 完成最终干净环境验证、报告、提交与个人 GitHub SSH 推送；随后等待用户对原生视觉与场景布局的反馈。
+
+- 2026-08-12
+  - What: Line3 共享内核由紧凑兼容树升级为真实 MuJoCo Menagerie Franka Panda；六个运行时和六份展开式可移植 MJCF 均含原始视觉/碰撞网格、独立前缀和 EE site。
+  - Physics: 修正 Panda 双指总开度与 0–255 tendon actuator 映射；工作件启用 MuJoCo 碰撞并随活动阶段连续运动；observation 输出逐臂原生接触力。
+  - Verification: 聚焦环境/任务/恢复测试通过；六份导出模型单独编译通过；最终全量记录口径为 41/41；600 固定种子重新运行均成功，平均 real-time factor 12.02–14.05。
+  - Evidence: 六份专家 NPZ、六段最终 Menagerie/EGL MP4、六张中段预览和 1920×960 总览图已重新生成。
+  - Next: 用户先检查真实 Panda 六场布局与动作；随后按反馈升级任务物体 OBJ/STL 视觉网格及 Demo02/06 接触模型。

@@ -1,0 +1,114 @@
+{
+  "arm_count": 4,
+  "fault": "c2_latch_offset",
+  "objects": [
+    "routing_board",
+    "connector_s0",
+    "connector_s1",
+    "cable_main",
+    "clip_c1",
+    "clip_c2",
+    "clip_c3",
+    "clip_press"
+  ],
+  "stages": [
+    {
+      "arms": [
+        "arm1"
+      ],
+      "name": "seat_s0"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "acquire_three_anchors"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "route_main"
+    },
+    {
+      "arms": [
+        "arm2"
+      ],
+      "name": "seat_s1"
+    },
+    {
+      "arms": [
+        "arm4",
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "press_c1"
+    },
+    {
+      "arms": [
+        "arm4",
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "press_c2"
+    },
+    {
+      "arms": [
+        "arm4",
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "recover_c2"
+    },
+    {
+      "arms": [
+        "arm4",
+        "arm1",
+        "arm2",
+        "arm3"
+      ],
+      "name": "press_c3"
+    },
+    {
+      "arms": [
+        "arm3",
+        "arm4"
+      ],
+      "name": "branch_b1"
+    },
+    {
+      "arms": [
+        "arm2",
+        "arm4"
+      ],
+      "name": "inspect"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3",
+        "arm4"
+      ],
+      "name": "release"
+    },
+    {
+      "arms": [
+        "arm1",
+        "arm2",
+        "arm3",
+        "arm4"
+      ],
+      "name": "return_safe"
+    }
+  ],
+  "task_id": "demo02",
+  "title": "Automotive harness routing and clip recovery"
+}
