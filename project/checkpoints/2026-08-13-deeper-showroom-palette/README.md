@@ -15,3 +15,4 @@
 - `deeper-showroom-palette-contact-sheet.png`：2424 × 1016 的 3 × 2 总览。
 - 52/52 单元测试、6/6 契约测试和 6/6 Chromium 端到端测试通过。
 - 六份 MJCF 编译通过，未发现超过 0.1 mm 的初始穿透。
+- GitHub Pages run `31622169235` 构建和部署成功；公网 Chromium 确认 MuJoCo ready、0 页面错误、0 请求失败。

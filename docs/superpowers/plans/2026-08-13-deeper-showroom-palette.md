@@ -51,4 +51,4 @@
 - [x] **Step 1: Run `npm run test:all`, `npm run test:scenes`, `npm run test:static-scenes`, and `npm run build`.**
 - [x] **Step 2: Run all six Playwright cases, regenerate the 3×2 contact sheet, and inspect it at original resolution.**
 - [x] **Step 3: Update README and project tracking with the new checkpoint.**
-- [ ] **Step 4: Commit, push through `github-Shuaijun-LIU`, and verify the Pages run plus public Chromium probe.**
+- [x] **Step 4: Commit, push through `github-Shuaijun-LIU`, and verify the Pages run plus public Chromium probe.**
