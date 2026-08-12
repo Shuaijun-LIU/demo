@@ -1,9 +1,9 @@
 # Next Actions
 
 ## Top priorities
-1. 不再安排任何 Line3 修复、调参、资产转换或高保真升级。
-2. 若项目继续，仅处理用户另行明确指定的非 Line3 工作。
-3. 保留 `project/checkpoints/2026-08-12-line3-native/USER-REVIEW.md` 作为人工验收失败记录。
+1. 运行单元、契约、MJCF 编译、静态接触、生产构建和六场景 Playwright 全量回归。
+2. 将已确认的静态展厅推送到 `main`，检查 GitHub Pages Actions 与公开 URL。
+3. 由用户检查 `project/checkpoints/2026-08-12-static-showroom/static-showroom-contact-sheet.png` 和公开页面，再按明确反馈调整静态构型。
 
 ## Blocked
-- Line3 路线已主动终止，不等待技术修复。
+- 无。

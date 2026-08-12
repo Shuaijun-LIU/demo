@@ -2,6 +2,8 @@
 
 本目录保存六个场景在 `1600 × 1000` 桌面视口下的完整页面截图：
 
+- [六场景 3 × 2 总览](static-showroom-contact-sheet.png)
+
 - [demo01 精密元器件](demo01.png)
 - [demo02 汽车线束](demo02.png)
 - [demo03 食品装盒](demo03.png)

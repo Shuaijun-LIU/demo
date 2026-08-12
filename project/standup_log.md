@@ -61,3 +61,6 @@
   - Correction: 先前自动测试、600 回合和 oracle 成功率只能证明内部状态机满足自定义条件，不能证明抓取、交接、接触和多臂协作在物理或视觉上成立；撤回“Line3 已完成/可用”的结论。
   - Decision: 用户决定放弃 Line3；立即停止实现、修复、调参与资产升级，不再安排后续工作。
   - Preservation: 当前源码、视频、NPZ 和报告保留为失败原型证据，详细结论见 `project/checkpoints/2026-08-12-line3-native/USER-REVIEW.md`。
+- 2026-08-12 15:24 UTC
+  - What: 单版本静态展厅实现完成：删除 Line2 产品和播放运行时，六个 Franka 场景改为明亮白灰配色；修正每臂 8 actuator 初始控制排列；六场景 MJCF、0.1 mm 穿透检查和真实 Chromium 截图均通过。
+  - Next: 运行最终全量验证，推送 main，并检查 GitHub Pages 公开页面。

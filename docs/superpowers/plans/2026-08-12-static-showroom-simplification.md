@@ -8,6 +8,8 @@
 
 **Tech Stack:** React 19, TypeScript 5.8, Vite 6, Three.js / React Three Fiber, `mujoco-react`, `mujoco-js`, Vitest, Testing Library, Playwright.
 
+**Status:** Tasks 1–6 implemented and visually reviewed; Task 7 final verification and Pages deployment in progress.
+
 ## Global Constraints
 
 - The product must not display or route between Line 1 and Line 2.
@@ -309,7 +311,7 @@ Expected: FAIL before the checkpoint and final CSS contract are implemented.
 
 - [ ] **Step 2: Implement the MuJoCo initial-contact validator**
 
-Load all public assets into `mujoco-js`, apply `[0, -0.7, 0, -2.2, 0, 1.6, 0.78]` to every seven-joint Panda block, call forward, and list contacts whose negative distance involves different arm prefixes or an arm and a workcell geom. Exit non-zero with scene, geom names, and distances for any rejected contact.
+Load all public assets into `mujoco-js`, apply `[0, -0.7, 0, -2.2, 0, 1.6, 0.78, 255]` to every Panda actuator block (seven arm joints plus the gripper tendon), call forward, and list contacts below the `-0.1 mm` tolerance. Exit non-zero with scene, geom names, and distances for any rejected contact.
 
 - [ ] **Step 3: Add scripts and run complete geometry checks**
 

@@ -6,6 +6,10 @@ This file is generated/updated by artifact registry tooling.
 
 | Time (UTC) | Kind | Path | Produced by | Source | Notes |
 |---|---|---|---|---|---|
+| 2026-08-12 15:24:49 UTC | static_showroom_contact_sheet | project/checkpoints/2026-08-12-static-showroom/static-showroom-contact-sheet.png | Playwright + project-flow-manager | 六个最终静态场景页面 | 1920 宽 3x2 总览；白灰静态展厅 |
+| 2026-08-12 15:24:49 UTC | static_showroom_checkpoint | project/checkpoints/2026-08-12-static-showroom/README.md | Playwright + project-flow-manager | 六场景真实 MuJoCo/WASM 浏览器验收 | 六张 1600x1000 截图；零页面错误；0.1 mm 穿透门 |
+| 2026-08-12 15:24:49 UTC | implementation_plan_md | docs/superpowers/plans/2026-08-12-static-showroom-simplification.md | superpowers:writing-plans | 已确认静态展厅规格 | 七任务 TDD、接触检查、截图和 Pages 计划 |
+| 2026-08-12 15:24:49 UTC | design_spec_md | docs/superpowers/specs/2026-08-12-static-showroom-simplification-design.md | superpowers:brainstorming | 用户确认的单版本静态展厅方向 | 明亮白灰、无播放、六场景几何验收规格 |
 | 2026-08-12 03:39:10 UTC | pages_deployment | https://shuaijun-liu.github.io/demo/?line=line2&scene=demo01 | GitHub Actions | main@5a98d14 / run 31560620866 | Line3 release pushed; Pages build/deploy success; public URL HTTP 200 |
 | 2026-08-12 03:17:16 UTC | model_manifest | simulation/line3/line3/models | line3-native-mujoco | expanded portable MJCF from Menagerie builder | Six standalone scenes compile; 3-arm nq27/nu24 and 4-arm nq36/nu32 |
 | 2026-08-12 03:17:11 UTC | experiment_matrix | simulation/line3/artifacts/matrix-report.json | line3-native-mujoco | 600 fixed-seed real Menagerie-Panda expert episodes | Demo01–06 each 100/100; native contact force and real-time factor retained |
