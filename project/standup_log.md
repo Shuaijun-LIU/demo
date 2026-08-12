@@ -52,3 +52,6 @@
   - Verification: 聚焦环境/任务/恢复测试通过；六份导出模型单独编译通过；最终全量记录口径为 41/41；600 固定种子重新运行均成功，平均 real-time factor 12.02–14.05。
   - Evidence: 六份专家 NPZ、六段最终 Menagerie/EGL MP4、六张中段预览和 1920×960 总览图已重新生成。
   - Next: 用户先检查真实 Panda 六场布局与动作；随后按反馈升级任务物体 OBJ/STL 视觉网格及 Demo02/06 接触模型。
+- 2026-08-12 03:39 UTC
+  - What: Line3 release 5a98d14 pushed to Shuaijun-LIU/demo main via github-Shuaijun-LIU SSH; GitHub Pages Actions run 31560620866 succeeded; public Pages URL returns HTTP 200; remote main and local HEAD match.
+  - Next: User reviews the six-scene contact sheet and native videos; next fidelity pass converts audited GLB visuals and strengthens Demo02/Demo06 contact models.

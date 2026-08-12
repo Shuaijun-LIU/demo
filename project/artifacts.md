@@ -6,6 +6,7 @@ This file is generated/updated by artifact registry tooling.
 
 | Time (UTC) | Kind | Path | Produced by | Source | Notes |
 |---|---|---|---|---|---|
+| 2026-08-12 03:39:10 UTC | pages_deployment | https://shuaijun-liu.github.io/demo/?line=line2&scene=demo01 | GitHub Actions | main@5a98d14 / run 31560620866 | Line3 release pushed; Pages build/deploy success; public URL HTTP 200 |
 | 2026-08-12 03:17:16 UTC | model_manifest | simulation/line3/line3/models | line3-native-mujoco | expanded portable MJCF from Menagerie builder | Six standalone scenes compile; 3-arm nq27/nu24 and 4-arm nq36/nu32 |
 | 2026-08-12 03:17:11 UTC | experiment_matrix | simulation/line3/artifacts/matrix-report.json | line3-native-mujoco | 600 fixed-seed real Menagerie-Panda expert episodes | Demo01–06 each 100/100; native contact force and real-time factor retained |
 | 2026-08-12 03:17:06 UTC | line3_contact_sheet | project/checkpoints/2026-08-12-line3-native/line3-six-scene-contact-sheet.jpg | line3-native-mujoco | final Menagerie-Panda frames from six accepted EGL videos | 1920x960 final 3x2 native scene overview; real Menagerie Franka meshes |
