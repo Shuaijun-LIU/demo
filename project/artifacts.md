@@ -6,6 +6,7 @@ This file is generated/updated by artifact registry tooling.
 
 | Time (UTC) | Kind | Path | Produced by | Source | Notes |
 |---|---|---|---|---|---|
+| 2026-08-12 16:31:01 UTC | pages_deployment | https://shuaijun-liu.github.io/demo/?scene=demo01 | GitHub Actions + public Chromium probe | main@782c853 / run 31617375673 | build/deploy success；22/22 模型依赖；MuJoCo ready；0 error |
 | 2026-08-12 16:20:24 UTC | web_model_profile | public/models/franka/assets | static-showroom-pages-fix | MuJoCo 3.6 legacy MSH exact vertex/face encoding | 10 个 MSH 共约 2.4 MB；22 个模型依赖；无减面 |
 | 2026-08-12 16:12:11 UTC | web_model_profile | public/models/franka/panda.xml | static-showroom-pages-fix | MuJoCo Menagerie Franka Panda | 10 个无损合并视觉网格；22 个模型依赖；关节与碰撞不变 |
 | 2026-08-12 15:24:49 UTC | static_showroom_contact_sheet | project/checkpoints/2026-08-12-static-showroom/static-showroom-contact-sheet.png | Playwright + project-flow-manager | 六个最终静态场景页面 | 1920 宽 3x2 总览；白灰静态展厅 |

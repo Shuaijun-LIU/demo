@@ -8,7 +8,7 @@
 
 **Tech Stack:** React 19, TypeScript 5.8, Vite 6, Three.js / React Three Fiber, `mujoco-react`, `mujoco-js`, Vitest, Testing Library, Playwright.
 
-**Status:** Tasks 1–6 implemented and visually reviewed; Task 7 final verification and Pages deployment in progress.
+**Status:** Tasks 1–7 completed; deployed from `main@782c853` by Actions run `31617375673` and verified with a public Chromium MuJoCo-ready probe.
 
 ## Global Constraints
 

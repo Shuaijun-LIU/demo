@@ -70,3 +70,6 @@
 - 2026-08-12 16:20 UTC
   - What: Web Panda 最终采用 MuJoCo MSH：10 个无损合并外观网格精确去重后合计约 2.4 MB；MJCF 编译、接触检查和原图截图均与完整 OBJ 几何一致。已删除 17 MB 中间合并 OBJ。
   - Next: 完成最终全量回归、推送 MSH 资产并验证公开 Pages MuJoCo ready。
+- 2026-08-12 16:31 UTC
+  - What: Final Pages run 31617375673 build/deploy success. Public Chromium loaded 22/22 Panda assets and demo01 reached MuJoCo ready: HTTP 200, six scene buttons, zero playback buttons, one canvas, zero page errors and zero request failures.
+  - Next: 用户检查公开静态展厅和六场景总览；后续只按明确反馈调整静态构型。

@@ -19,11 +19,11 @@
 - [x] Phase 9: Line2 产品路线终止；对应前端代码、场景和资产已删除
 - [x] Phase 10: Line3 原生 MuJoCo 六任务失败原型已停止（人工视频验收拒绝，不再修复）
 - [x] Phase 11: 合并为单版本明亮静态展厅，删除播放运行时并完成六场景几何复核
-- [ ] Phase 12: 完成全量回归、推送 main 并确认 GitHub Pages 部署
+- [x] Phase 12: 完成全量回归、推送 main 并确认 GitHub Pages 部署
 
 ## Status
 - Initialized: 2026-08-11 16:43 UTC
-- Current phase: Phase 12 — 全量验证、GitHub Pages 推送与公开页面检查
+- Current phase: 已完成 — 等待用户检查静态展厅
 - Current product: 单版本静态展厅；六个场景可切换、拖动旋转和滚轮缩放，无播放、暂停、复位、任务路径或版本选择器。
 - Scene verification: 六个 MJCF 编译通过；网页实际 Panda 初始控制排列已修正为每臂 7 关节 + 1 夹爪；`mj_forward` 未发现超过 0.1 mm 的初始穿透。
 - Visual verification: 六张 1600×1000 页面截图和一张 3×2 总览图已完成目视检查；强制镜面地板已隐藏，避免倒影被误认为地下穿模。
@@ -37,4 +37,5 @@
 - Scene checkpoint: `project/checkpoints/2026-08-12-scene-alpha/`
 - Final static checkpoint: `project/checkpoints/2026-08-12-static-showroom/`
 - Deployment target: `https://shuaijun-liu.github.io/demo/?scene=demo01`
+- Deployment verification: Actions run `31617375673` build/deploy success；公开 Chromium 22/22 模型依赖完成、MuJoCo ready、0 error。
 - Blockers: 无。
