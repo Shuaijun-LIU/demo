@@ -2,21 +2,21 @@
   <compiler angle="radian" autolimits="true"/>
   <option timestep="0.004" gravity="0 0 -9.81" integrator="implicitfast"/>
   <statistic center="0 0 0.72" extent="3"/>
-  <visual><headlight diffuse="0.74 0.8 0.84" ambient="0.25 0.3 0.34" specular="0.18 0.18 0.18"/></visual>
+  <visual><headlight diffuse="0.9 0.9 0.88" ambient="0.52 0.52 0.5" specular="0.12 0.12 0.12"/><rgba haze="0.88 0.88 0.85 1"/></visual>
   <asset>
     <model name="panda" file="../../models/franka/panda.xml"/>
-    <material name="floor" rgba="0.018 0.045 0.062 1"/>
-    <material name="steel" rgba="0.13 0.18 0.22 1" metallic="0.65" roughness="0.4"/>
-    <material name="beam" rgba="0.38 0.48 0.55 1" metallic="0.72" roughness="0.34"/>
-    <material name="cyan" rgba="0.1 0.78 0.96 1" emission="0.12"/>
-    <material name="violet" rgba="0.55 0.35 0.98 1" emission="0.1"/>
-    <material name="amber" rgba="1 0.57 0.12 1" emission="0.1"/>
-    <material name="green" rgba="0.1 0.75 0.4 1" emission="0.08"/>
-    <material name="red" rgba="0.92 0.14 0.18 1" emission="0.08"/>
+    <material name="floor" rgba="0.84 0.84 0.81 1" roughness="0.9"/>
+    <material name="steel" rgba="0.64 0.66 0.66 1" metallic="0.38" roughness="0.52"/>
+    <material name="beam" rgba="0.48 0.52 0.53 1" metallic="0.44" roughness="0.48"/>
+    <material name="cyan" rgba="0.32 0.48 0.56 1" roughness="0.62"/>
+    <material name="violet" rgba="0.48 0.43 0.52 1" roughness="0.62"/>
+    <material name="amber" rgba="0.68 0.53 0.28 1" roughness="0.65"/>
+    <material name="green" rgba="0.36 0.55 0.42 1" roughness="0.65"/>
+    <material name="red" rgba="0.65 0.32 0.3 1" roughness="0.65"/>
   </asset>
   <worldbody>
     <light pos="2 -2 5" dir="-0.3 0.25 -1" directional="true" diffuse="0.9 0.92 0.95"/>
-    <light pos="-3 2 3" dir="0.6 -0.2 -1" directional="true" diffuse="0.3 0.65 0.82"/>
+    <light pos="-3 2 3" dir="0.6 -0.2 -1" directional="true" diffuse="0.68 0.69 0.67"/>
     <geom type="plane" size="5 5 0.04" material="floor"/>
 
     <!-- Large-fixture deck -->
@@ -27,20 +27,20 @@
     <geom type="box" pos="0.96 0.43 0.25" size="0.075 0.075 0.25" material="steel"/>
 
     <!-- Main long-span structure -->
-    <geom name="beam_left" type="box" pos="-0.55 0 0.85" size="0.56 0.13 0.11" material="beam"/>
-    <geom name="beam_right" type="box" pos="0.55 0 0.85" size="0.56 0.13 0.11" material="beam"/>
-    <geom name="brace" type="box" pos="0 0 1.02" size="0.12 0.5 0.08" material="beam"/>
-    <geom name="locator_left" type="box" pos="-0.86 0 0.68" size="0.08 0.2 0.13" material="cyan"/>
-    <geom name="locator_right" type="box" pos="0.86 0 0.68" size="0.08 0.2 0.13" material="violet"/>
+    <geom name="beam_left" type="box" pos="-0.57 0 0.85" size="0.54 0.13 0.11" material="beam"/>
+    <geom name="beam_right" type="box" pos="0.57 0 0.85" size="0.54 0.13 0.11" material="beam"/>
+    <geom name="brace" type="box" pos="0 0 1.04" size="0.12 0.5 0.08" material="beam"/>
+    <geom name="locator_left" type="box" pos="-0.86 0 0.66" size="0.08 0.2 0.08" material="cyan"/>
+    <geom name="locator_right" type="box" pos="0.86 0 0.66" size="0.08 0.2 0.08" material="violet"/>
     <geom name="center_fixture" type="cylinder" pos="0 0 0.66" size="0.2 0.08" material="amber"/>
 
     <!-- Bolt trays and torque markers -->
-    <geom name="bolt_tray" type="box" pos="0.72 -0.37 0.63" size="0.22 0.13 0.035" material="steel"/>
-    <geom type="cylinder" pos="0.62 -0.37 0.69" size="0.035 0.045" material="green"/>
-    <geom type="cylinder" pos="0.72 -0.37 0.69" size="0.035 0.045" material="green"/>
-    <geom type="cylinder" pos="0.82 -0.37 0.69" size="0.035 0.045" material="red"/>
-    <geom name="brace_rack" type="box" pos="-0.66 0.38 0.69" size="0.28 0.11 0.09" material="steel"/>
-    <geom name="spare_brace" type="box" pos="-0.66 0.38 0.83" size="0.25 0.055 0.055" material="beam" group="3" contype="0" conaffinity="0"/>
+    <geom name="bolt_tray" type="box" pos="0.72 -0.37 0.615" size="0.22 0.13 0.035" material="steel"/>
+    <geom type="cylinder" pos="0.62 -0.37 0.695" size="0.035 0.045" material="green"/>
+    <geom type="cylinder" pos="0.72 -0.37 0.695" size="0.035 0.045" material="green"/>
+    <geom type="cylinder" pos="0.82 -0.37 0.695" size="0.035 0.045" material="red"/>
+    <geom name="brace_rack" type="box" pos="-0.66 0.38 0.67" size="0.28 0.11 0.09" material="steel"/>
+    <geom name="spare_brace" type="box" pos="-0.66 0.38 0.815" size="0.25 0.055 0.055" material="beam" group="3" contype="0" conaffinity="0"/>
 
     <!-- Safety-light curtain posts -->
     <geom type="box" pos="-1.32 -0.62 0.8" size="0.025 0.025 0.8" material="red"/>
@@ -61,9 +61,5 @@
     <frame pos="-1.2 0.86 0.58" euler="0 0 -0.62"><attach model="panda" body="link0" prefix="arm2_"/></frame>
     <frame pos="1.2 0.86 0.58" euler="0 0 -2.52"><attach model="panda" body="link0" prefix="arm3_"/></frame>
     <frame pos="1.2 -0.86 0.58" euler="0 0 2.52"><attach model="panda" body="link0" prefix="arm4_"/></frame>
-    <body name="task_payload" pos="-0.66 0.38 0.78">
-      <freejoint name="task_payload_free"/>
-      <geom name="task_payload_geom" type="box" pos="0 0 0.055" size="0.25 0.055 0.055" material="beam" mass="0.8" friction="0.75 0.02 0.002"/>
-    </body>
   </worldbody>
 </mujoco>

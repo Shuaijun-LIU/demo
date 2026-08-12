@@ -5,31 +5,31 @@
   <statistic center="0 0 0.65" extent="2.6"/>
 
   <visual>
-    <headlight diffuse="0.72 0.78 0.82" ambient="0.24 0.3 0.36" specular="0.18 0.18 0.18"/>
-    <rgba haze="0.025 0.055 0.08 1"/>
+    <headlight diffuse="0.9 0.9 0.88" ambient="0.52 0.52 0.5" specular="0.12 0.12 0.12"/>
+    <rgba haze="0.88 0.88 0.85 1"/>
     <global azimuth="132" elevation="-24"/>
   </visual>
 
   <asset>
     <model name="panda" file="../../models/franka/panda.xml"/>
-    <texture type="skybox" builtin="gradient" rgb1="0.025 0.06 0.09" rgb2="0.002 0.008 0.014"
+    <texture type="skybox" builtin="gradient" rgb1="0.94 0.94 0.91" rgb2="0.78 0.79 0.77"
       width="512" height="3072"/>
-    <material name="floor_mat" rgba="0.018 0.045 0.062 1" roughness="0.86" reflectance="0.08"/>
-    <material name="steel" rgba="0.12 0.18 0.22 1" metallic="0.55" roughness="0.5"/>
-    <material name="deck" rgba="0.1 0.18 0.23 1" metallic="0.3" roughness="0.42"/>
-    <material name="belt" rgba="0.035 0.075 0.095 1" roughness="0.66"/>
-    <material name="cyan" rgba="0.12 0.72 0.92 1" emission="0.14"/>
-    <material name="violet" rgba="0.5 0.34 0.95 1" emission="0.1"/>
-    <material name="amber" rgba="1 0.56 0.12 1" emission="0.1"/>
-    <material name="green" rgba="0.08 0.72 0.42 1" emission="0.08"/>
-    <material name="red" rgba="0.92 0.16 0.2 1" emission="0.08"/>
-    <material name="part" rgba="0.78 0.86 0.9 1" metallic="0.25" roughness="0.35"/>
+    <material name="floor_mat" rgba="0.84 0.84 0.81 1" roughness="0.9" reflectance="0.03"/>
+    <material name="steel" rgba="0.64 0.66 0.66 1" metallic="0.32" roughness="0.56"/>
+    <material name="deck" rgba="0.78 0.79 0.77 1" metallic="0.12" roughness="0.6"/>
+    <material name="belt" rgba="0.24 0.25 0.25 1" roughness="0.72"/>
+    <material name="cyan" rgba="0.32 0.48 0.56 1" roughness="0.62"/>
+    <material name="violet" rgba="0.48 0.43 0.52 1" roughness="0.62"/>
+    <material name="amber" rgba="0.68 0.53 0.28 1" roughness="0.65"/>
+    <material name="green" rgba="0.36 0.55 0.42 1" roughness="0.65"/>
+    <material name="red" rgba="0.65 0.32 0.3 1" roughness="0.65"/>
+    <material name="part" rgba="0.88 0.89 0.87 1" metallic="0.08" roughness="0.5"/>
   </asset>
 
   <worldbody>
     <light name="key" pos="2 -2 4.8" dir="-0.3 0.25 -1" directional="true" diffuse="0.9 0.92 0.95"/>
-    <light name="fill" pos="-3 1 3" dir="0.6 -0.2 -1" directional="true" diffuse="0.25 0.65 0.82"/>
-    <light name="rim" pos="0 3 2.7" dir="0 -1 -0.5" directional="true" diffuse="0.55 0.4 0.9"/>
+    <light name="fill" pos="-3 1 3" dir="0.6 -0.2 -1" directional="true" diffuse="0.68 0.69 0.67"/>
+    <light name="rim" pos="0 3 2.7" dir="0 -1 -0.5" directional="true" diffuse="0.62 0.62 0.6"/>
     <geom name="floor" type="plane" size="5 5 0.04" material="floor_mat"/>
 
     <!-- Central electronics workbench -->
@@ -41,33 +41,33 @@
     <geom name="bench_leg_4" type="box" pos="0.72 0.4 0.25" size="0.055 0.055 0.25" material="steel"/>
 
     <!-- Feed conveyor and five electronic parts -->
-    <geom name="feed_belt" type="box" pos="-0.34 -0.29 0.715" size="0.49 0.13 0.028" material="belt"/>
-    <geom name="feed_rail_l" type="box" pos="-0.34 -0.43 0.755" size="0.51 0.014 0.04" material="cyan"/>
-    <geom name="feed_rail_r" type="box" pos="-0.34 -0.15 0.755" size="0.51 0.014 0.04" material="cyan"/>
-    <geom name="p1" type="box" pos="-0.68 -0.29 0.77" size="0.055 0.043 0.018" material="part" group="3" contype="0" conaffinity="0"/>
-    <geom name="p2" type="box" pos="-0.51 -0.29 0.77" size="0.055 0.043 0.018" material="part"/>
-    <geom name="p3" type="box" pos="-0.34 -0.29 0.77" size="0.055 0.043 0.018" material="red"/>
-    <geom name="p4" type="box" pos="-0.17 -0.29 0.77" size="0.055 0.043 0.018" material="part"/>
-    <geom name="p5" type="box" pos="0 -0.29 0.77" size="0.055 0.043 0.018" material="part"/>
+    <geom name="feed_belt" type="box" pos="-0.34 -0.29 0.703" size="0.49 0.13 0.028" material="belt"/>
+    <geom name="feed_rail_l" type="box" pos="-0.34 -0.43 0.771" size="0.51 0.014 0.04" material="cyan"/>
+    <geom name="feed_rail_r" type="box" pos="-0.34 -0.15 0.771" size="0.51 0.014 0.04" material="cyan"/>
+    <geom name="p1" type="box" pos="-0.68 -0.29 0.749" size="0.055 0.043 0.018" material="part" group="3" contype="0" conaffinity="0"/>
+    <geom name="p2" type="box" pos="-0.51 -0.29 0.749" size="0.055 0.043 0.018" material="part"/>
+    <geom name="p3" type="box" pos="-0.34 -0.29 0.749" size="0.055 0.043 0.018" material="red"/>
+    <geom name="p4" type="box" pos="-0.17 -0.29 0.749" size="0.055 0.043 0.018" material="part"/>
+    <geom name="p5" type="box" pos="0 -0.29 0.749" size="0.055 0.043 0.018" material="part"/>
 
     <!-- Handoff and dual-side camera gate -->
-    <geom name="handoff_pad" type="cylinder" pos="0.1 0 0.69" size="0.14 0.012" material="violet"/>
-    <geom name="camera_post_l" type="box" pos="-0.05 0.14 0.91" size="0.025 0.025 0.24" material="steel"/>
-    <geom name="camera_post_r" type="box" pos="0.25 0.14 0.91" size="0.025 0.025 0.24" material="steel"/>
-    <geom name="camera_bridge" type="box" pos="0.1 0.14 1.14" size="0.17 0.025 0.025" material="steel"/>
-    <geom name="camera_front" type="box" pos="0.1 0.105 1.09" size="0.05 0.035 0.035" material="violet"/>
-    <geom name="camera_back" type="box" pos="0.1 0.175 1.09" size="0.05 0.035 0.035" material="violet"/>
+    <geom name="handoff_pad" type="cylinder" pos="0.1 0 0.687" size="0.14 0.012" material="violet"/>
+    <geom name="camera_post_l" type="box" pos="-0.05 0.14 0.915" size="0.025 0.025 0.24" material="steel"/>
+    <geom name="camera_post_r" type="box" pos="0.25 0.14 0.915" size="0.025 0.025 0.24" material="steel"/>
+    <geom name="camera_bridge" type="box" pos="0.1 0.14 1.18" size="0.17 0.025 0.025" material="steel"/>
+    <geom name="camera_front" type="box" pos="0.1 0.105 1.12" size="0.05 0.035 0.035" material="violet"/>
+    <geom name="camera_back" type="box" pos="0.1 0.175 1.12" size="0.05 0.035 0.035" material="violet"/>
 
     <!-- Functional test fixture -->
-    <geom name="test_base" type="box" pos="0.48 -0.03 0.715" size="0.17 0.14 0.035" material="steel"/>
-    <geom name="test_socket" type="box" pos="0.48 -0.03 0.765" size="0.085 0.065 0.018" material="amber"/>
-    <geom name="test_tower" type="box" pos="0.61 0.07 0.88" size="0.025 0.025 0.15" material="steel"/>
-    <geom name="test_light" type="sphere" pos="0.61 0.07 1.04" size="0.035" material="green"/>
+    <geom name="test_base" type="box" pos="0.48 -0.03 0.71" size="0.17 0.14 0.035" material="steel"/>
+    <geom name="test_socket" type="box" pos="0.48 -0.03 0.763" size="0.085 0.065 0.018" material="amber"/>
+    <geom name="test_tower" type="box" pos="0.61 0.07 0.895" size="0.025 0.025 0.15" material="steel"/>
+    <geom name="test_light" type="sphere" pos="0.61 0.07 1.08" size="0.035" material="green"/>
 
     <!-- Three output destinations -->
-    <geom name="tray_a" type="box" pos="0.63 0.34 0.72" size="0.16 0.11 0.025" material="green"/>
-    <geom name="tray_b" type="box" pos="0.3 0.39 0.72" size="0.14 0.1 0.025" material="amber"/>
-    <geom name="tray_ng" type="box" pos="0.8 0.08 0.72" size="0.12 0.1 0.025" material="red"/>
+    <geom name="tray_a" type="box" pos="0.63 0.34 0.7" size="0.16 0.11 0.025" material="green"/>
+    <geom name="tray_b" type="box" pos="0.3 0.39 0.7" size="0.14 0.1 0.025" material="amber"/>
+    <geom name="tray_ng" type="box" pos="0.8 0.08 0.7" size="0.12 0.1 0.025" material="red"/>
 
     <!-- Arm pedestals and colored role rings -->
     <geom name="pedestal_1" type="cylinder" pos="-1.03 -0.72 0.3375" size="0.18 0.3375" material="steel"/>
@@ -86,9 +86,5 @@
     <frame pos="1.03 -0.72 0.675" euler="0 0 2.52">
       <attach model="panda" body="link0" prefix="arm3_"/>
     </frame>
-    <body name="task_payload" pos="-0.68 -0.29 0.743">
-      <freejoint name="task_payload_free"/>
-      <geom name="task_payload_geom" type="box" pos="0 0 0.018" size="0.055 0.043 0.018" material="part" mass="0.08" friction="0.8 0.02 0.002"/>
-    </body>
   </worldbody>
 </mujoco>
