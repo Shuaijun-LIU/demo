@@ -3,6 +3,7 @@ import { MujocoCanvas, MujocoProvider } from "mujoco-react";
 import { useEffect, useMemo, useState } from "react";
 import { getSceneFile } from "../scenarios/sceneFiles";
 import type { VisualScenarioId } from "../scenarios/visualCatalog";
+import { MujocoCheckerFloor } from "./MujocoCheckerFloor";
 
 interface SceneViewportProps {
   readonly sceneId: VisualScenarioId;
@@ -43,6 +44,7 @@ export function SceneViewport({ sceneId, armCount }: SceneViewportProps) {
         data-scene-id={sceneId}
         data-up-axis="z"
         data-render-state="fallback"
+        data-floor-style="blue-checker-white-grid"
       >
         <div className="fallback-cell">
           <span>3D WORKCELL</span>
@@ -60,6 +62,7 @@ export function SceneViewport({ sceneId, armCount }: SceneViewportProps) {
       data-scene-id={sceneId}
       data-up-axis="z"
       data-render-state={renderState}
+      data-floor-style="blue-checker-white-grid"
     >
       <MujocoProvider>
         <MujocoCanvas
@@ -86,11 +89,7 @@ export function SceneViewport({ sceneId, armCount }: SceneViewportProps) {
           <hemisphereLight args={["#ffffff", "#c8c9c6", 1.1]} />
           <directionalLight position={[3, -3, 6]} intensity={2.2} color="#ffffff" castShadow />
           <directionalLight position={[-4, 2, 4]} intensity={1.1} color="#f4f3ee" />
-          <gridHelper
-            args={[7, 35, "#b4b5b2", "#d7d7d3"]}
-            position={[0, 0, 0.006]}
-            rotation={[Math.PI / 2, 0, 0]}
-          />
+          <MujocoCheckerFloor />
           <OrbitControls
             makeDefault
             target={[0, 0, 0.72]}

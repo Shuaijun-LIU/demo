@@ -37,39 +37,6 @@ button {
   gap: 14px;
 }
 
-.showroom-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 2px 2px 4px;
-}
-
-.showroom-header h1 {
-  margin: 5px 0 0;
-  color: #242626;
-  font-size: clamp(24px, 2.1vw, 34px);
-  font-weight: 650;
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-}
-
-.showroom-kicker,
-.showroom-intro {
-  margin: 0;
-}
-
-.showroom-kicker {
-  color: #777b79;
-  font: 600 10px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
-  letter-spacing: 0.13em;
-}
-
-.showroom-intro {
-  margin-top: 7px;
-  color: #777b79;
-  font-size: 13px;
-}
-
 .scene-selector {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -122,7 +89,7 @@ button {
 }
 
 .showroom-stage {
-  min-height: calc(100svh - 222px);
+  min-height: calc(100svh - 144px);
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -213,10 +180,10 @@ button {
   display: grid;
   place-items: center;
   background:
-    linear-gradient(rgba(190, 192, 187, 0.26) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(190, 192, 187, 0.26) 1px, transparent 1px),
-    #ececea;
-  background-size: 32px 32px;
+    linear-gradient(rgba(255, 255, 255, 0.72) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.72) 1px, transparent 1px),
+    conic-gradient(#5b82a6 25%, #88a9c6 0 50%, #5b82a6 0 75%, #88a9c6 0);
+  background-size: 32px 32px, 32px 32px, 64px 64px;
 }
 
 .fallback-cell {
@@ -272,14 +239,6 @@ button {
 }
 
 @media (max-width: 560px) {
-  .showroom-header h1 {
-    font-size: 24px;
-  }
-
-  .showroom-intro {
-    font-size: 12px;
-  }
-
   .scene-selector {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

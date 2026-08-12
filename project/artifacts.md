@@ -6,6 +6,9 @@ This file is generated/updated by artifact registry tooling.
 
 | Time (UTC) | Kind | Path | Produced by | Source | Notes |
 |---|---|---|---|---|---|
+| 2026-08-12 17:02:52 UTC | static_showroom_contact_sheet | project/checkpoints/2026-08-13-mujoco-checker-floor/mujoco-checker-floor-contact-sheet.png | Playwright + project-flow-manager | 六个 MuJoCo ready 页面 | 2424x1016 3x2 总览；双蓝棋盘格与白线；无全局页首 |
+| 2026-08-12 17:02:52 UTC | implementation_plan_md | docs/superpowers/plans/2026-08-13-mujoco-checker-floor.md | superpowers:writing-plans | 已确认视觉规格 | 页首、程序化地面、六场景浏览器与 Pages 验收 |
+| 2026-08-12 17:02:52 UTC | design_spec_md | docs/superpowers/specs/2026-08-13-mujoco-checker-floor-design.md | superpowers:brainstorming | 用户明确的无页首与 MuJoCo 风格地面反馈 | 删除三段全局文案；双蓝棋盘格；白线；物理平面不变 |
 | 2026-08-12 16:31:01 UTC | pages_deployment | https://shuaijun-liu.github.io/demo/?scene=demo01 | GitHub Actions + public Chromium probe | main@782c853 / run 31617375673 | build/deploy success；22/22 模型依赖；MuJoCo ready；0 error |
 | 2026-08-12 16:20:24 UTC | web_model_profile | public/models/franka/assets | static-showroom-pages-fix | MuJoCo 3.6 legacy MSH exact vertex/face encoding | 10 个 MSH 共约 2.4 MB；22 个模型依赖；无减面 |
 | 2026-08-12 16:12:11 UTC | web_model_profile | public/models/franka/panda.xml | static-showroom-pages-fix | MuJoCo Menagerie Franka Panda | 10 个无损合并视觉网格；22 个模型依赖；关节与碰撞不变 |

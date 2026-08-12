@@ -73,3 +73,6 @@
 - 2026-08-12 16:31 UTC
   - What: Final Pages run 31617375673 build/deploy success. Public Chromium loaded 22/22 Panda assets and demo01 reached MuJoCo ready: HTTP 200, six scene buttons, zero playback buttons, one canvas, zero page errors and zero request failures.
   - Next: 用户检查公开静态展厅和六场景总览；后续只按明确反馈调整静态构型。
+- 2026-08-13
+  - What: 用户要求删除全局三段页首文案，并将当前灰色线框地面替换为 MuJoCo 风格双蓝棋盘格与白线；已完成代码定位、视觉范围收敛及实施计划。
+  - Next: 按 TDD 实现独立纯视觉地面组件，完成六场景截图和 Pages 验证。

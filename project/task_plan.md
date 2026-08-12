@@ -20,10 +20,11 @@
 - [x] Phase 10: Line3 原生 MuJoCo 六任务失败原型已停止（人工视频验收拒绝，不再修复）
 - [x] Phase 11: 合并为单版本明亮静态展厅，删除播放运行时并完成六场景几何复核
 - [x] Phase 12: 完成全量回归、推送 main 并确认 GitHub Pages 部署
+- [ ] Phase 13: 删除全局页首并将六场景统一改为双蓝棋盘格 + 白线地面
 
 ## Status
 - Initialized: 2026-08-11 16:43 UTC
-- Current phase: 已完成 — 等待用户检查静态展厅
+- Current phase: Phase 13 — 页首精简与 MuJoCo 风格地面
 - Current product: 单版本静态展厅；六个场景可切换、拖动旋转和滚轮缩放，无播放、暂停、复位、任务路径或版本选择器。
 - Scene verification: 六个 MJCF 编译通过；网页实际 Panda 初始控制排列已修正为每臂 7 关节 + 1 夹爪；`mj_forward` 未发现超过 0.1 mm 的初始穿透。
 - Visual verification: 六张 1600×1000 页面截图和一张 3×2 总览图已完成目视检查；强制镜面地板已隐藏，避免倒影被误认为地下穿模。

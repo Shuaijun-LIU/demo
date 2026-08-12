@@ -7,11 +7,18 @@ beforeEach(() => {
 });
 
 it("renders one minimal six-scene showroom", () => {
-  render(<App />);
+  const { container } = render(<App />);
 
-  expect(screen.getByRole("heading", { name: "多机械臂场景展示" })).toBeVisible();
+  expect(screen.queryByText("FRANKA PANDA · STATIC WORKCELLS")).not.toBeInTheDocument();
+  expect(screen.queryByRole("heading", { name: "多机械臂场景展示" })).not.toBeInTheDocument();
+  expect(screen.queryByText("六套多机械臂工位的空间构型与设备布局")).not.toBeInTheDocument();
+  expect(container.querySelector(".app-shell")?.firstElementChild).toHaveClass("scene-selector");
   expect(screen.getAllByRole("button", { name: /场景 0[1-6]/ })).toHaveLength(6);
   expect(screen.getByTestId("scene-viewport")).toHaveAttribute("data-scene-id", "demo01");
+  expect(screen.getByTestId("scene-viewport")).toHaveAttribute(
+    "data-floor-style",
+    "blue-checker-white-grid",
+  );
   expect(screen.getByText("静态场景 · 拖动旋转 · 滚轮缩放")).toBeVisible();
 
   expect(screen.queryByText(/Line 1/i)).not.toBeInTheDocument();

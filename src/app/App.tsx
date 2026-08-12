@@ -25,14 +25,6 @@ export function App() {
 
   return (
     <main className="app-shell">
-      <header className="showroom-header">
-        <div>
-          <p className="showroom-kicker">FRANKA PANDA · STATIC WORKCELLS</p>
-          <h1>多机械臂场景展示</h1>
-          <p className="showroom-intro">六套多机械臂工位的空间构型与设备布局</p>
-        </div>
-      </header>
-
       <nav className="scene-selector" aria-label="六个展示场景">
         {VISUAL_SCENARIOS.map((candidate) => (
           <button
