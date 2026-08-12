@@ -41,7 +41,7 @@ export function SceneViewport({
   const config = useMemo(
     () => ({
       src: new URL(".", document.baseURI).toString(),
-      sceneFile: getSceneFile(lineId, sceneId),
+      sceneFile: getSceneFile(sceneId),
       numArmJoints: 7,
       homeJoints: createHomeJoints(armCount),
     }),

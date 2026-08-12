@@ -1,10 +1,8 @@
 import type { VisualScenarioId } from "../scenarios/visualCatalog";
 
-export type LineId = "line1" | "line2";
 export type ScenarioId = VisualScenarioId;
 
 export interface DemoLocation {
-  readonly lineId: LineId;
   readonly sceneId: ScenarioId;
 }
 
@@ -22,17 +20,12 @@ function isScenarioId(value: string | null): value is ScenarioId {
 }
 
 export function readDemoLocation(search: string): DemoLocation {
-  const params = new URLSearchParams(search);
-  const requestedScene = params.get("scene");
-  return {
-    lineId: params.get("line") === "line1" ? "line1" : "line2",
-    sceneId: isScenarioId(requestedScene) ? requestedScene : "demo01",
-  };
+  const requestedScene = new URLSearchParams(search).get("scene");
+  return { sceneId: isScenarioId(requestedScene) ? requestedScene : "demo01" };
 }
 
-export function writeDemoLocation(location: DemoLocation): string {
+export function writeDemoLocation(sceneId: ScenarioId): string {
   const params = new URLSearchParams();
-  params.set("line", location.lineId);
-  params.set("scene", location.sceneId);
+  params.set("scene", sceneId);
   return `?${params.toString()}`;
 }

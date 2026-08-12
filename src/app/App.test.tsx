@@ -1,29 +1,27 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { beforeEach, expect, it } from "vitest";
 import { App } from "./App";
 
-it("renders the six-demo product identity", () => {
-  render(<App />);
-  expect(screen.getByRole("heading", { name: "多机械臂协作演示平台" })).toBeVisible();
+beforeEach(() => {
+  window.history.replaceState(null, "", "/");
 });
 
-it("renders a checkable three-arm electronics workcell", () => {
+it("renders one minimal six-scene showroom", () => {
   render(<App />);
-  fireEvent.click(screen.getByRole("button", { name: /Line 1/ }));
 
-  expect(screen.getByRole("heading", { name: "精密元器件检测与上料" })).toBeVisible();
-  expect(screen.getByTestId("scene-viewport")).toBeVisible();
-  expect(screen.getByText("ARM 1 · 上料")).toBeVisible();
-  expect(screen.getByText("ARM 2 · 双面检测")).toBeVisible();
-  expect(screen.getByText("ARM 3 · 测试分拣")).toBeVisible();
-  expect(screen.getAllByTestId("workpiece")).toHaveLength(5);
-  expect(screen.getByText("A 合格品")).toBeVisible();
-  expect(screen.getByText("B 合格品")).toBeVisible();
-  expect(screen.getByText("NG 隔离")).toBeVisible();
+  expect(screen.getByRole("heading", { name: "多机械臂场景展示" })).toBeVisible();
+  expect(screen.getAllByRole("button", { name: /场景 0[1-6]/ })).toHaveLength(6);
+  expect(screen.getByTestId("scene-viewport")).toHaveAttribute("data-scene-id", "demo01");
+  expect(screen.getByText("静态场景 · 拖动旋转 · 滚轮缩放")).toBeVisible();
+
+  expect(screen.queryByText(/Line 1/i)).not.toBeInTheDocument();
+  expect(screen.queryByText(/Line 2/i)).not.toBeInTheDocument();
+  expect(screen.queryByRole("button", { name: /播放|暂停|复位/ })).not.toBeInTheDocument();
+  expect(screen.queryByText(/任务泳道|任务路径|SCENE STATUS|OBJECT FLOW|CURRENT REVIEW/)).not.toBeInTheDocument();
 });
 
-it("opens all six visual workcells from the scenario selector", () => {
+it("opens all six static workcells from the scene selector", () => {
   render(<App />);
-  fireEvent.click(screen.getByRole("button", { name: /Line 1/ }));
 
   const expectedScenes = [
     ["01", "精密元器件检测与上料", "3 × Franka Panda"],
@@ -35,33 +33,20 @@ it("opens all six visual workcells from the scenario selector", () => {
   ] as const;
 
   for (const [number, heading, armCount] of expectedScenes) {
-    const selector = screen.getByRole("button", { name: new RegExp(`^${number}`) });
-    expect(selector).toBeEnabled();
-    fireEvent.click(selector);
+    fireEvent.click(screen.getByRole("button", { name: new RegExp(`场景 ${number}`) }));
     expect(screen.getByRole("heading", { name: heading })).toBeVisible();
     expect(screen.getAllByText(armCount).length).toBeGreaterThan(0);
-    expect(screen.getByTestId("scene-viewport")).toHaveAttribute(
-      "data-scene-id",
-      `demo${number}`,
-    );
+    expect(screen.getByTestId("scene-viewport")).toHaveAttribute("data-scene-id", `demo${number}`);
   }
 });
 
-it("uses the MuJoCo Z-up convention for every workcell", () => {
+it("writes only the selected scene to the URL", () => {
   render(<App />);
-  expect(screen.getByTestId("scene-viewport")).toHaveAttribute("data-up-axis", "z");
+  fireEvent.click(screen.getByRole("button", { name: /场景 05/ }));
+  expect(window.location.search).toBe("?scene=demo05");
 });
 
-it("controls the scene motion preview", () => {
+it("uses the MuJoCo Z-up convention", () => {
   render(<App />);
-
-  expect(screen.getByTestId("preview-status")).toHaveTextContent("待机");
-  fireEvent.click(screen.getByRole("button", { name: "播放运动" }));
-  expect(screen.getByTestId("preview-status")).toHaveTextContent("运动预览中");
-
-  fireEvent.click(screen.getByRole("button", { name: "暂停运动" }));
-  expect(screen.getByTestId("preview-status")).toHaveTextContent("已暂停");
-
-  fireEvent.click(screen.getByRole("button", { name: "复位场景" }));
-  expect(screen.getByTestId("preview-status")).toHaveTextContent("待机");
+  expect(screen.getByTestId("scene-viewport")).toHaveAttribute("data-up-axis", "z");
 });

@@ -1,7 +1,5 @@
-import type { LineId, ScenarioId } from "../app/urlState";
+import type { ScenarioId } from "../app/urlState";
 
-export function getSceneFile(lineId: LineId, sceneId: ScenarioId): string {
-  return lineId === "line2"
-    ? `scenarios/line2/${sceneId}/scene.xml`
-    : `scenarios/${sceneId}/scene.xml`;
+export function getSceneFile(sceneId: ScenarioId): string {
+  return `scenarios/${sceneId}/scene.xml`;
 }
