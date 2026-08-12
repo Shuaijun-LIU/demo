@@ -22,14 +22,14 @@
 - [x] Phase 12: 完成全量回归、推送 main 并确认 GitHub Pages 部署
 - [x] Phase 13: 删除全局页首并将六场景统一改为双蓝棋盘格 + 白线地面
 - [x] Phase 14: 压深三维主体背景与两种棋盘蓝，保持白色 UI 和模型照明
-- [ ] Phase 15: 修复 Demo03/06 悬空设备并将主体背景改为近黑炭灰
+- [x] Phase 15: 修复 Demo03/06 悬空设备并将主体背景改为近黑炭灰
 
 ## Status
 - Initialized: 2026-08-11 16:43 UTC
-- Current phase: Phase 15 — 设备支撑修复与近黑炭灰背景
-- Current product: 单版本静态展厅；无全局页首，六个场景共享中灰主体背景、较深双蓝棋盘格与白线，可切换、拖动旋转和滚轮缩放，无播放、暂停、复位、任务路径或版本选择器。
+- Current phase: 已完成 — 等待用户检查 Demo03/06 支撑结构与近黑背景版本
+- Current product: 单版本静态展厅；无全局页首，六个场景共享近黑炭灰主体背景、较深双蓝棋盘格与白线；Demo03/06 悬空设备已补齐连续支撑；可切换、拖动旋转和滚轮缩放，无播放功能。
 - Scene verification: 六个 MJCF 编译通过；网页实际 Panda 初始控制排列已修正为每臂 7 关节 + 1 夹爪；`mj_forward` 未发现超过 0.1 mm 的初始穿透。
-- Visual verification: 更深调色版六张 1600×1000 截图和 3×2 总览图已完成原分辨率目视检查；背景和双蓝地面亮度降低，白线及 Franka/工装细节保持清晰。
+- Visual verification: 支撑修复版六张 1600×1000 截图及总览已完成原分辨率检查；Demo03 显示器立柱和 Demo06 双门架可见，炭灰背景下 Franka/工装轮廓清楚。
 - Pages asset verification: Panda 外观碎片已按刚体无损合并为约 2.4 MB MSH，模型依赖由 67 个降为 22 个，消除公网探针捕获的 HTTP/2 并发加载失败。
 - Product cleanup: 旧 Line2 前端运行代码、专属场景与 GLB 资产已删除；历史文档和旧检查点仅作为过程记录保留，不进入产品构建。
 - Line3 user acceptance: **FAILED / ABANDONED**。视频中机械臂基本无任务动作，物体自行移动且存在穿模；当前结果不可用。
@@ -40,5 +40,5 @@
 - Scene checkpoint: `project/checkpoints/2026-08-12-scene-alpha/`
 - Final static checkpoint: `project/checkpoints/2026-08-12-static-showroom/`
 - Deployment target: `https://shuaijun-liu.github.io/demo/?scene=demo01`
-- Deployment verification: Actions run `31622169235` build/deploy success；公开 Chromium 6 个场景按钮、视口底色 `rgb(210, 213, 212)`、MuJoCo ready、0 error / 0 request failure。
+- Deployment verification: Actions run `31623647208` build/deploy success；公开 Demo03/06 XML 含三个新增支撑，视口底色 `rgb(37, 42, 46)`，MuJoCo ready、0 error / 0 request failure。
 - Blockers: 无。
