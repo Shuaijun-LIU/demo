@@ -66,7 +66,7 @@ npm run test:e2e
 
 `test:static-scenes` 使用网页相同的每臂 7 关节 + 1 夹爪初始控制排列执行 MuJoCo 前向计算，并拒绝超过 0.1 mm 的初始穿透。
 
-网页 Panda 将同一刚体上的 Menagerie OBJ 外观碎片无损合并为一个网格，将模型依赖请求从 67 个收敛为 22 个；关节、惯量和碰撞网格保持不变。可用纯标准库脚本重新生成：
+网页 Panda 将同一刚体上的 Menagerie OBJ 外观碎片无损合并为一个 MuJoCo MSH 网格，10 个视觉文件合计约 2.4 MB，模型依赖请求从 67 个收敛为 22 个；关节、惯量和碰撞网格保持不变。可用纯标准库脚本重新生成：
 
 ```bash
 python3 scripts/build-web-franka-meshes.py

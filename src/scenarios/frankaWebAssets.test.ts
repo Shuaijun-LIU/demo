@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -13,12 +13,20 @@ describe("web Franka asset budget", () => {
     expect(files).toHaveLength(22);
     expect(files).not.toContain("link0_0.obj");
     expect(files).not.toContain("link6_16.obj");
-    expect(files).toContain("web_link0.obj");
-    expect(files).toContain("web_link7.obj");
-    expect(files).toContain("web_finger.obj");
+    expect(files).toContain("web_link0.msh");
+    expect(files).toContain("web_link7.msh");
+    expect(files).toContain("web_finger.msh");
     expect(xml).toContain('<geom mesh="web_link0" material="off_white" class="visual"/>');
     expect(xml).toContain('<geom mesh="web_link7" material="white" class="visual"/>');
     expect(builder).not.toContain("simplify_quadric_decimation");
     expect(builder).not.toContain("import trimesh");
+
+    const binaryWebMeshes = files.filter((file) => file.startsWith("web_") && file.endsWith(".msh"));
+    const totalBytes = binaryWebMeshes.reduce(
+      (sum, file) => sum + statSync(resolve("public/models/franka/assets", file)).size,
+      0,
+    );
+    expect(binaryWebMeshes).toHaveLength(10);
+    expect(totalBytes).toBeLessThan(5_000_000);
   });
 });

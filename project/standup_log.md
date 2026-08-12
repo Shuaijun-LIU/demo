@@ -67,3 +67,6 @@
 - 2026-08-12 16:12 UTC
   - What: Pages 实载定位并修复 Franka 资源并发阻塞：原 67 个模型依赖中发生 HTTP/2 protocol error；按刚体无损合并为 10 个完整视觉网格、22 个模型依赖。六场景截图重生成并复核，无碎片且物理定义不变。
   - Next: 执行第二次全量回归，推送修复并再次验证公开页面进入 MuJoCo ready。
+- 2026-08-12 16:20 UTC
+  - What: Web Panda 最终采用 MuJoCo MSH：10 个无损合并外观网格精确去重后合计约 2.4 MB；MJCF 编译、接触检查和原图截图均与完整 OBJ 几何一致。已删除 17 MB 中间合并 OBJ。
+  - Next: 完成最终全量回归、推送 MSH 资产并验证公开 Pages MuJoCo ready。

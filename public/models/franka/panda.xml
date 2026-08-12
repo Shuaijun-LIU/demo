@@ -57,16 +57,16 @@
     <mesh name="hand_c" file="hand.stl"/>
     <!-- One reduced full-shape visual mesh per body keeps Pages reliable. -->
     <mesh file="finger_0.obj"/>
-    <mesh name="web_link0" file="web_link0.obj"/>
-    <mesh name="web_link1" file="web_link1.obj"/>
-    <mesh name="web_link2" file="web_link2.obj"/>
-    <mesh name="web_link3" file="web_link3.obj"/>
-    <mesh name="web_link4" file="web_link4.obj"/>
-    <mesh name="web_link5" file="web_link5.obj"/>
-    <mesh name="web_link6" file="web_link6.obj"/>
-    <mesh name="web_link7" file="web_link7.obj"/>
-    <mesh name="web_hand" file="web_hand.obj"/>
-    <mesh name="web_finger" file="web_finger.obj"/>
+    <mesh name="web_link0" file="web_link0.msh"/>
+    <mesh name="web_link1" file="web_link1.msh"/>
+    <mesh name="web_link2" file="web_link2.msh"/>
+    <mesh name="web_link3" file="web_link3.msh"/>
+    <mesh name="web_link4" file="web_link4.msh"/>
+    <mesh name="web_link5" file="web_link5.msh"/>
+    <mesh name="web_link6" file="web_link6.msh"/>
+    <mesh name="web_link7" file="web_link7.msh"/>
+    <mesh name="web_hand" file="web_hand.msh"/>
+    <mesh name="web_finger" file="web_finger.msh"/>
   </asset>
 
   <worldbody>
