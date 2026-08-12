@@ -32,13 +32,10 @@ for (const path of await collectFiles(publicRoot)) {
   mujoco.FS.writeFile(`/working/${file}`, new Uint8Array(await readFile(path)));
 }
 
-for (const line of ["line1", "line2"]) {
-  for (const sceneId of sceneIds) {
-    const prefix = line === "line2" ? "line2/" : "";
-    const model = mujoco.MjModel.loadFromXML(`/working/scenarios/${prefix}${sceneId}/scene.xml`);
-    const data = new mujoco.MjData(model);
-    console.log(`${line}/${sceneId}: nq=${model.nq} nv=${model.nv} nu=${model.nu} bodies=${model.nbody}`);
-    data.delete();
-    model.delete();
-  }
+for (const sceneId of sceneIds) {
+  const model = mujoco.MjModel.loadFromXML(`/working/scenarios/${sceneId}/scene.xml`);
+  const data = new mujoco.MjData(model);
+  console.log(`${sceneId}: nq=${model.nq} nv=${model.nv} nu=${model.nu} bodies=${model.nbody}`);
+  data.delete();
+  model.delete();
 }
