@@ -45,6 +45,7 @@
     <geom name="open_carton" type="box" pos="-0.1 0.26 0.835" size="0.14 0.1 0.09" material="carton"/>
     <geom name="packing_pad" type="box" pos="0.34 0.1 0.71" size="0.18 0.16 0.035" material="violet"/>
     <geom name="scale" type="box" pos="0.68 -0.24 0.72" size="0.19 0.14 0.045" material="steel"/>
+    <geom name="scale_display_post" type="box" pos="0.68 -0.1 0.8125" size="0.018 0.018 0.0475" material="steel"/>
     <geom name="scale_display" type="box" pos="0.68 -0.1 0.93" size="0.09 0.025 0.07" material="green"/>
     <geom name="outfeed" type="box" pos="0.66 0.32 0.7" size="0.24 0.13 0.025" material="belt"/>
     <geom name="carton_ok" type="box" pos="0.58 0.32 0.795" size="0.12 0.09 0.07" material="carton" group="3" contype="0" conaffinity="0"/>

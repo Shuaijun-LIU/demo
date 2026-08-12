@@ -3,14 +3,17 @@ import { mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 
 const scenes = ["demo01", "demo02", "demo03", "demo04", "demo05", "demo06"] as const;
-const checkpointDir = resolve(process.cwd(), "project/checkpoints/2026-08-13-deeper-showroom-palette");
+const checkpointDir = resolve(
+  process.cwd(),
+  "project/checkpoints/2026-08-13-supported-fixtures-charcoal-background",
+);
 
 test.beforeAll(() => {
   mkdirSync(checkpointDir, { recursive: true });
 });
 
 for (const sceneId of scenes) {
-  test(`${sceneId} renders as a static light showroom`, async ({ page }) => {
+  test(`${sceneId} renders as a static showroom`, async ({ page }) => {
     const browserErrors: string[] = [];
     page.on("pageerror", (error) => browserErrors.push(error.message));
 

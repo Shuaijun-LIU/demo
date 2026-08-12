@@ -22,10 +22,11 @@
 - [x] Phase 12: 完成全量回归、推送 main 并确认 GitHub Pages 部署
 - [x] Phase 13: 删除全局页首并将六场景统一改为双蓝棋盘格 + 白线地面
 - [x] Phase 14: 压深三维主体背景与两种棋盘蓝，保持白色 UI 和模型照明
+- [ ] Phase 15: 修复 Demo03/06 悬空设备并将主体背景改为近黑炭灰
 
 ## Status
 - Initialized: 2026-08-11 16:43 UTC
-- Current phase: 已完成 — 等待用户检查更深主体背景与棋盘蓝版本
+- Current phase: Phase 15 — 设备支撑修复与近黑炭灰背景
 - Current product: 单版本静态展厅；无全局页首，六个场景共享中灰主体背景、较深双蓝棋盘格与白线，可切换、拖动旋转和滚轮缩放，无播放、暂停、复位、任务路径或版本选择器。
 - Scene verification: 六个 MJCF 编译通过；网页实际 Panda 初始控制排列已修正为每臂 7 关节 + 1 夹爪；`mj_forward` 未发现超过 0.1 mm 的初始穿透。
 - Visual verification: 更深调色版六张 1600×1000 截图和 3×2 总览图已完成原分辨率目视检查；背景和双蓝地面亮度降低，白线及 Franka/工装细节保持清晰。

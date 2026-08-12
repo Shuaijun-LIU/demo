@@ -83,8 +83,8 @@ export function SceneViewport({ sceneId, armCount }: SceneViewportProps) {
           }}
           style={{ width: "100%", height: "100%" }}
         >
-          <color attach="background" args={["#d2d5d4"]} />
-          <fog attach="fog" args={["#d2d5d4", 6.5, 14]} />
+          <color attach="background" args={["#252a2e"]} />
+          <fog attach="fog" args={["#252a2e", 6.5, 14]} />
           <ambientLight intensity={1.35} />
           <hemisphereLight args={["#ffffff", "#c8c9c6", 1.1]} />
           <directionalLight position={[3, -3, 6]} intensity={2.2} color="#ffffff" castShadow />
