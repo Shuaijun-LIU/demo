@@ -64,3 +64,6 @@
 - 2026-08-12 15:24 UTC
   - What: 单版本静态展厅实现完成：删除 Line2 产品和播放运行时，六个 Franka 场景改为明亮白灰配色；修正每臂 8 actuator 初始控制排列；六场景 MJCF、0.1 mm 穿透检查和真实 Chromium 截图均通过。
   - Next: 运行最终全量验证，推送 main，并检查 GitHub Pages 公开页面。
+- 2026-08-12 16:12 UTC
+  - What: Pages 实载定位并修复 Franka 资源并发阻塞：原 67 个模型依赖中发生 HTTP/2 protocol error；按刚体无损合并为 10 个完整视觉网格、22 个模型依赖。六场景截图重生成并复核，无碎片且物理定义不变。
+  - Next: 执行第二次全量回归，推送修复并再次验证公开页面进入 MuJoCo ready。

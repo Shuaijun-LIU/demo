@@ -66,6 +66,12 @@ npm run test:e2e
 
 `test:static-scenes` 使用网页相同的每臂 7 关节 + 1 夹爪初始控制排列执行 MuJoCo 前向计算，并拒绝超过 0.1 mm 的初始穿透。
 
+网页 Panda 将同一刚体上的 Menagerie OBJ 外观碎片无损合并为一个网格，将模型依赖请求从 67 个收敛为 22 个；关节、惯量和碰撞网格保持不变。可用纯标准库脚本重新生成：
+
+```bash
+python3 scripts/build-web-franka-meshes.py
+```
+
 ## 当前范围
 
 - 已完成：六套差异化 MJCF 工位、3/4 臂 Franka Panda 构型、Z-up 朝向、场景切换、静态模型加载、明亮白灰视觉和初始接触检查。

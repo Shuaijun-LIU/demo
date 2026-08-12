@@ -27,6 +27,7 @@
 - Current product: 单版本静态展厅；六个场景可切换、拖动旋转和滚轮缩放，无播放、暂停、复位、任务路径或版本选择器。
 - Scene verification: 六个 MJCF 编译通过；网页实际 Panda 初始控制排列已修正为每臂 7 关节 + 1 夹爪；`mj_forward` 未发现超过 0.1 mm 的初始穿透。
 - Visual verification: 六张 1600×1000 页面截图和一张 3×2 总览图已完成目视检查；强制镜面地板已隐藏，避免倒影被误认为地下穿模。
+- Pages asset verification: Panda 外观碎片已按刚体无损合并，模型依赖由 67 个降为 22 个，消除公网探针捕获的 HTTP/2 并发加载失败。
 - Product cleanup: 旧 Line2 前端运行代码、专属场景与 GLB 资产已删除；历史文档和旧检查点仅作为过程记录保留，不进入产品构建。
 - Line3 user acceptance: **FAILED / ABANDONED**。视频中机械臂基本无任务动作，物体自行移动且存在穿模；当前结果不可用。
 - Line3 automated checks: 41/41 与 600/600 仅说明内部代码路径和自定义 oracle 可结束，不能证明机械臂运动或物理任务成立，不再作为完成证据。

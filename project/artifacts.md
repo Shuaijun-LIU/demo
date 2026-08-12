@@ -6,6 +6,7 @@ This file is generated/updated by artifact registry tooling.
 
 | Time (UTC) | Kind | Path | Produced by | Source | Notes |
 |---|---|---|---|---|---|
+| 2026-08-12 16:12:11 UTC | web_model_profile | public/models/franka/panda.xml | static-showroom-pages-fix | MuJoCo Menagerie Franka Panda | 10 个无损合并视觉网格；22 个模型依赖；关节与碰撞不变 |
 | 2026-08-12 15:24:49 UTC | static_showroom_contact_sheet | project/checkpoints/2026-08-12-static-showroom/static-showroom-contact-sheet.png | Playwright + project-flow-manager | 六个最终静态场景页面 | 1920 宽 3x2 总览；白灰静态展厅 |
 | 2026-08-12 15:24:49 UTC | static_showroom_checkpoint | project/checkpoints/2026-08-12-static-showroom/README.md | Playwright + project-flow-manager | 六场景真实 MuJoCo/WASM 浏览器验收 | 六张 1600x1000 截图；零页面错误；0.1 mm 穿透门 |
 | 2026-08-12 15:24:49 UTC | implementation_plan_md | docs/superpowers/plans/2026-08-12-static-showroom-simplification.md | superpowers:writing-plans | 已确认静态展厅规格 | 七任务 TDD、接触检查、截图和 Pages 计划 |
