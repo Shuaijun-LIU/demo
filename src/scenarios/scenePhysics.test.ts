@@ -26,6 +26,7 @@ describe("static showroom scene invariants", () => {
       expect(xml).not.toContain('body name="task_payload"');
       expect(xml).not.toContain("emission=");
       expect(xml).toContain(`name="${payloadProxy}"`);
+      expect(xml).toMatch(/<geom[^>]*type="plane"[^>]*group="3"/);
 
       const floorName = xml.includes('material name="floor_mat"') ? "floor_mat" : "floor";
       const floor = materialRgb(xml, floorName);
