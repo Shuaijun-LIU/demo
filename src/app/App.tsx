@@ -59,14 +59,7 @@ export function App() {
         </div>
 
         <div className="viewport-frame">
-          <SceneViewport
-            lineId="line1"
-            sceneId={scenario.id}
-            armCount={scenario.armCount}
-            mode="idle"
-            resetToken={0}
-            onStatusChange={() => undefined}
-          />
+          <SceneViewport sceneId={scenario.id} armCount={scenario.armCount} />
           <div className="viewport-help">静态场景 · 拖动旋转 · 滚轮缩放</div>
         </div>
       </section>
