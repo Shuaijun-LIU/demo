@@ -55,3 +55,9 @@
 - 2026-08-12 03:39 UTC
   - What: Line3 release 5a98d14 pushed to Shuaijun-LIU/demo main via github-Shuaijun-LIU SSH; GitHub Pages Actions run 31560620866 succeeded; public Pages URL returns HTTP 200; remote main and local HEAD match.
   - Next: User reviews the six-scene contact sheet and native videos; next fidelity pass converts audited GLB visuals and strengthens Demo02/Demo06 contact models.
+
+- 2026-08-12
+  - User review: Line3 视频人工验收失败；机械臂基本无任务动作，物体脱离机械臂自行移动，并存在明显穿模，整体不可用。
+  - Correction: 先前自动测试、600 回合和 oracle 成功率只能证明内部状态机满足自定义条件，不能证明抓取、交接、接触和多臂协作在物理或视觉上成立；撤回“Line3 已完成/可用”的结论。
+  - Decision: 用户决定放弃 Line3；立即停止实现、修复、调参与资产升级，不再安排后续工作。
+  - Preservation: 当前源码、视频、NPZ 和报告保留为失败原型证据，详细结论见 `project/checkpoints/2026-08-12-line3-native/USER-REVIEW.md`。

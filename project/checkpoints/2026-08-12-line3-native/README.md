@@ -1,6 +1,12 @@
 # Line3 native MuJoCo checkpoint
 
-This checkpoint records the first complete executable Line3 baseline built on 2026-08-12.
+This checkpoint records the Line3 prototype built on 2026-08-12.
+
+
+The automated checks below validate code paths and custom oracle conditions only. They do not demonstrate valid grasping, handoff, tool use, physical interaction or multi-arm task execution.
+
+## Historical implementation record
+
 
 ## What is implemented
 
@@ -14,12 +20,12 @@ This checkpoint records the first complete executable Line3 baseline built on 20
 ## Visual artifacts
 
 - `line3-six-scene-contact-sheet.jpg`: 3×2 overview of the six native scenes.
-- `demo01-native.png` … `demo06-native.png`: 640×480 first frames from the accepted EGL-rendered expert videos.
+- `demo01-native.png` … `demo06-native.png`: 640×480 frames from the rejected EGL-rendered prototype videos.
 - Full videos: `simulation/line3/artifacts/videos/demo01.mp4` through `demo06.mp4`.
 
-These are actual native MuJoCo 3.6 EGL renderer outputs, not browser mockups. Each robot uses the original Menagerie Franka visual and collision meshes. Workpieces use collidable physical proxies and move continuously with the active collaboration stage; cable and soft-fruit fidelity remains a stable constrained approximation that can be upgraded without changing task IDs, controller interfaces or data schema.
+These are native MuJoCo 3.6 EGL renderer outputs, but they do not constitute usable task demonstrations. The current object motion is driven by task-state synchronization rather than valid robot manipulation and exhibits visible interpenetration.
 
-## Verification snapshot
+## Historical automated-check snapshot
 
 - Python tests: 41/41 passing.
 - Asset audit: 8/8 hashes and 8/8 native drop/settle checks passing.
@@ -27,6 +33,6 @@ These are actual native MuJoCo 3.6 EGL renderer outputs, not browser mockups. Ea
 - Business faults: exactly one declared fault per accepted episode.
 - Disabled-arm counterfactual: every declared arm is necessary.
 - Expert data: all six NPZ files round-trip with matching SHA-256.
-- Video: all six EGL-rendered episodes end with `oracle.success == True`.
+- Video: the custom oracle reports success, but human visual acceptance rejects all six as invalid demonstrations.
 
 Reproduction commands are in `simulation/line3/README.md`.
