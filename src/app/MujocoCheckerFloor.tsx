@@ -12,8 +12,8 @@ const FLOOR_SIZE = 7;
 const FLOOR_DIVISIONS = 28;
 
 export function createMujocoCheckerTexture() {
-  const darkBlue = [91, 130, 166, 255];
-  const lightBlue = [136, 169, 198, 255];
+  const darkBlue = [69, 108, 142, 255];
+  const lightBlue = [113, 147, 174, 255];
   const texture = new DataTexture(
     new Uint8Array([
       ...darkBlue,

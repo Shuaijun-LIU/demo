@@ -3,7 +3,7 @@ import { mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 
 const scenes = ["demo01", "demo02", "demo03", "demo04", "demo05", "demo06"] as const;
-const checkpointDir = resolve(process.cwd(), "project/checkpoints/2026-08-13-mujoco-checker-floor");
+const checkpointDir = resolve(process.cwd(), "project/checkpoints/2026-08-13-deeper-showroom-palette");
 
 test.beforeAll(() => {
   mkdirSync(checkpointDir, { recursive: true });

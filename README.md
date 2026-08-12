@@ -17,15 +17,15 @@
 
 ## 场景预览
 
-[![六场景静态展厅总览](project/checkpoints/2026-08-13-mujoco-checker-floor/mujoco-checker-floor-contact-sheet.png)](project/checkpoints/2026-08-13-mujoco-checker-floor/README.md)
+[![六场景静态展厅总览](project/checkpoints/2026-08-13-deeper-showroom-palette/deeper-showroom-palette-contact-sheet.png)](project/checkpoints/2026-08-13-deeper-showroom-palette/README.md)
 
 | 01 精密元器件 | 02 汽车线束 |
 | --- | --- |
-| ![Demo 01](project/checkpoints/2026-08-13-mujoco-checker-floor/demo01.png) | ![Demo 02](project/checkpoints/2026-08-13-mujoco-checker-floor/demo02.png) |
+| ![Demo 01](project/checkpoints/2026-08-13-deeper-showroom-palette/demo01.png) | ![Demo 02](project/checkpoints/2026-08-13-deeper-showroom-palette/demo02.png) |
 | 03 食品装盒 | 04 大型构件 |
-| ![Demo 03](project/checkpoints/2026-08-13-mujoco-checker-floor/demo03.png) | ![Demo 04](project/checkpoints/2026-08-13-mujoco-checker-floor/demo04.png) |
+| ![Demo 03](project/checkpoints/2026-08-13-deeper-showroom-palette/demo03.png) | ![Demo 04](project/checkpoints/2026-08-13-deeper-showroom-palette/demo04.png) |
 | 05 智能药房 | 06 岭南果品 |
-| ![Demo 05](project/checkpoints/2026-08-13-mujoco-checker-floor/demo05.png) | ![Demo 06](project/checkpoints/2026-08-13-mujoco-checker-floor/demo06.png) |
+| ![Demo 05](project/checkpoints/2026-08-13-deeper-showroom-palette/demo05.png) | ![Demo 06](project/checkpoints/2026-08-13-deeper-showroom-palette/demo06.png) |
 
 ## 本地运行
 
@@ -74,7 +74,7 @@ python3 scripts/build-web-franka-meshes.py
 
 ## 当前范围
 
-- 已完成：六套差异化 MJCF 工位、3/4 臂 Franka Panda 构型、Z-up 朝向、场景切换、静态模型加载、明亮白灰界面、双蓝棋盘格地面和初始接触检查。
+- 已完成：六套差异化 MJCF 工位、3/4 臂 Franka Panda 构型、Z-up 朝向、场景切换、静态模型加载、白灰界面、中灰主体背景、较深双蓝棋盘格地面和初始接触检查。
 - 明确不包含：动作播放、物体自动移动、任务状态机、跨臂交接或物理任务演示。
 
 Franka Panda 资产来自 MuJoCo Menagerie，许可证见 `LICENSES/franka-emika-panda-Apache-2.0.txt`。

@@ -13,9 +13,10 @@ describe("static scene viewport", () => {
     expect(source).not.toContain("data-line-id");
   });
 
-  it("uses a light neutral environment", () => {
+  it("uses the deeper neutral environment without becoming a night scene", () => {
     const source = readFileSync(resolve("src/app/SceneViewport.tsx"), "utf8");
-    expect(source).toContain('#ececea');
+    expect(source).toContain('#d2d5d4');
+    expect(source).not.toContain('#ececea');
     expect(source).not.toContain('#07111d');
     expect(source).not.toContain('#68d8ff');
   });

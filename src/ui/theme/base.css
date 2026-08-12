@@ -147,7 +147,7 @@ button {
   min-height: 520px;
   flex: 1;
   overflow: hidden;
-  background: #ececea;
+  background: #d2d5d4;
 }
 
 .scene-viewport {
@@ -182,7 +182,7 @@ button {
   background:
     linear-gradient(rgba(255, 255, 255, 0.72) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.72) 1px, transparent 1px),
-    conic-gradient(#5b82a6 25%, #88a9c6 0 50%, #5b82a6 0 75%, #88a9c6 0);
+    conic-gradient(#456c8e 25%, #7193ae 0 50%, #456c8e 0 75%, #7193ae 0);
   background-size: 32px 32px, 32px 32px, 64px 64px;
 }
 

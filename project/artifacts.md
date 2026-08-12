@@ -6,6 +6,7 @@ This file is generated/updated by artifact registry tooling.
 
 | Time (UTC) | Kind | Path | Produced by | Source | Notes |
 |---|---|---|---|---|---|
+| 2026-08-12 17:20:00 UTC | static_showroom_contact_sheet | project/checkpoints/2026-08-13-deeper-showroom-palette/deeper-showroom-palette-contact-sheet.png | Playwright + project-flow-manager | 六个 MuJoCo ready 页面 | 中灰主体背景；加深双蓝棋盘；白线和模型照明不变 |
 | 2026-08-12 17:08:52 UTC | pages_deployment | https://shuaijun-liu.github.io/demo/?scene=demo01 | GitHub Actions + public Chromium probe | main@185e2c0 / run 31620939411 | 无全局页首；双蓝棋盘格与白线；MuJoCo ready；0 error / 0 request failure |
 | 2026-08-12 17:02:52 UTC | static_showroom_contact_sheet | project/checkpoints/2026-08-13-mujoco-checker-floor/mujoco-checker-floor-contact-sheet.png | Playwright + project-flow-manager | 六个 MuJoCo ready 页面 | 2424x1016 3x2 总览；双蓝棋盘格与白线；无全局页首 |
 | 2026-08-12 17:02:52 UTC | implementation_plan_md | docs/superpowers/plans/2026-08-13-mujoco-checker-floor.md | superpowers:writing-plans | 已确认视觉规格 | 页首、程序化地面、六场景浏览器与 Pages 验收 |
