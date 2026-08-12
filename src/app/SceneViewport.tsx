@@ -1,6 +1,6 @@
 import { OrbitControls } from "@react-three/drei";
 import { MujocoCanvas, MujocoProvider } from "mujoco-react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getSceneFile } from "../scenarios/sceneFiles";
 import type { VisualScenarioId } from "../scenarios/visualCatalog";
 
@@ -9,10 +9,10 @@ interface SceneViewportProps {
   readonly armCount: 3 | 4;
 }
 
-const ARM_HOME = [0, -0.7, 0, -2.2, 0, 1.6, 0.78] as const;
+const ARM_HOME_CONTROLS = [0, -0.7, 0, -2.2, 0, 1.6, 0.78, 255] as const;
 
-function createHomeJoints(armCount: number) {
-  return Array.from({ length: armCount }, () => ARM_HOME).flat();
+export function createHomeControls(armCount: number) {
+  return Array.from({ length: armCount }, () => ARM_HOME_CONTROLS).flat();
 }
 
 function webGlAvailable() {
@@ -20,15 +20,20 @@ function webGlAvailable() {
 }
 
 export function SceneViewport({ sceneId, armCount }: SceneViewportProps) {
+  const [renderState, setRenderState] = useState<"loading" | "ready" | "error">("loading");
   const config = useMemo(
     () => ({
       src: new URL(".", document.baseURI).toString(),
       sceneFile: getSceneFile(sceneId),
       numArmJoints: 7,
-      homeJoints: createHomeJoints(armCount),
+      homeJoints: createHomeControls(armCount),
     }),
     [armCount, sceneId],
   );
+
+  useEffect(() => {
+    setRenderState("loading");
+  }, [sceneId]);
 
   if (!webGlAvailable()) {
     return (
@@ -37,6 +42,7 @@ export function SceneViewport({ sceneId, armCount }: SceneViewportProps) {
         data-testid="scene-viewport"
         data-scene-id={sceneId}
         data-up-axis="z"
+        data-render-state="fallback"
       >
         <div className="fallback-cell">
           <span>3D WORKCELL</span>
@@ -53,6 +59,7 @@ export function SceneViewport({ sceneId, armCount }: SceneViewportProps) {
       data-testid="scene-viewport"
       data-scene-id={sceneId}
       data-up-axis="z"
+      data-render-state={renderState}
     >
       <MujocoProvider>
         <MujocoCanvas
@@ -60,6 +67,8 @@ export function SceneViewport({ sceneId, armCount }: SceneViewportProps) {
           config={config}
           paused
           speed={0}
+          onReady={() => setRenderState("ready")}
+          onError={() => setRenderState("error")}
           shadows
           camera={{ position: [3.5, -4.5, 3.4], fov: 36, near: 0.01, far: 100 }}
           gl={{ antialias: true, alpha: false }}

@@ -17,7 +17,7 @@
   <worldbody>
     <light pos="2 -2 5" dir="-0.3 0.25 -1" directional="true" diffuse="0.9 0.92 0.95"/>
     <light pos="-3 2 3" dir="0.6 -0.2 -1" directional="true" diffuse="0.68 0.69 0.67"/>
-    <geom type="plane" size="5 5 0.04" material="floor"/>
+    <geom type="plane" size="5 5 0.04" material="floor" group="3"/>
 
     <!-- Large-fixture deck -->
     <geom name="fixture_deck" type="box" pos="0 0 0.5" size="1.18 0.58 0.08" material="steel"/>
