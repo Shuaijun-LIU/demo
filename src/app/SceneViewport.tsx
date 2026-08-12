@@ -1,10 +1,12 @@
 import { OrbitControls } from "@react-three/drei";
-import { MujocoCanvas, MujocoProvider, useBeforePhysicsStep } from "mujoco-react";
+import { MujocoCanvas, MujocoProvider } from "mujoco-react";
 import { Suspense, useMemo } from "react";
 import type { VisualScenarioId } from "../scenarios/visualCatalog";
 import { getSceneFile } from "../scenarios/sceneFiles";
 import { getRealisticAssetSummary, RealisticAssetLayer } from "./RealisticAssetLayer";
 import type { LineId } from "./urlState";
+import { ScenarioMotionController } from "./ScenarioMotionController";
+import { SceneReadySignal } from "./SceneReadySignal";
 
 export type PreviewMode = "idle" | "playing" | "paused";
 
@@ -21,28 +23,6 @@ const ARM_HOME = [0, -0.7, 0, -2.2, 0, 1.6, 0.78, 255];
 
 function createHomeJoints(armCount: number) {
   return Array.from({ length: armCount }, () => ARM_HOME).flat();
-}
-
-function MotionPreview({ active, armCount }: { active: boolean; armCount: number }) {
-  useBeforePhysicsStep((_model, data) => {
-    if (!active) return;
-
-    const time = data.time;
-    for (let arm = 0; arm < armCount; arm += 1) {
-      const actuator = arm * 8;
-      const phase = arm * 2.1;
-      data.ctrl[actuator] = Math.sin(time * 0.55 + phase) * 0.32;
-      data.ctrl[actuator + 1] = -0.7 + Math.sin(time * 0.72 + phase) * 0.14;
-      data.ctrl[actuator + 2] = Math.sin(time * 0.43 + phase + 0.8) * 0.24;
-      data.ctrl[actuator + 3] = -2.2 + Math.sin(time * 0.62 + phase) * 0.2;
-      data.ctrl[actuator + 4] = Math.sin(time * 0.38 + phase) * 0.18;
-      data.ctrl[actuator + 5] = 1.6 + Math.sin(time * 0.68 + phase + 0.4) * 0.16;
-      data.ctrl[actuator + 6] = 0.78 + Math.sin(time * 0.45 + phase) * 0.22;
-      data.ctrl[actuator + 7] = 180 + Math.sin(time * 1.1 + phase) * 55;
-    }
-  });
-
-  return null;
 }
 
 function webGlAvailable() {
@@ -100,8 +80,8 @@ export function SceneViewport({
         <MujocoCanvas
           key={`${sceneId}-${resetToken}`}
           config={config}
-          paused={mode !== "playing"}
-          speed={1}
+          paused={false}
+          speed={mode === "playing" ? 1 : 0}
           shadows
           camera={{ position: [3.4, -4.2, 3.8], fov: 36, near: 0.01, far: 100 }}
           gl={{ antialias: true, alpha: false }}
@@ -128,7 +108,8 @@ export function SceneViewport({
           <Suspense fallback={null}>
             {lineId === "line2" ? <RealisticAssetLayer sceneId={sceneId} /> : null}
           </Suspense>
-          <MotionPreview active={mode === "playing"} armCount={armCount} />
+          <ScenarioMotionController active={mode === "playing"} lineId={lineId} sceneId={sceneId} />
+          <SceneReadySignal message={armCount + " × Panda 与 " + (lineId === "line2" ? "Line2" : "Line1") + " 工位已加载"} onReady={onStatusChange} />
           <OrbitControls
             makeDefault
             target={[0, 0, 0.62]}
@@ -142,7 +123,7 @@ export function SceneViewport({
       </MujocoProvider>
       <div className="loading-corner">
         <span className="loading-pulse" />
-        {mode === "playing" ? "JOINT PREVIEW ACTIVE" : "SCENE READY"}
+        {mode === "playing" ? "TASK MOTION ACTIVE" : "SCENE READY"}
       </div>
     </div>
   );

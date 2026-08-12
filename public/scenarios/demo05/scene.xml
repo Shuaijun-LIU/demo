@@ -1,6 +1,6 @@
 <mujoco model="demo05 three panda smart pharmacy recovery">
   <compiler angle="radian" autolimits="true"/>
-  <option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option>
+  <option timestep="0.004" gravity="0 0 -9.81" integrator="implicitfast"/>
   <statistic center="0 0 0.75" extent="2.8"/>
   <visual><headlight diffuse="0.76 0.82 0.86" ambient="0.26 0.31 0.35" specular="0.16 0.16 0.16"/></visual>
   <asset>
@@ -50,21 +50,25 @@
     <!-- Prescription verification desk -->
     <geom name="rx_desk" type="box" pos="0 -0.18 0.62" size="0.75 0.35 0.055" material="steel"/>
     <geom name="rx_belt" type="box" pos="0 -0.34 0.71" size="0.58 0.13 0.025" material="shelf"/>
-    <geom name="tote" type="box" pos="-0.2 -0.34 0.8" size="0.2 0.12 0.08" material="cyan"/>
+    <geom name="tote" type="box" pos="-0.2 -0.34 0.8" size="0.2 0.12 0.08" material="cyan" group="3" contype="0" conaffinity="0"/>
     <geom name="verification_gate" type="box" pos="0.35 -0.18 1.08" size="0.22 0.04 0.32" material="steel"/>
     <geom name="scanner" type="box" pos="0.35 -0.24 1.11" size="0.09 0.055 0.06" material="violet"/>
     <geom name="return_bin" type="box" pos="0.63 -0.35 0.79" size="0.13 0.12 0.08" material="amber"/>
     <geom name="quarantine_bin" type="box" pos="0.86 -0.35 0.79" size="0.13 0.12 0.08" material="red"/>
 
     <!-- Three arm pedestals facing shelf and desk -->
-    <geom type="cylinder" pos="-1.1 -0.72 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="-1.1 -0.72 0.125" size="0.19 0.008" material="cyan"/>
-    <geom type="cylinder" pos="0 -0.95 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="0 -0.95 0.125" size="0.19 0.008" material="violet"/>
-    <geom type="cylinder" pos="1.1 -0.72 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="1.1 -0.72 0.125" size="0.19 0.008" material="amber"/>
-    <frame pos="-1.1 -0.72 0.13" euler="0 0 0.52"><attach model="panda" body="link0" prefix="arm1_"/></frame>
-    <frame pos="0 -0.95 0.13" euler="0 0 1.57"><attach model="panda" body="link0" prefix="arm2_"/></frame>
-    <frame pos="1.1 -0.72 0.13" euler="0 0 2.62"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+    <geom type="cylinder" pos="-1.1 -0.72 0.3375" size="0.18 0.3375" material="steel"/>
+    <geom type="cylinder" pos="-1.1 -0.72 0.685" size="0.19 0.008" material="cyan"/>
+    <geom type="cylinder" pos="0 -0.95 0.3375" size="0.18 0.3375" material="steel"/>
+    <geom type="cylinder" pos="0 -0.95 0.685" size="0.19 0.008" material="violet"/>
+    <geom type="cylinder" pos="1.1 -0.72 0.3375" size="0.18 0.3375" material="steel"/>
+    <geom type="cylinder" pos="1.1 -0.72 0.685" size="0.19 0.008" material="amber"/>
+    <frame pos="-1.1 -0.72 0.675" euler="0 0 0.52"><attach model="panda" body="link0" prefix="arm1_"/></frame>
+    <frame pos="0 -0.95 0.675" euler="0 0 1.57"><attach model="panda" body="link0" prefix="arm2_"/></frame>
+    <frame pos="1.1 -0.72 0.675" euler="0 0 2.62"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+    <body name="task_payload" pos="-0.2 -0.34 0.735">
+      <freejoint name="task_payload_free"/>
+      <geom name="task_payload_geom" type="box" pos="0 0 0.08" size="0.2 0.12 0.08" material="cyan" mass="0.22" friction="0.7 0.02 0.002"/>
+    </body>
   </worldbody>
 </mujoco>

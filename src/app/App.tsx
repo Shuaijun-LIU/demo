@@ -16,7 +16,7 @@ export function App() {
   const [activeScenarioId, setActiveScenarioId] = useState<ScenarioId>(initialLocation.sceneId);
   const [previewMode, setPreviewMode] = useState<PreviewMode>("idle");
   const [resetToken, setResetToken] = useState(0);
-  const [sceneStatus, setSceneStatus] = useState("正在初始化 Line2 场景");
+  const [sceneStatus, setSceneStatus] = useState("正在初始化 " + (initialLocation.lineId === "line2" ? "Line2" : "Line1") + " 场景");
   const [activeStageIndex, setActiveStageIndex] = useState(0);
   const line2Scenario = lineId === "line2" ? getScenario("line2", activeScenarioId) : null;
   const scenario = line2Scenario ?? getScenario("line1", activeScenarioId);

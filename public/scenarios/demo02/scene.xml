@@ -1,6 +1,6 @@
 <mujoco model="demo02 four panda automotive harness routing">
   <compiler angle="radian" autolimits="true"/>
-  <option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option>
+  <option timestep="0.004" gravity="0 0 -9.81" integrator="implicitfast"/>
   <statistic center="0 0 0.65" extent="2.8"/>
   <visual>
     <headlight diffuse="0.72 0.78 0.82" ambient="0.24 0.3 0.36" specular="0.18 0.18 0.18"/>
@@ -36,7 +36,7 @@
     <geom name="harness_main_3" type="capsule" fromto="0.34 0.12 0.72 0.78 0.2 0.72" size="0.027" material="cable"/>
     <geom name="branch_1" type="capsule" fromto="-0.34 -0.12 0.72 -0.28 0.3 0.72" size="0.02" material="cable"/>
     <geom name="branch_2" type="capsule" fromto="0.2 0.06 0.72 0.12 -0.34 0.72" size="0.02" material="cable"/>
-    <geom name="connector_a" type="box" pos="-0.84 -0.2 0.73" size="0.09 0.07 0.045" material="cyan"/>
+    <geom name="connector_a" type="box" pos="-0.84 -0.2 0.73" size="0.09 0.07 0.045" material="cyan" group="3" contype="0" conaffinity="0"/>
     <geom name="connector_b" type="box" pos="0.84 0.21 0.73" size="0.09 0.07 0.045" material="violet"/>
     <geom name="branch_connector_1" type="box" pos="-0.28 0.35 0.73" size="0.065 0.05 0.04" material="cyan"/>
     <geom name="branch_connector_2" type="box" pos="0.11 -0.38 0.73" size="0.065 0.05 0.04" material="violet"/>
@@ -52,17 +52,21 @@
     <geom name="vision_camera" type="box" pos="0.84 0 1.21" size="0.06 0.08 0.045" material="violet"/>
 
     <!-- Four arm pedestals -->
-    <geom type="cylinder" pos="-1.18 -0.8 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="-1.18 -0.8 0.125" size="0.19 0.008" material="cyan"/>
-    <geom type="cylinder" pos="-1.18 0.8 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="-1.18 0.8 0.125" size="0.19 0.008" material="violet"/>
-    <geom type="cylinder" pos="1.18 0.8 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="1.18 0.8 0.125" size="0.19 0.008" material="amber"/>
-    <geom type="cylinder" pos="1.18 -0.8 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="1.18 -0.8 0.125" size="0.19 0.008" material="cyan"/>
-    <frame pos="-1.18 -0.8 0.13" euler="0 0 0.6"><attach model="panda" body="link0" prefix="arm1_"/></frame>
-    <frame pos="-1.18 0.8 0.13" euler="0 0 -0.6"><attach model="panda" body="link0" prefix="arm2_"/></frame>
-    <frame pos="1.18 0.8 0.13" euler="0 0 -2.55"><attach model="panda" body="link0" prefix="arm3_"/></frame>
-    <frame pos="1.18 -0.8 0.13" euler="0 0 2.55"><attach model="panda" body="link0" prefix="arm4_"/></frame>
+    <geom type="cylinder" pos="-1.18 -0.8 0.3375" size="0.18 0.3375" material="steel"/>
+    <geom type="cylinder" pos="-1.18 -0.8 0.685" size="0.19 0.008" material="cyan"/>
+    <geom type="cylinder" pos="-1.18 0.8 0.3375" size="0.18 0.3375" material="steel"/>
+    <geom type="cylinder" pos="-1.18 0.8 0.685" size="0.19 0.008" material="violet"/>
+    <geom type="cylinder" pos="1.18 0.8 0.3375" size="0.18 0.3375" material="steel"/>
+    <geom type="cylinder" pos="1.18 0.8 0.685" size="0.19 0.008" material="amber"/>
+    <geom type="cylinder" pos="1.18 -0.8 0.3375" size="0.18 0.3375" material="steel"/>
+    <geom type="cylinder" pos="1.18 -0.8 0.685" size="0.19 0.008" material="cyan"/>
+    <frame pos="-1.18 -0.8 0.675" euler="0 0 0.6"><attach model="panda" body="link0" prefix="arm1_"/></frame>
+    <frame pos="-1.18 0.8 0.675" euler="0 0 -0.6"><attach model="panda" body="link0" prefix="arm2_"/></frame>
+    <frame pos="1.18 0.8 0.675" euler="0 0 -2.55"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+    <frame pos="1.18 -0.8 0.675" euler="0 0 2.55"><attach model="panda" body="link0" prefix="arm4_"/></frame>
+    <body name="task_payload" pos="-0.84 -0.2 0.675">
+      <freejoint name="task_payload_free"/>
+      <geom name="task_payload_geom" type="box" pos="0 0 0.045" size="0.09 0.07 0.045" material="cyan" mass="0.12" friction="0.8 0.02 0.002"/>
+    </body>
   </worldbody>
 </mujoco>

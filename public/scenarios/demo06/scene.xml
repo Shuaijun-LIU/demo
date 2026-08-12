@@ -1,6 +1,6 @@
 <mujoco model="demo06 three panda Lingnan fruit sorting and pitting">
   <compiler angle="radian" autolimits="true"/>
-  <option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option>
+  <option timestep="0.004" gravity="0 0 -9.81" integrator="implicitfast"/>
   <statistic center="0 0 0.68" extent="2.8"/>
   <visual><headlight diffuse="0.76 0.82 0.86" ambient="0.26 0.31 0.35" specular="0.16 0.16 0.16"/></visual>
   <asset>
@@ -31,7 +31,7 @@
 
     <!-- Fruit singulation and vision grading -->
     <geom name="infeed" type="box" pos="-0.47 -0.29 0.7" size="0.43 0.14 0.025" material="belt"/>
-    <geom type="sphere" pos="-0.75 -0.29 0.79" size="0.075" material="fruit_orange"/>
+    <geom name="fruit_payload_proxy" type="sphere" pos="-0.75 -0.29 0.79" size="0.075" material="fruit_orange" group="3" contype="0" conaffinity="0"/>
     <geom type="sphere" pos="-0.53 -0.29 0.8" size="0.085" material="fruit_gold"/>
     <geom type="sphere" pos="-0.29 -0.29 0.785" size="0.07" material="fruit_orange"/>
     <geom type="sphere" pos="-0.08 -0.29 0.8" size="0.085" material="red"/>
@@ -56,14 +56,18 @@
     <geom type="sphere" pos="0.71 -0.34 0.87" size="0.035" material="pit"/>
 
     <!-- Three arm pedestals -->
-    <geom type="cylinder" pos="-1.08 -0.74 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="-1.08 -0.74 0.125" size="0.19 0.008" material="cyan"/>
-    <geom type="cylinder" pos="0 0.98 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="0 0.98 0.125" size="0.19 0.008" material="violet"/>
-    <geom type="cylinder" pos="1.08 -0.74 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="1.08 -0.74 0.125" size="0.19 0.008" material="amber"/>
-    <frame pos="-1.08 -0.74 0.13" euler="0 0 0.62"><attach model="panda" body="link0" prefix="arm1_"/></frame>
-    <frame pos="0 0.98 0.13" euler="0 0 -1.57"><attach model="panda" body="link0" prefix="arm2_"/></frame>
-    <frame pos="1.08 -0.74 0.13" euler="0 0 2.52"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+    <geom type="cylinder" pos="-1.08 -0.74 0.3325" size="0.18 0.3325" material="steel"/>
+    <geom type="cylinder" pos="-1.08 -0.74 0.675" size="0.19 0.008" material="cyan"/>
+    <geom type="cylinder" pos="0 0.98 0.3325" size="0.18 0.3325" material="steel"/>
+    <geom type="cylinder" pos="0 0.98 0.675" size="0.19 0.008" material="violet"/>
+    <geom type="cylinder" pos="1.08 -0.74 0.3325" size="0.18 0.3325" material="steel"/>
+    <geom type="cylinder" pos="1.08 -0.74 0.675" size="0.19 0.008" material="amber"/>
+    <frame pos="-1.08 -0.74 0.665" euler="0 0 0.62"><attach model="panda" body="link0" prefix="arm1_"/></frame>
+    <frame pos="0 0.98 0.665" euler="0 0 -1.57"><attach model="panda" body="link0" prefix="arm2_"/></frame>
+    <frame pos="1.08 -0.74 0.665" euler="0 0 2.52"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+    <body name="task_payload" pos="-0.75 -0.29 0.725">
+      <freejoint name="task_payload_free"/>
+      <geom name="task_payload_geom" type="sphere" pos="0 0 0.075" size="0.075" material="fruit_orange" mass="0.18" friction="0.85 0.02 0.002"/>
+    </body>
   </worldbody>
 </mujoco>

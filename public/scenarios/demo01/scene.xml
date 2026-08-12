@@ -1,8 +1,6 @@
 <mujoco model="demo01 three panda electronics workcell">
   <compiler angle="radian" autolimits="true"/>
-  <option timestep="0.004" gravity="0 0 0" integrator="implicitfast">
-    <flag contact="disable"/>
-  </option>
+  <option timestep="0.004" gravity="0 0 -9.81" integrator="implicitfast"/>
 
   <statistic center="0 0 0.65" extent="2.6"/>
 
@@ -46,7 +44,7 @@
     <geom name="feed_belt" type="box" pos="-0.34 -0.29 0.715" size="0.49 0.13 0.028" material="belt"/>
     <geom name="feed_rail_l" type="box" pos="-0.34 -0.43 0.755" size="0.51 0.014 0.04" material="cyan"/>
     <geom name="feed_rail_r" type="box" pos="-0.34 -0.15 0.755" size="0.51 0.014 0.04" material="cyan"/>
-    <geom name="p1" type="box" pos="-0.68 -0.29 0.77" size="0.055 0.043 0.018" material="part"/>
+    <geom name="p1" type="box" pos="-0.68 -0.29 0.77" size="0.055 0.043 0.018" material="part" group="3" contype="0" conaffinity="0"/>
     <geom name="p2" type="box" pos="-0.51 -0.29 0.77" size="0.055 0.043 0.018" material="part"/>
     <geom name="p3" type="box" pos="-0.34 -0.29 0.77" size="0.055 0.043 0.018" material="red"/>
     <geom name="p4" type="box" pos="-0.17 -0.29 0.77" size="0.055 0.043 0.018" material="part"/>
@@ -72,21 +70,25 @@
     <geom name="tray_ng" type="box" pos="0.8 0.08 0.72" size="0.12 0.1 0.025" material="red"/>
 
     <!-- Arm pedestals and colored role rings -->
-    <geom name="pedestal_1" type="cylinder" pos="-1.03 -0.72 0.06" size="0.18 0.06" material="steel"/>
-    <geom name="role_ring_1" type="cylinder" pos="-1.03 -0.72 0.125" size="0.19 0.008" material="cyan"/>
-    <geom name="pedestal_2" type="cylinder" pos="0 0.96 0.06" size="0.18 0.06" material="steel"/>
-    <geom name="role_ring_2" type="cylinder" pos="0 0.96 0.125" size="0.19 0.008" material="violet"/>
-    <geom name="pedestal_3" type="cylinder" pos="1.03 -0.72 0.06" size="0.18 0.06" material="steel"/>
-    <geom name="role_ring_3" type="cylinder" pos="1.03 -0.72 0.125" size="0.19 0.008" material="amber"/>
+    <geom name="pedestal_1" type="cylinder" pos="-1.03 -0.72 0.3375" size="0.18 0.3375" material="steel"/>
+    <geom name="role_ring_1" type="cylinder" pos="-1.03 -0.72 0.685" size="0.19 0.008" material="cyan"/>
+    <geom name="pedestal_2" type="cylinder" pos="0 0.96 0.3375" size="0.18 0.3375" material="steel"/>
+    <geom name="role_ring_2" type="cylinder" pos="0 0.96 0.685" size="0.19 0.008" material="violet"/>
+    <geom name="pedestal_3" type="cylinder" pos="1.03 -0.72 0.3375" size="0.18 0.3375" material="steel"/>
+    <geom name="role_ring_3" type="cylinder" pos="1.03 -0.72 0.685" size="0.19 0.008" material="amber"/>
 
-    <frame pos="-1.03 -0.72 0.13" euler="0 0 0.62">
+    <frame pos="-1.03 -0.72 0.675" euler="0 0 0.62">
       <attach model="panda" body="link0" prefix="arm1_"/>
     </frame>
-    <frame pos="0 0.96 0.13" euler="0 0 -1.57">
+    <frame pos="0 0.96 0.675" euler="0 0 -1.57">
       <attach model="panda" body="link0" prefix="arm2_"/>
     </frame>
-    <frame pos="1.03 -0.72 0.13" euler="0 0 2.52">
+    <frame pos="1.03 -0.72 0.675" euler="0 0 2.52">
       <attach model="panda" body="link0" prefix="arm3_"/>
     </frame>
+    <body name="task_payload" pos="-0.68 -0.29 0.743">
+      <freejoint name="task_payload_free"/>
+      <geom name="task_payload_geom" type="box" pos="0 0 0.018" size="0.055 0.043 0.018" material="part" mass="0.08" friction="0.8 0.02 0.002"/>
+    </body>
   </worldbody>
 </mujoco>

@@ -1,5 +1,5 @@
 <mujoco model="line2 demo04 supported assembly">
-  <compiler angle="radian" autolimits="true"/><option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option><statistic center="0 0 0.76" extent="3"/>
+  <compiler angle="radian" autolimits="true"/><option timestep="0.004" gravity="0 0 -9.81" integrator="implicitfast"/><statistic center="0 0 0.76" extent="3"/>
   <visual><headlight diffuse="0.76 0.76 0.73" ambient="0.3 0.3 0.29" specular="0.14 0.14 0.14"/></visual>
   <asset>
     <model name="panda" file="../../../models/franka/panda.xml"/>
@@ -17,14 +17,18 @@
     <geom name="fastener_f1" type="cylinder" pos="0.06 0.055 1.17" size="0.035 0.05" euler="1.57 0 0" material="role3"/>
     <geom name="fastener_f2" type="cylinder" pos="0.25 0.055 1.0" size="0.035 0.05" euler="1.57 0 0" material="fault"/>
     <geom name="tool_dock" type="box" pos="0.76 -0.38 0.76" size="0.16 0.11 0.07" material="frame"/>
-    <geom name="electric_driver" type="capsule" fromto="0.72 -0.38 0.85 0.72 -0.38 1.12" size="0.04" material="role3"/>
+    <geom name="electric_driver" type="capsule" fromto="0.72 -0.38 0.85 0.72 -0.38 1.12" size="0.04" material="role3" group="3" contype="0" conaffinity="0"/>
     <geom name="inspection_probe" type="capsule" fromto="0.84 -0.38 0.84 0.84 -0.38 1.08" size="0.02" material="role4"/>
-    <geom name="seam_scanner" type="box" pos="0.58 0.38 0.95" size="0.1 0.08 0.2" material="dark"/>
-    <geom name="bolt_tray" type="box" pos="-0.68 0.38 0.76" size="0.18 0.11 0.04" material="surface"/>
-    <geom type="cylinder" pos="-1.25 -0.86 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="-1.25 -0.86 0.145" size="0.19 0.008" material="role1"/>
-    <geom type="cylinder" pos="-1.25 0.86 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="-1.25 0.86 0.145" size="0.19 0.008" material="role2"/>
-    <geom type="cylinder" pos="1.25 -0.86 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="1.25 -0.86 0.145" size="0.19 0.008" material="role3"/>
-    <geom type="cylinder" pos="1.25 0.86 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="1.25 0.86 0.145" size="0.19 0.008" material="role4"/>
-    <frame pos="-1.25 -0.86 0.15" euler="0 0 0.58"><attach model="panda" body="link0" prefix="arm1_"/></frame><frame pos="-1.25 0.86 0.15" euler="0 0 -0.58"><attach model="panda" body="link0" prefix="arm2_"/></frame><frame pos="1.25 -0.86 0.15" euler="0 0 2.56"><attach model="panda" body="link0" prefix="arm3_"/></frame><frame pos="1.25 0.86 0.15" euler="0 0 -2.56"><attach model="panda" body="link0" prefix="arm4_"/></frame>
+    <geom name="seam_scanner" type="box" pos="0.58 0.38 0.95" size="0.1 0.08 0.2" material="dark" group="3"/>
+    <geom name="bolt_tray" type="box" pos="-0.68 0.38 0.76" size="0.18 0.11 0.04" material="surface" group="3"/>
+    <geom type="cylinder" pos="-1.25 -0.86 0.365" size="0.18 0.365" material="frame"/><geom type="cylinder" pos="-1.25 -0.86 0.74" size="0.19 0.008" material="role1"/>
+    <geom type="cylinder" pos="-1.25 0.86 0.365" size="0.18 0.365" material="frame"/><geom type="cylinder" pos="-1.25 0.86 0.74" size="0.19 0.008" material="role2"/>
+    <geom type="cylinder" pos="1.25 -0.86 0.365" size="0.18 0.365" material="frame"/><geom type="cylinder" pos="1.25 -0.86 0.74" size="0.19 0.008" material="role3"/>
+    <geom type="cylinder" pos="1.25 0.86 0.365" size="0.18 0.365" material="frame"/><geom type="cylinder" pos="1.25 0.86 0.74" size="0.19 0.008" material="role4"/>
+    <frame pos="-1.25 -0.86 0.73" euler="0 0 0.58"><attach model="panda" body="link0" prefix="arm1_"/></frame><frame pos="-1.25 0.86 0.73" euler="0 0 -0.58"><attach model="panda" body="link0" prefix="arm2_"/></frame><frame pos="1.25 -0.86 0.73" euler="0 0 2.56"><attach model="panda" body="link0" prefix="arm3_"/></frame><frame pos="1.25 0.86 0.73" euler="0 0 -2.56"><attach model="panda" body="link0" prefix="arm4_"/></frame>
+    <body name="task_payload" pos="0.72 -0.38 0.83">
+      <freejoint name="task_payload_free"/>
+      <geom name="task_payload_geom" type="capsule" pos="0 0 0.09" size="0.018 0.072" group="3" mass="0.24" friction="0.75 0.02 0.002"/>
+    </body>
   </worldbody>
 </mujoco>

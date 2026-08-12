@@ -1,6 +1,6 @@
 <mujoco model="line2 demo02 automotive harness">
   <compiler angle="radian" autolimits="true"/>
-  <option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option>
+  <option timestep="0.004" gravity="0 0 -9.81" integrator="implicitfast"/>
   <statistic center="0 0 0.72" extent="2.9"/>
   <visual><headlight diffuse="0.77 0.77 0.73" ambient="0.3 0.3 0.29" specular="0.12 0.12 0.12"/></visual>
   <asset>
@@ -16,8 +16,8 @@
     <geom name="routing_board" type="box" pos="0 0 0.7" size="1.05 0.62 0.055" material="board"/>
     <geom type="box" pos="-0.94 0 0.39" size="0.06 0.53 0.31" material="frame"/><geom type="box" pos="0.94 0 0.39" size="0.06 0.53 0.31" material="frame"/>
     <geom type="box" pos="0 -0.52 0.39" size="0.88 0.06 0.31" material="frame"/><geom type="box" pos="0 0.52 0.39" size="0.88 0.06 0.31" material="frame"/>
-    <geom name="connector_s0" type="box" pos="-0.82 -0.23 0.79" size="0.11 0.08 0.055" material="role1"/>
-    <geom name="connector_s1" type="box" pos="0.82 0.24 0.79" size="0.11 0.08 0.055" material="role3"/>
+    <geom name="connector_s0" type="box" pos="-0.82 -0.23 0.79" size="0.11 0.08 0.055" material="role1" group="3" contype="0" conaffinity="0"/>
+    <geom name="connector_s1" type="box" pos="0.82 0.24 0.79" size="0.11 0.08 0.055" material="role3" group="3"/>
     <geom name="harness_1" type="capsule" fromto="-0.72 -0.2 0.79 -0.24 -0.13 0.79" size="0.024" material="cable"/>
     <geom name="harness_2" type="capsule" fromto="-0.24 -0.13 0.79 0.3 0.1 0.79" size="0.024" material="cable"/>
     <geom name="harness_3" type="capsule" fromto="0.3 0.1 0.79 0.73 0.21 0.79" size="0.024" material="cable"/>
@@ -29,15 +29,19 @@
     <geom name="tool_dock" type="box" pos="0.75 -0.43 0.8" size="0.16 0.1 0.07" material="frame"/>
     <geom name="clip_press" type="capsule" fromto="0.75 -0.43 0.88 0.75 -0.43 1.08" size="0.027" material="role4"/>
     <geom name="tension_meter" type="box" pos="-0.67 0.41 0.82" size="0.15 0.1 0.09" material="dark"/>
-    <geom name="inspection_camera" type="box" pos="0.54 0.47 1.04" size="0.09 0.07 0.18" material="frame"/>
+    <geom name="inspection_camera" type="box" pos="0.54 0.47 1.04" size="0.09 0.07 0.18" material="frame" group="3"/>
 
-    <geom type="cylinder" pos="-1.22 -0.85 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="-1.22 -0.85 0.145" size="0.19 0.008" material="role1"/>
-    <geom type="cylinder" pos="-1.22 0.85 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="-1.22 0.85 0.145" size="0.19 0.008" material="role2"/>
-    <geom type="cylinder" pos="1.22 0.85 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="1.22 0.85 0.145" size="0.19 0.008" material="role3"/>
-    <geom type="cylinder" pos="1.22 -0.85 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="1.22 -0.85 0.145" size="0.19 0.008" material="role4"/>
-    <frame pos="-1.22 -0.85 0.15" euler="0 0 0.58"><attach model="panda" body="link0" prefix="arm1_"/></frame>
-    <frame pos="-1.22 0.85 0.15" euler="0 0 -0.58"><attach model="panda" body="link0" prefix="arm2_"/></frame>
-    <frame pos="1.22 0.85 0.15" euler="0 0 -2.56"><attach model="panda" body="link0" prefix="arm3_"/></frame>
-    <frame pos="1.22 -0.85 0.15" euler="0 0 2.56"><attach model="panda" body="link0" prefix="arm4_"/></frame>
+    <geom type="cylinder" pos="-1.22 -0.85 0.3775" size="0.18 0.3775" material="frame"/><geom type="cylinder" pos="-1.22 -0.85 0.765" size="0.19 0.008" material="role1"/>
+    <geom type="cylinder" pos="-1.22 0.85 0.3775" size="0.18 0.3775" material="frame"/><geom type="cylinder" pos="-1.22 0.85 0.765" size="0.19 0.008" material="role2"/>
+    <geom type="cylinder" pos="1.22 0.85 0.3775" size="0.18 0.3775" material="frame"/><geom type="cylinder" pos="1.22 0.85 0.765" size="0.19 0.008" material="role3"/>
+    <geom type="cylinder" pos="1.22 -0.85 0.3775" size="0.18 0.3775" material="frame"/><geom type="cylinder" pos="1.22 -0.85 0.765" size="0.19 0.008" material="role4"/>
+    <frame pos="-1.22 -0.85 0.755" euler="0 0 0.58"><attach model="panda" body="link0" prefix="arm1_"/></frame>
+    <frame pos="-1.22 0.85 0.755" euler="0 0 -0.58"><attach model="panda" body="link0" prefix="arm2_"/></frame>
+    <frame pos="1.22 0.85 0.755" euler="0 0 -2.56"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+    <frame pos="1.22 -0.85 0.755" euler="0 0 2.56"><attach model="panda" body="link0" prefix="arm4_"/></frame>
+    <body name="task_payload" pos="-0.82 -0.23 0.755">
+      <freejoint name="task_payload_free"/>
+      <geom name="task_payload_geom" type="box" pos="0 0 0.012" size="0.035 0.038 0.012" group="3" mass="0.12" friction="0.8 0.02 0.002"/>
+    </body>
   </worldbody>
 </mujoco>

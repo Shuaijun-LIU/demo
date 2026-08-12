@@ -1,6 +1,6 @@
 <mujoco model="demo04 four panda large component assembly">
   <compiler angle="radian" autolimits="true"/>
-  <option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option>
+  <option timestep="0.004" gravity="0 0 -9.81" integrator="implicitfast"/>
   <statistic center="0 0 0.72" extent="3"/>
   <visual><headlight diffuse="0.74 0.8 0.84" ambient="0.25 0.3 0.34" specular="0.18 0.18 0.18"/></visual>
   <asset>
@@ -40,7 +40,7 @@
     <geom type="cylinder" pos="0.72 -0.37 0.69" size="0.035 0.045" material="green"/>
     <geom type="cylinder" pos="0.82 -0.37 0.69" size="0.035 0.045" material="red"/>
     <geom name="brace_rack" type="box" pos="-0.66 0.38 0.69" size="0.28 0.11 0.09" material="steel"/>
-    <geom name="spare_brace" type="box" pos="-0.66 0.38 0.83" size="0.25 0.055 0.055" material="beam"/>
+    <geom name="spare_brace" type="box" pos="-0.66 0.38 0.83" size="0.25 0.055 0.055" material="beam" group="3" contype="0" conaffinity="0"/>
 
     <!-- Safety-light curtain posts -->
     <geom type="box" pos="-1.32 -0.62 0.8" size="0.025 0.025 0.8" material="red"/>
@@ -49,17 +49,21 @@
     <geom type="box" pos="1.32 0.62 0.8" size="0.025 0.025 0.8" material="red"/>
 
     <!-- Four arm pedestals -->
-    <geom type="cylinder" pos="-1.2 -0.86 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="-1.2 -0.86 0.125" size="0.19 0.008" material="cyan"/>
-    <geom type="cylinder" pos="-1.2 0.86 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="-1.2 0.86 0.125" size="0.19 0.008" material="violet"/>
-    <geom type="cylinder" pos="1.2 0.86 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="1.2 0.86 0.125" size="0.19 0.008" material="amber"/>
-    <geom type="cylinder" pos="1.2 -0.86 0.06" size="0.18 0.06" material="steel"/>
-    <geom type="cylinder" pos="1.2 -0.86 0.125" size="0.19 0.008" material="cyan"/>
-    <frame pos="-1.2 -0.86 0.13" euler="0 0 0.62"><attach model="panda" body="link0" prefix="arm1_"/></frame>
-    <frame pos="-1.2 0.86 0.13" euler="0 0 -0.62"><attach model="panda" body="link0" prefix="arm2_"/></frame>
-    <frame pos="1.2 0.86 0.13" euler="0 0 -2.52"><attach model="panda" body="link0" prefix="arm3_"/></frame>
-    <frame pos="1.2 -0.86 0.13" euler="0 0 2.52"><attach model="panda" body="link0" prefix="arm4_"/></frame>
+    <geom type="cylinder" pos="-1.2 -0.86 0.29" size="0.18 0.29" material="steel"/>
+    <geom type="cylinder" pos="-1.2 -0.86 0.59" size="0.19 0.008" material="cyan"/>
+    <geom type="cylinder" pos="-1.2 0.86 0.29" size="0.18 0.29" material="steel"/>
+    <geom type="cylinder" pos="-1.2 0.86 0.59" size="0.19 0.008" material="violet"/>
+    <geom type="cylinder" pos="1.2 0.86 0.29" size="0.18 0.29" material="steel"/>
+    <geom type="cylinder" pos="1.2 0.86 0.59" size="0.19 0.008" material="amber"/>
+    <geom type="cylinder" pos="1.2 -0.86 0.29" size="0.18 0.29" material="steel"/>
+    <geom type="cylinder" pos="1.2 -0.86 0.59" size="0.19 0.008" material="cyan"/>
+    <frame pos="-1.2 -0.86 0.58" euler="0 0 0.62"><attach model="panda" body="link0" prefix="arm1_"/></frame>
+    <frame pos="-1.2 0.86 0.58" euler="0 0 -0.62"><attach model="panda" body="link0" prefix="arm2_"/></frame>
+    <frame pos="1.2 0.86 0.58" euler="0 0 -2.52"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+    <frame pos="1.2 -0.86 0.58" euler="0 0 2.52"><attach model="panda" body="link0" prefix="arm4_"/></frame>
+    <body name="task_payload" pos="-0.66 0.38 0.78">
+      <freejoint name="task_payload_free"/>
+      <geom name="task_payload_geom" type="box" pos="0 0 0.055" size="0.25 0.055 0.055" material="beam" mass="0.8" friction="0.75 0.02 0.002"/>
+    </body>
   </worldbody>
 </mujoco>

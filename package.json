@@ -12,6 +12,7 @@
     "test:unit": "vitest run --config vitest.config.ts",
     "test:contract": "vitest run --config vitest.contract.config.ts",
     "test:e2e": "playwright test",
+    "test:scenes": "node scripts/compile-scenes.mjs",
     "test:all": "npm run typecheck && npm run test:unit && npm run test:contract"
   },
   "dependencies": {

@@ -1,5 +1,5 @@
 <mujoco model="line2 demo06 fruit processing">
-  <compiler angle="radian" autolimits="true"/><option timestep="0.004" gravity="0 0 0" integrator="implicitfast"><flag contact="disable"/></option><statistic center="0 0 0.72" extent="2.8"/>
+  <compiler angle="radian" autolimits="true"/><option timestep="0.004" gravity="0 0 -9.81" integrator="implicitfast"/><statistic center="0 0 0.72" extent="2.8"/>
   <visual><headlight diffuse="0.79 0.77 0.7" ambient="0.31 0.3 0.27" specular="0.1 0.1 0.1"/></visual>
   <asset>
     <model name="panda" file="../../../models/franka/panda.xml"/>
@@ -10,21 +10,25 @@
   <worldbody>
     <light pos="3 -2 5" dir="-0.4 0.25 -1" directional="true" diffuse="0.87 0.81 0.7"/><light pos="-3 2 3" dir="0.6 -0.3 -1" directional="true" diffuse="0.35 0.39 0.37"/><geom name="floor" type="plane" size="5 5 0.04" material="floor"/>
     <geom name="feed_table" type="box" pos="-0.55 -0.22 0.65" size="0.46 0.27 0.07" material="surface"/>
-    <geom name="fruit_tray" type="box" pos="-0.6 -0.23 0.75" size="0.33 0.2 0.035" material="dark"/>
-    <geom name="g1" type="sphere" pos="-0.78 -0.3 0.83" size="0.075" material="fruit"/><geom name="g2" type="sphere" pos="-0.59 -0.3 0.83" size="0.07" material="unripe"/><geom name="g3" type="sphere" pos="-0.4 -0.3 0.83" size="0.078" material="fruit"/>
-    <geom name="g4" type="sphere" pos="-0.75 -0.12 0.83" size="0.073" material="fault"/><geom name="g5" type="sphere" pos="-0.55 -0.12 0.83" size="0.08" material="fruit"/><geom name="g6" type="sphere" pos="-0.35 -0.12 0.83" size="0.074" material="fruit"/>
+    <geom name="fruit_tray" type="box" pos="-0.6 -0.23 0.75" size="0.33 0.2 0.035" material="dark" group="3"/>
+    <geom name="g1" type="sphere" pos="-0.78 -0.3 0.83" size="0.075" material="fruit" group="3" contype="0" conaffinity="0"/><geom name="g2" type="sphere" pos="-0.59 -0.3 0.83" size="0.07" material="unripe" group="3"/><geom name="g3" type="sphere" pos="-0.4 -0.3 0.83" size="0.078" material="fruit" group="3"/>
+    <geom name="g4" type="sphere" pos="-0.75 -0.12 0.83" size="0.073" material="fault"/><geom name="g5" type="sphere" pos="-0.55 -0.12 0.83" size="0.08" material="fruit" group="3"/><geom name="g6" type="sphere" pos="-0.35 -0.12 0.83" size="0.074" material="fruit"/>
     <geom name="vision_turntable" type="cylinder" pos="-0.08 -0.25 0.76" size="0.15 0.04" material="role1"/>
     <geom name="vision_post" type="box" pos="-0.08 -0.04 0.98" size="0.04 0.04 0.25" material="frame"/><geom name="vision_camera" type="box" pos="-0.08 -0.09 1.16" size="0.07 0.06 0.055" material="dark"/>
     <geom name="handoff_pad" type="cylinder" pos="0.13 -0.05 0.75" size="0.13 0.025" material="role2"/>
     <geom name="pitter" type="box" pos="0.46 0.06 0.72" size="0.21 0.2 0.08" material="frame"/><geom name="pitter_fixture" type="cylinder" pos="0.46 0.06 0.84" size="0.11 0.045" material="dark"/>
     <geom name="pitting_head" type="capsule" fromto="0.46 0.06 0.95 0.46 0.06 1.25" size="0.035" material="role2"/><geom name="pitter_bridge" type="box" pos="0.46 0.2 1.13" size="0.16 0.04 0.2" material="frame"/>
     <geom name="rework" type="box" pos="0.08 0.35 0.76" size="0.16 0.12 0.035" material="role3"/>
-    <geom name="product_tray" type="box" pos="0.6 0.4 0.74" size="0.25 0.17 0.04" material="pass"/>
+    <geom name="product_tray" type="box" pos="0.6 0.4 0.74" size="0.25 0.17 0.04" material="pass" group="3"/>
     <geom name="unripe_bin" type="box" pos="-0.36 0.4 0.72" size="0.15 0.13 0.08" material="unripe"/><geom name="ng_bin" type="box" pos="-0.7 0.4 0.72" size="0.15 0.13 0.08" material="fault"/><geom name="pit_bin" type="box" pos="0.82 0.03 0.72" size="0.13 0.12 0.08" material="dark"/>
     <geom name="soft_gripper_dock" type="box" pos="-0.86 0.12 0.76" size="0.13 0.09 0.06" material="frame"/>
-    <geom type="cylinder" pos="-1.14 -0.82 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="-1.14 -0.82 0.145" size="0.19 0.008" material="role1"/>
-    <geom type="cylinder" pos="0 1.04 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="0 1.04 0.145" size="0.19 0.008" material="role2"/>
-    <geom type="cylinder" pos="1.14 -0.82 0.07" size="0.18 0.07" material="frame"/><geom type="cylinder" pos="1.14 -0.82 0.145" size="0.19 0.008" material="role3"/>
-    <frame pos="-1.14 -0.82 0.15" euler="0 0 0.62"><attach model="panda" body="link0" prefix="arm1_"/></frame><frame pos="0 1.04 0.15" euler="0 0 -1.57"><attach model="panda" body="link0" prefix="arm2_"/></frame><frame pos="1.14 -0.82 0.15" euler="0 0 2.5"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+    <geom type="cylinder" pos="-1.14 -0.82 0.36" size="0.18 0.36" material="frame"/><geom type="cylinder" pos="-1.14 -0.82 0.73" size="0.19 0.008" material="role1"/>
+    <geom type="cylinder" pos="0 1.04 0.36" size="0.18 0.36" material="frame"/><geom type="cylinder" pos="0 1.04 0.73" size="0.19 0.008" material="role2"/>
+    <geom type="cylinder" pos="1.14 -0.82 0.36" size="0.18 0.36" material="frame"/><geom type="cylinder" pos="1.14 -0.82 0.73" size="0.19 0.008" material="role3"/>
+    <frame pos="-1.14 -0.82 0.72" euler="0 0 0.62"><attach model="panda" body="link0" prefix="arm1_"/></frame><frame pos="0 1.04 0.72" euler="0 0 -1.57"><attach model="panda" body="link0" prefix="arm2_"/></frame><frame pos="1.14 -0.82 0.72" euler="0 0 2.5"><attach model="panda" body="link0" prefix="arm3_"/></frame>
+    <body name="task_payload" pos="-0.78 -0.3 0.785">
+      <freejoint name="task_payload_free"/>
+      <geom name="task_payload_geom" type="sphere" pos="0 0 0.027" size="0.027" group="3" mass="0.18" friction="0.85 0.02 0.002"/>
+    </body>
   </worldbody>
 </mujoco>
